@@ -7,6 +7,7 @@ class CustomBackdropFilter extends StatelessWidget {
   final double? width;
   final double? height;
   final double? borderRadius;
+  final Color? borderColor;
   final Widget child;
 
   const CustomBackdropFilter({
@@ -14,6 +15,7 @@ class CustomBackdropFilter extends StatelessWidget {
     this.width,
     this.height,
     this.borderRadius,
+    this.borderColor,
     required this.child,
   });
 
@@ -24,12 +26,12 @@ class CustomBackdropFilter extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10), // Blur effect
         child: Container(
-          width: width ?? 200.w,
+          width: width ?? 250,
           height: height ?? 50.h,
           decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.2), // Semi-transparent glass effect
             borderRadius: BorderRadius.circular(borderRadius ?? 10),
-            border: Border.all(color: Colors.white.withOpacity(0.2)), // Light border
+            border: Border.all(color: borderColor ?? Colors.white.withOpacity(0.2)), // Light border
           ),
           child: child, // Allowing custom widgets inside
         ),

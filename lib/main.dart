@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
 
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,18 +15,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(builder: (context, child) {
-      ScreenUtil.init(
-        context,
-        designSize: const Size(844, 390),
-        minTextAdapt: true,
-        splitScreenMode: true,
-      );
-      return MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
-        child: HomePage(),
-      );
-    });
+    return MaterialApp(
+      title: 'shinas koya portfolio',
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        ScreenUtil.init(
+          context,
+          designSize: const Size(844, 390),
+          minTextAdapt: true,
+          splitScreenMode: true,
+        );
+        return HomePage();
+      },
+    );
+
+    /*
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      title: 'iCriptSnappie',
+      home: const HomePage(),
+    );
+
+    */
   }
 }
 

@@ -11,184 +11,186 @@ class AppIcons {
   static const String kFloralBadgeIcon = '$_iconBasePath/floral_badge.svg';
 
   static const String kBlankIcon = '$_iconBasePath/blank_icon.svg';
+  static const String kAppleLogo = '$_iconBasePath/apple_logo.svg';
 
-  static const String kThemesIcon = '$_iconBasePath/themes.svg';
-  static const String kModeIcon = '$_iconBasePath/mode.svg';
-  static const String kScrollIcon = '$_iconBasePath/scroll.svg';
-  static const String kNotesIcon = '$_iconBasePath/notes.svg';
-  static const String kMoreIcon = '$_iconBasePath/more.svg';
-
-  static const String kBookmarkIcon = '$_iconBasePath/bookmark.svg';
-  static const String kGoalsIcon = '$_iconBasePath/goal.svg';
-  static const String kShareIcon = '$_iconBasePath/share.svg';
-  static const String kPlayIcon = '$_iconBasePath/play.svg';
-  static const String kContinuousPlayIcon = '$_iconBasePath/continuous_play.svg';
-  static const String kTafsirIcon = '$_iconBasePath/tafsir.svg';
-  static const String kTranslateIcon = '$_iconBasePath/translate.svg';
-  static const String kArrowRangeIcon = '$_iconBasePath/arrow_range.svg';
-
-  static const String kDescriptionIcon = '$_iconBasePath/description.svg';
-  static const String kDeleteIcon = '$_iconBasePath/delete.svg';
-  static const String kBookmarkOutline = '$_iconBasePath/bookmark_outline.svg';
-  static const String kBookmarkFill = '$_iconBasePath/bookmark_fill.svg';
-  static const String kPauseIcon = '$_iconBasePath/pause.svg';
-  static const String kPlayPause = '$_iconBasePath/play_pause.svg';
-  static const String kDefaultReciter = '$_iconBasePath/default_reciter.svg';
-
-  static const String kShareWindows = '$_iconBasePath/share_windows.svg';
-  static const String kShareText = '$_iconBasePath/share_text.svg';
-  static const String kSharePhoto = '$_iconBasePath/share_photo.svg';
-  static const String kShareAudio = '$_iconBasePath/share_audio.svg';
-  static const String kShareVideo = '$_iconBasePath/share_video.svg';
-
-  static const String kAlignCenter = '$_iconBasePath/align_center.svg';
-  static const String kAlignRight = '$_iconBasePath/align_right.svg';
-  static const String kAlignLeft = '$_iconBasePath/align_left.svg';
-
-  static const String kGallery = '$_iconBasePath/gallery.svg';
-  static const String kCamera = '$_iconBasePath/camera.svg';
-  static const String kPanZoom = '$_iconBasePath/pan_zoom.svg';
-  static const String kDownload = '$_iconBasePath/download.svg';
-
-  //app shell icons
-  static const String kHomeAppShell = '$_iconBasePath/home.svg';
-  static const String kPrayerAppShell = '$_iconBasePath/prayer_time.svg';
-  static const String kQiblaAppShell = '$_iconBasePath/qibla.svg';
-  static const String kQuranAppShell = '$_iconBasePath/quran.svg';
-  static const String kQuranAppShellFilled = '$_iconBasePath/quran_filled.svg';
-  static const String kMoreAppShell = '$_iconBasePath/more.svg';
-
-  static const String kReadButton = '$_iconBasePath/read_quran.svg';
-  static const String kListenButton = '$_iconBasePath/listen_quran.svg';
-
-  //adhan time icons
-  static const String kGoldImsak = '$_iconBasePath/imsak_gold.svg';
-  static const String kGoldFajr = '$_iconBasePath/fajr_gold.svg';
-  static const String kGoldSunrise = '$_iconBasePath/sunrise_gold.svg';
-  static const String kGoldDhuhr = '$_iconBasePath/duhr_gold.svg';
-  static const String kGoldAsr = '$_iconBasePath/asr_gold.svg';
-  static const String kGoldMaghrib = '$_iconBasePath/maghrib_gold.svg';
-  static const String kGoldIsha = '$_iconBasePath/isha_gold.svg';
-
-  static const String kBlueAsr = '$_iconBasePath/asr_blue.svg';
-  static const String kBlueDhuhr = '$_iconBasePath/dhur_blue.svg';
-  static const String kBlueFajr = '$_iconBasePath/fajr_blue.svg';
-  static const String kBlueImsak = '$_iconBasePath/imsak_blue.svg';
-  static const String kBlueIsha = '$_iconBasePath/isha_blue.svg';
-  static const String kBlueMaghrib = '$_iconBasePath/maghrib_blue.svg';
-  static const String kBlueSunrise = '$_iconBasePath/sunrise_blue.svg';
-
-  static const String kDarkGoldAsr = '$_iconBasePath/asr_dark_gold.svg';
-  static const String kDarkGoldDhuhr = '$_iconBasePath/dhur_dark_gold.svg';
-  static const String kDarkGoldFajr = '$_iconBasePath/fajr_dark_gold.svg';
-  static const String kDarkGoldImsak = '$_iconBasePath/imsak_dark_gold.svg';
-  static const String kDarkGoldIsha = '$_iconBasePath/isha_dark_gold.svg';
-  static const String kDarkGoldMaghrib = '$_iconBasePath/maghrib_dark_gold.svg';
-  static const String kDarkGoldSunrise = '$_iconBasePath/sunrise_dark_gold.svg';
-
-  static const String kDarkWhiteAsr = '$_iconBasePath/asr_dark_white.svg';
-  static const String kDarkWhiteDhuhr = '$_iconBasePath/dhur_dark_white.svg';
-  static const String kDarkWhiteFajr = '$_iconBasePath/fajr_dark_white.svg';
-  static const String kDarkWhiteImsak = '$_iconBasePath/imsak_dark_white.svg';
-  static const String kDarkWhiteIsha = '$_iconBasePath/isha_dark_white.svg';
-  static const String kDarkWhiteMaghrib = '$_iconBasePath/maghrib_dark_white.svg';
-  static const String kDarkWhiteSunrise = '$_iconBasePath/sunrise_dark_white.svg';
-
-  static const String kGreenAsr = '$_iconBasePath/asr_green.svg';
-  static const String kGreenDhuhr = '$_iconBasePath/dhur_green.svg';
-  static const String kGreenFajr = '$_iconBasePath/fajr_green.svg';
-  static const String kGreenImsak = '$_iconBasePath/imsak_green.svg';
-  static const String kGreenIsha = '$_iconBasePath/isha_green.svg';
-  static const String kGreenMaghrib = '$_iconBasePath/maghrib_green.svg';
-  static const String kGreenSunrise = '$_iconBasePath/sunrise_green.svg';
-
-  static const String kRedAsr = '$_iconBasePath/asr_red.svg';
-  static const String kRedDhuhr = '$_iconBasePath/dhur_red.svg';
-  static const String kRedFajr = '$_iconBasePath/fajr_red.svg';
-  static const String kRedImsak = '$_iconBasePath/imsak_red.svg';
-  static const String kRedIsha = '$_iconBasePath/isha_red.svg';
-  static const String kRedMaghrib = '$_iconBasePath/maghrib_red.svg';
-  static const String kRedSunrise = '$_iconBasePath/sunrise_red.svg';
-
-  static const String kCheckCircle = '$_iconBasePath/check_circle.svg';
-  static const String kRadioButtonChecked = '$_iconBasePath/radio_button_checked.svg';
-  static const String kCalenderMonthIcon = '$_iconBasePath/calendar_month.svg';
-  static const String kVibrationIcon = '$_iconBasePath/vibrate.svg';
-  static const String kSilentAdhanIcon = '$_iconBasePath/silent.svg';
-  static const String kFullAdhanIcon = '$_iconBasePath/full_adhan.svg';
-  static const String kTakbeerIcon = '$_iconBasePath/takbeer.svg';
-
-  // static const String kCalenderMonthIcon = '$_iconBasePath/calendar_month.svg';
-
-  // icons
-  static const String kAvatar = '$_iconBasePath/avatar.svg';
-  static const String kSearchIcon = '$_iconBasePath/search_icon_new.svg';
-  static const String kMic = '$_iconBasePath/mic.svg';
-  static const String kMicListening = '$_iconBasePath/mic_listening.svg';
-  static const String kClose = '$_iconBasePath/close.svg';
-
-  // qibla tab
-  static const String kQiblaMapKaabaPointer = '$_iconBasePath/kabah.png';
-  static const String kUserCurrentLocationPointer = '$_iconBasePath/you_are_here.png';
-
-  // static const String kQiblaMapKaabaPointer = '$_iconBasePath/qibla_map_kaaba.svg';
-  // static const String kUserCurrentLocationPointer = '$_iconBasePath/qibla_map_you_are_here.svg';
-  static const String kQiblaARRightArrow = '$_iconBasePath/right_arrow.png';
-  static const String kQiblaARLeftArrow = '$_iconBasePath/left_arrow.png';
-  static const String kMapPegmanIcon = '$_iconBasePath/pegman.svg';
-
-  // more tab
-  static const String kGlobeIcon = '$_iconBasePath/globe.svg';
-  static const String kThemeColorIcon = '$_iconBasePath/colors_theme.svg';
-  static const String kAppSettingsIcon = '$_iconBasePath/app_setting_gear.svg';
-  static const String kThumbsUpIcon = '$_iconBasePath/thumbs_up.svg';
-  static const String kFeedbackSuggestionIcon = '$_iconBasePath/password.svg';
-  static const String kAboutIcon = '$_iconBasePath/about.svg';
-
-  static const String kTwitterIcon = '$_iconBasePath/twitter_logo.svg';
-  static const String kInstagramIcon = '$_iconBasePath/instagram_logo.svg';
-  static const String kYoutubeIcon = '$_iconBasePath/youtube_logo.svg';
-
-  static const String kSurahDividerIcon = '$_iconBasePath/surah_divider.svg';
-  static const String kAboutBackgroundIcon = '$_iconBasePath/about_bg.svg';
-
-  static const String kPause = '$_iconBasePath/listen_pause.svg';
-  static const String kPlay = '$_iconBasePath/listen_play.svg';
-  static const String kVolumeUpFilled = '$_iconBasePath/volume_up_fill.svg';
-  static const String kVolumeOffFilled = '$_iconBasePath/volume_off.svg';
-  static const String kLoop1 = '$_iconBasePath/loop1.svg';
-  static const String kLoop2 = '$_iconBasePath/loop2.svg';
-  static const String kLoop3 = '$_iconBasePath/loop3.svg';
-  static const String kAcuteClock = '$_iconBasePath/acute_clock.svg';
-
-  static const String kGoalsFilterIcon = '$_iconBasePath/filter.svg';
-  static const String kPlaylistPlay = '$_iconBasePath/playlist_play.svg';
-
-  static const String kGoalsWarning = '$_iconBasePath/goals_warning.svg';
-
-  static const String shuffle = '$_iconBasePath/shuffle.svg';
-  static const String shuffleOff = '$_iconBasePath/shuffle.svg';
-
-  static const String kSurahTitleBackground = '$_iconBasePath/surah_title_background.svg';
-  static const String kBook = '$_iconBasePath/center_book.svg';
-
-  static const String kAppLogoIcon = '$_iconBasePath/app_logo_icon.png';
-
-  static const String kLeftArrowHead = '$_iconBasePath/left_arrow_head.svg';
-  static const String kRightArrowHead = '$_iconBasePath/right_arrow_head.svg';
-
-  static const String kFastForwardIcon = '$_iconBasePath/fast_forward.svg';
-  static const String kFastRewindIcon = '$_iconBasePath/fast_rewind.svg';
-
-  static const String kLeftChevronIcon = '$_iconBasePath/left_chevron.svg';
-  static const String kRightChevronIcon = '$_iconBasePath/right_chevron.svg';
-
-  static const String kCancelIcon = '$_iconBasePath/cancel.svg';
-
-  static const String kRefreshIcon = '$_iconBasePath/refresh.svg';
-  static const String kCompassCalibrationIcon = '$_iconBasePath/compass_calibration.svg';
-
-  static const String kBeepIcon = '$_iconBasePath/beep.svg';
+  ///
+// static const String kThemesIcon = '$_iconBasePath/themes.svg';
+// static const String kModeIcon = '$_iconBasePath/mode.svg';
+// static const String kScrollIcon = '$_iconBasePath/scroll.svg';
+// static const String kNotesIcon = '$_iconBasePath/notes.svg';
+// static const String kMoreIcon = '$_iconBasePath/more.svg';
+//
+// static const String kBookmarkIcon = '$_iconBasePath/bookmark.svg';
+// static const String kGoalsIcon = '$_iconBasePath/goal.svg';
+// static const String kShareIcon = '$_iconBasePath/share.svg';
+// static const String kPlayIcon = '$_iconBasePath/play.svg';
+// static const String kContinuousPlayIcon = '$_iconBasePath/continuous_play.svg';
+// static const String kTafsirIcon = '$_iconBasePath/tafsir.svg';
+// static const String kTranslateIcon = '$_iconBasePath/translate.svg';
+// static const String kArrowRangeIcon = '$_iconBasePath/arrow_range.svg';
+//
+// static const String kDescriptionIcon = '$_iconBasePath/description.svg';
+// static const String kDeleteIcon = '$_iconBasePath/delete.svg';
+// static const String kBookmarkOutline = '$_iconBasePath/bookmark_outline.svg';
+// static const String kBookmarkFill = '$_iconBasePath/bookmark_fill.svg';
+// static const String kPauseIcon = '$_iconBasePath/pause.svg';
+// static const String kPlayPause = '$_iconBasePath/play_pause.svg';
+// static const String kDefaultReciter = '$_iconBasePath/default_reciter.svg';
+//
+// static const String kShareWindows = '$_iconBasePath/share_windows.svg';
+// static const String kShareText = '$_iconBasePath/share_text.svg';
+// static const String kSharePhoto = '$_iconBasePath/share_photo.svg';
+// static const String kShareAudio = '$_iconBasePath/share_audio.svg';
+// static const String kShareVideo = '$_iconBasePath/share_video.svg';
+//
+// static const String kAlignCenter = '$_iconBasePath/align_center.svg';
+// static const String kAlignRight = '$_iconBasePath/align_right.svg';
+// static const String kAlignLeft = '$_iconBasePath/align_left.svg';
+//
+// static const String kGallery = '$_iconBasePath/gallery.svg';
+// static const String kCamera = '$_iconBasePath/camera.svg';
+// static const String kPanZoom = '$_iconBasePath/pan_zoom.svg';
+// static const String kDownload = '$_iconBasePath/download.svg';
+//
+// //app shell icons
+// static const String kHomeAppShell = '$_iconBasePath/home.svg';
+// static const String kPrayerAppShell = '$_iconBasePath/prayer_time.svg';
+// static const String kQiblaAppShell = '$_iconBasePath/qibla.svg';
+// static const String kQuranAppShell = '$_iconBasePath/quran.svg';
+// static const String kQuranAppShellFilled = '$_iconBasePath/quran_filled.svg';
+// static const String kMoreAppShell = '$_iconBasePath/more.svg';
+//
+// static const String kReadButton = '$_iconBasePath/read_quran.svg';
+// static const String kListenButton = '$_iconBasePath/listen_quran.svg';
+//
+// //adhan time icons
+// static const String kGoldImsak = '$_iconBasePath/imsak_gold.svg';
+// static const String kGoldFajr = '$_iconBasePath/fajr_gold.svg';
+// static const String kGoldSunrise = '$_iconBasePath/sunrise_gold.svg';
+// static const String kGoldDhuhr = '$_iconBasePath/duhr_gold.svg';
+// static const String kGoldAsr = '$_iconBasePath/asr_gold.svg';
+// static const String kGoldMaghrib = '$_iconBasePath/maghrib_gold.svg';
+// static const String kGoldIsha = '$_iconBasePath/isha_gold.svg';
+//
+// static const String kBlueAsr = '$_iconBasePath/asr_blue.svg';
+// static const String kBlueDhuhr = '$_iconBasePath/dhur_blue.svg';
+// static const String kBlueFajr = '$_iconBasePath/fajr_blue.svg';
+// static const String kBlueImsak = '$_iconBasePath/imsak_blue.svg';
+// static const String kBlueIsha = '$_iconBasePath/isha_blue.svg';
+// static const String kBlueMaghrib = '$_iconBasePath/maghrib_blue.svg';
+// static const String kBlueSunrise = '$_iconBasePath/sunrise_blue.svg';
+//
+// static const String kDarkGoldAsr = '$_iconBasePath/asr_dark_gold.svg';
+// static const String kDarkGoldDhuhr = '$_iconBasePath/dhur_dark_gold.svg';
+// static const String kDarkGoldFajr = '$_iconBasePath/fajr_dark_gold.svg';
+// static const String kDarkGoldImsak = '$_iconBasePath/imsak_dark_gold.svg';
+// static const String kDarkGoldIsha = '$_iconBasePath/isha_dark_gold.svg';
+// static const String kDarkGoldMaghrib = '$_iconBasePath/maghrib_dark_gold.svg';
+// static const String kDarkGoldSunrise = '$_iconBasePath/sunrise_dark_gold.svg';
+//
+// static const String kDarkWhiteAsr = '$_iconBasePath/asr_dark_white.svg';
+// static const String kDarkWhiteDhuhr = '$_iconBasePath/dhur_dark_white.svg';
+// static const String kDarkWhiteFajr = '$_iconBasePath/fajr_dark_white.svg';
+// static const String kDarkWhiteImsak = '$_iconBasePath/imsak_dark_white.svg';
+// static const String kDarkWhiteIsha = '$_iconBasePath/isha_dark_white.svg';
+// static const String kDarkWhiteMaghrib = '$_iconBasePath/maghrib_dark_white.svg';
+// static const String kDarkWhiteSunrise = '$_iconBasePath/sunrise_dark_white.svg';
+//
+// static const String kGreenAsr = '$_iconBasePath/asr_green.svg';
+// static const String kGreenDhuhr = '$_iconBasePath/dhur_green.svg';
+// static const String kGreenFajr = '$_iconBasePath/fajr_green.svg';
+// static const String kGreenImsak = '$_iconBasePath/imsak_green.svg';
+// static const String kGreenIsha = '$_iconBasePath/isha_green.svg';
+// static const String kGreenMaghrib = '$_iconBasePath/maghrib_green.svg';
+// static const String kGreenSunrise = '$_iconBasePath/sunrise_green.svg';
+//
+// static const String kRedAsr = '$_iconBasePath/asr_red.svg';
+// static const String kRedDhuhr = '$_iconBasePath/dhur_red.svg';
+// static const String kRedFajr = '$_iconBasePath/fajr_red.svg';
+// static const String kRedImsak = '$_iconBasePath/imsak_red.svg';
+// static const String kRedIsha = '$_iconBasePath/isha_red.svg';
+// static const String kRedMaghrib = '$_iconBasePath/maghrib_red.svg';
+// static const String kRedSunrise = '$_iconBasePath/sunrise_red.svg';
+//
+// static const String kCheckCircle = '$_iconBasePath/check_circle.svg';
+// static const String kRadioButtonChecked = '$_iconBasePath/radio_button_checked.svg';
+// static const String kCalenderMonthIcon = '$_iconBasePath/calendar_month.svg';
+// static const String kVibrationIcon = '$_iconBasePath/vibrate.svg';
+// static const String kSilentAdhanIcon = '$_iconBasePath/silent.svg';
+// static const String kFullAdhanIcon = '$_iconBasePath/full_adhan.svg';
+// static const String kTakbeerIcon = '$_iconBasePath/takbeer.svg';
+//
+// // static const String kCalenderMonthIcon = '$_iconBasePath/calendar_month.svg';
+//
+// // icons
+// static const String kAvatar = '$_iconBasePath/avatar.svg';
+// static const String kSearchIcon = '$_iconBasePath/search_icon_new.svg';
+// static const String kMic = '$_iconBasePath/mic.svg';
+// static const String kMicListening = '$_iconBasePath/mic_listening.svg';
+// static const String kClose = '$_iconBasePath/close.svg';
+//
+// // qibla tab
+// static const String kQiblaMapKaabaPointer = '$_iconBasePath/kabah.png';
+// static const String kUserCurrentLocationPointer = '$_iconBasePath/you_are_here.png';
+//
+// // static const String kQiblaMapKaabaPointer = '$_iconBasePath/qibla_map_kaaba.svg';
+// // static const String kUserCurrentLocationPointer = '$_iconBasePath/qibla_map_you_are_here.svg';
+// static const String kQiblaARRightArrow = '$_iconBasePath/right_arrow.png';
+// static const String kQiblaARLeftArrow = '$_iconBasePath/left_arrow.png';
+// static const String kMapPegmanIcon = '$_iconBasePath/pegman.svg';
+//
+// // more tab
+// static const String kGlobeIcon = '$_iconBasePath/globe.svg';
+// static const String kThemeColorIcon = '$_iconBasePath/colors_theme.svg';
+// static const String kAppSettingsIcon = '$_iconBasePath/app_setting_gear.svg';
+// static const String kThumbsUpIcon = '$_iconBasePath/thumbs_up.svg';
+// static const String kFeedbackSuggestionIcon = '$_iconBasePath/password.svg';
+// static const String kAboutIcon = '$_iconBasePath/about.svg';
+//
+// static const String kTwitterIcon = '$_iconBasePath/twitter_logo.svg';
+// static const String kInstagramIcon = '$_iconBasePath/instagram_logo.svg';
+// static const String kYoutubeIcon = '$_iconBasePath/youtube_logo.svg';
+//
+// static const String kSurahDividerIcon = '$_iconBasePath/surah_divider.svg';
+// static const String kAboutBackgroundIcon = '$_iconBasePath/about_bg.svg';
+//
+// static const String kPause = '$_iconBasePath/listen_pause.svg';
+// static const String kPlay = '$_iconBasePath/listen_play.svg';
+// static const String kVolumeUpFilled = '$_iconBasePath/volume_up_fill.svg';
+// static const String kVolumeOffFilled = '$_iconBasePath/volume_off.svg';
+// static const String kLoop1 = '$_iconBasePath/loop1.svg';
+// static const String kLoop2 = '$_iconBasePath/loop2.svg';
+// static const String kLoop3 = '$_iconBasePath/loop3.svg';
+// static const String kAcuteClock = '$_iconBasePath/acute_clock.svg';
+//
+// static const String kGoalsFilterIcon = '$_iconBasePath/filter.svg';
+// static const String kPlaylistPlay = '$_iconBasePath/playlist_play.svg';
+//
+// static const String kGoalsWarning = '$_iconBasePath/goals_warning.svg';
+//
+// static const String shuffle = '$_iconBasePath/shuffle.svg';
+// static const String shuffleOff = '$_iconBasePath/shuffle.svg';
+//
+// static const String kSurahTitleBackground = '$_iconBasePath/surah_title_background.svg';
+// static const String kBook = '$_iconBasePath/center_book.svg';
+//
+// static const String kAppLogoIcon = '$_iconBasePath/app_logo_icon.png';
+//
+// static const String kLeftArrowHead = '$_iconBasePath/left_arrow_head.svg';
+// static const String kRightArrowHead = '$_iconBasePath/right_arrow_head.svg';
+//
+// static const String kFastForwardIcon = '$_iconBasePath/fast_forward.svg';
+// static const String kFastRewindIcon = '$_iconBasePath/fast_rewind.svg';
+//
+// static const String kLeftChevronIcon = '$_iconBasePath/left_chevron.svg';
+// static const String kRightChevronIcon = '$_iconBasePath/right_chevron.svg';
+//
+// static const String kCancelIcon = '$_iconBasePath/cancel.svg';
+//
+// static const String kRefreshIcon = '$_iconBasePath/refresh.svg';
+// static const String kCompassCalibrationIcon = '$_iconBasePath/compass_calibration.svg';
+//
+// static const String kBeepIcon = '$_iconBasePath/beep.svg';
 
 // static const String kSelected = '$_iconBasePath/selected.svg';
 // static const String kCompany = '$_iconBasePath/company.svg';
