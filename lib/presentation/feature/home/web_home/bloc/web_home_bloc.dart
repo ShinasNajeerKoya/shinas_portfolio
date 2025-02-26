@@ -11,6 +11,9 @@ class WebHomeBloc {
   ///
   final isMacPlatform = BehaviorSubject<bool>.seeded(true);
 
+  final appBarTitleValue = BehaviorSubject<String>.seeded('FinderV');
+
+
   WebHomeBloc(
   ) {
     // initDetails();
