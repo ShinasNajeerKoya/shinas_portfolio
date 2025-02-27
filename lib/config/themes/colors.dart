@@ -23,6 +23,8 @@ class AppColors {
   static const Color kMacPrimaryDarkColor = Color(0xFF282828);
   static const Color kMacPrimaryDarkFontColor = Color(0xFFFEF9F6);
 
+  static const Color kDialogButtonColor = Color(0xFF746E66);
+
 //
 //
 //   static const Color kCalenderSecondary = Color(0xFFfff1e3);

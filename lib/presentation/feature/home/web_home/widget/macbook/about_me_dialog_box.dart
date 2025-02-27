@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
+import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_os_button.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
 
 class AboutMeDialogBox extends StatelessWidget {
   // final String title;
@@ -28,10 +30,7 @@ class AboutMeDialogBox extends StatelessWidget {
         return false;
       },
       child: Dialog(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .tertiary,
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         child: Container(
           height: 220.h,
           width: 200.w,
@@ -158,41 +157,79 @@ class AboutMeDialogBox extends StatelessWidget {
                     onEnter: (_) => bloc!.isSkillsHovered.add(true),
                     onExit: (_) => bloc!.isSkillsHovered.add(false),
                     title: 'Skills',
-                    value: 'Flutter, Dart \nFirebase, Supabase \nREST, Git ',
+                    value:
+                        'Flutter, Dart \nFirebase, Supabase \nREST, Git\nFlutter, Dart \nFirebase, Supabase \nREST, Git\n ',
                     isHovered: isHovered,
                   );
                 },
               ),
 
-
-
+              const Spacer(),
               // SizedBox(height: 20),
-              TextButton(
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                  // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
-                },
-                child: Text(
-                  'subTitle',
-                  style: TextStyle(
-                    color: Theme
-                        .of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.color,
-                    fontSize: 14.sp,
+              Row(
+                children: [
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                    decoration: BoxDecoration(
+                      color: AppColors.kDialogButtonColor,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: CustomTextButton(
+                        'My Projects',
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          bloc!.appBarTitleValue.add(MenuItemsConstantKeys.projects);
+
+                          bloc!.showCustomDialog(
+                            // context: navigatorKey.currentContext!,
+                            context: context,
+                            bloc: bloc,
+                            title: MenuItemsConstantKeys.projects,
+                            // subTitle: 'sub title',
+                          );
+                        },
+                        fontSize: 13,
+                      ),
+                    ),
                   ),
-                ),
+                  horizontalMargin4,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                    decoration: BoxDecoration(
+                      color: AppColors.kDialogButtonColor,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: CustomTextButton(
+                        'Contact',
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          bloc!.appBarTitleValue.add(MenuItemsConstantKeys.contact);
+
+                          bloc!.showCustomDialog(
+                            // context: navigatorKey.currentContext!,
+                            context: context,
+                            bloc: bloc,
+                            title: MenuItemsConstantKeys.contact,
+                            // subTitle: 'sub title',
+                          );
+                        },
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                ],
               ),
+              verticalMargin8,
             ],
           ),
         ),
       ),
     );
   }
-
-
-
 }
 
 class DetailsRow extends StatelessWidget {
@@ -218,7 +255,6 @@ class DetailsRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         /// First Container (Hoverable, Center-Right, Wraps Text)
         MouseRegion(
           onEnter: onEnter,

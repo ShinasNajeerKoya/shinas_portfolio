@@ -6,10 +6,10 @@ import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/projects_dialog_box.dart';
 
 class MenuDialogFactory {
-  static Widget getDialog({required String title,required WebHomeBloc? bloc}) {
+  static Widget getDialog({required String title, required WebHomeBloc? bloc}) {
     final dialogMap = <String, Widget Function()>{
-      MenuItemsConstantKeys.aboutMe: () => AboutMeDialogBox(bloc:bloc),
-      MenuItemsConstantKeys.projects: () => ProjectsDialogBox(),
+      MenuItemsConstantKeys.aboutMe: () => AboutMeDialogBox(bloc: bloc),
+      MenuItemsConstantKeys.projects: () => ProjectsDialogBox(bloc: bloc),
       MenuItemsConstantKeys.contact: () => ContactDialogBox(),
     };
 

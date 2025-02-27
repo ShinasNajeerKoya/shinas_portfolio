@@ -57,6 +57,7 @@ final verticalMargin4 = SizedBox(height: 4.h);
 final verticalMargin5 = SizedBox(height: 5.h);
 final verticalMargin6 = SizedBox(height: 6.h);
 final verticalMargin8 = SizedBox(height: 8.h);
+final verticalMargin10 = SizedBox(height: 10.h);
 final verticalMargin12 = SizedBox(height: 12.h);
 final verticalMargin16 = SizedBox(height: 16.h);
 final verticalMargin20 = SizedBox(height: 20.h);
