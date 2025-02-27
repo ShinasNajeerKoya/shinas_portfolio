@@ -24,7 +24,7 @@ class CustomIconButton extends StatelessWidget {
       onTap: onTap,
       child: SizedBox(
         height: height ?? 12.h,
-        width: height ?? 15.w,
+        width: width ?? 15.w,
         // color: Colors.brown,
         child: CustomSvgIcon(
           icon,
