@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
+import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/custom_dialog_box.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_icon_button.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
@@ -74,18 +74,6 @@ class MacAppBar extends StatelessWidget {
   //   );
   // }
 
-  void showCustomDialog({required BuildContext context, required String title, required String subTitle}) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CustomDialogBox(
-          title: title,
-          subTitle: subTitle,
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return CustomBackdropFilter(
@@ -146,17 +134,18 @@ class MacAppBar extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 4.w),
                 child: CustomTextButton(
-                  menuItems[index]["title"],
+                  menuItems[index][MenuItemsConstantKeys.title],
                   onTap: () {
-                    bloc!.appBarTitleValue.add(menuItems[index]["title"]);
+                    bloc!.appBarTitleValue.add(menuItems[index][MenuItemsConstantKeys.title]);
 
                     ///
-                    // showCustomDialog(
-                    //   // context: navigatorKey.currentContext!,
-                    //   title: menuItems[index]["title"],
-                    //   subTitle: menuItems[index]["color"],
-                    //   context: context,
-                    // );
+                    bloc!.showCustomDialog(
+                      // context: navigatorKey.currentContext!,
+                      context: context,
+                      title: menuItems[index][MenuItemsConstantKeys.title],
+                      // subTitle: 'sub title',
+                    );
+
                     ///
                   },
                   fontSize: 7.sp,
