@@ -142,6 +142,7 @@ class MacAppBar extends StatelessWidget {
                     bloc!.showCustomDialog(
                       // context: navigatorKey.currentContext!,
                       context: context,
+                      bloc:bloc,
                       title: menuItems[index][MenuItemsConstantKeys.title],
                       // subTitle: 'sub title',
                     );

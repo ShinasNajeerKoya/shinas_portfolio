@@ -25,8 +25,8 @@ class MacOSButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 8.h,
-        height: 8.w,
+        width: 7.h,
+        height: 7.w,
         padding: const EdgeInsets.all(2.5),
         decoration: BoxDecoration(
           color: color,

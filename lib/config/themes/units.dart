@@ -70,6 +70,7 @@ final verticalMargin100 = SizedBox(height: 100.h);
 
 const zeroPadding = EdgeInsets.zero;
 
+final horizontalPadding2 = EdgeInsets.symmetric(horizontal: 2.w);
 final horizontalPadding4 = EdgeInsets.symmetric(horizontal: 4.w);
 final horizontalPadding5 = EdgeInsets.symmetric(horizontal: 5.w);
 final horizontalPadding6 = EdgeInsets.symmetric(horizontal: 6.w);

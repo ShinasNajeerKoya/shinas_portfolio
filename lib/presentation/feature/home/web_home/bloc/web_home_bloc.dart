@@ -14,6 +14,11 @@ class WebHomeBloc {
 
   final appBarTitleValue = BehaviorSubject<String>.seeded('FinderV');
 
+  final isMouseHovered = BehaviorSubject<bool>.seeded(false);
+  final isExperienceHovered = BehaviorSubject<bool>.seeded(false);
+  final isSkillsHovered = BehaviorSubject<bool>.seeded(false);
+
+
   WebHomeBloc() {
     // initDetails();
   }
@@ -25,6 +30,7 @@ class WebHomeBloc {
   Future<void> showCustomDialog({
     required BuildContext context,
     required String title,
+    required WebHomeBloc? bloc,
     // required String subTitle,
   }) async {
     // await showDialog(
@@ -37,7 +43,7 @@ class WebHomeBloc {
     //   },
     // );
 
-    final dialog = MenuDialogFactory.getDialog(title);
+    final dialog = MenuDialogFactory.getDialog(title:title, bloc: bloc);
 
     if (dialog is SizedBox) return;
 
