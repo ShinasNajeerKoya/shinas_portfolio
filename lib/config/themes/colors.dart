@@ -25,6 +25,9 @@ class AppColors {
 
   static const Color kDialogButtonColor = Color(0xFF746E66);
 
+  static const Color kContactButtonBlueColor = Color(0xFF007AFF);
+  static const Color kContactButtonFontBlueColor = Color(0xFF0055B4);
+
 //
 //
 //   static const Color kCalenderSecondary = Color(0xFFfff1e3);

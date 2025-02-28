@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shinas_koya_portfolio/config/helper/contact_button_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
@@ -13,10 +15,17 @@ import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.da
 class ContactDialogBox extends StatelessWidget {
   final WebHomeBloc? bloc;
 
-  const ContactDialogBox({
+  ContactDialogBox({
     super.key,
     required this.bloc,
   });
+
+  final List<Map<String, dynamic>> contactOptions = [
+    {'title': 'Call', 'icon': CupertinoIcons.phone_fill, 'tooltip': 'Call me'},
+    {'title': 'Email', 'icon': CupertinoIcons.envelope_fill, 'tooltip': 'Send me an email'},
+    {'title': 'Web', 'icon': CupertinoIcons.globe, 'tooltip': 'Visit my website'},
+    {'title': 'Share', 'icon': CupertinoIcons.share, 'tooltip': 'Share my portfolio'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,11 +104,22 @@ class ContactDialogBox extends StatelessWidget {
 
                 /// **contact icons list**
 
-                Container(
+                SizedBox(
                   height: 60,
                   width: 250,
-                  color: Colors.blue,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: List.generate(contactOptions.length, (index) {
+                      final option = contactOptions[index];
+                      return ContactOptionColumn(
+                        title: option['title'],
+                        icon: option['icon'],
+                        tooltip: option['tooltip'],
+                      );
+                    }),
+                  ),
                 ),
+
                 verticalMargin12,
 
                 /// **Experience**
@@ -206,6 +226,54 @@ class CustomContactDivider extends StatelessWidget {
         endIndent: 10,
         color: Colors.grey.withOpacity(0.3),
       ),
+    );
+  }
+}
+
+class ContactOptionColumn extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String tooltip;
+
+  const ContactOptionColumn({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () => ContactButtonHelper.handleContactTap(context, title),
+            child: Tooltip(
+              margin: topPadding8,
+              message: tooltip,
+              waitDuration: const Duration(milliseconds: 300),
+              child: CircleAvatar(
+                radius: 15,
+                backgroundColor: AppColors.kContactButtonBlueColor,
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 16,
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
+        CustomText(
+          title,
+          fontSize: 11,
+          fontColor: AppColors.kContactButtonBlueColor,
+        ),
+      ],
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
+  // Manually register the plugin for web
+
   runApp(const MyApp());
 }
 
