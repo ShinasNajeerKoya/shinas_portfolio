@@ -82,7 +82,7 @@ class MacAppBar extends StatelessWidget {
       width: double.maxFinite,
       borderColor: Colors.transparent,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         child: Row(
           children: [
             CustomIconButton(
@@ -92,7 +92,7 @@ class MacAppBar extends StatelessWidget {
                 bloc!.appBarTitleValue.add('FinderV');
               },
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             StreamBuilder<String>(
                 stream: bloc!.appBarTitleValue,
                 builder: (context, titleSnapshot) {
@@ -104,7 +104,7 @@ class MacAppBar extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   );
                 }),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
 
             ///
             // CustomTextButton(
@@ -132,7 +132,7 @@ class MacAppBar extends StatelessWidget {
             // ),
             ...List.generate(menuItems.length, (index) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 6),
                 child: CustomTextButton(
                   menuItems[index][MenuItemsConstantKeys.title],
                   onTap: () {
@@ -155,7 +155,7 @@ class MacAppBar extends StatelessWidget {
             }),
 
             ///
-            Spacer(),
+            const Spacer(),
             Container(
               width: 28,
               decoration: BoxDecoration(

@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
       ); // Web Layout
     } else {
       // homeScreen = const MobileHomeScreen(); // Mobile Layout
-      /// temporary removing for aman 
+      /// temporary removing for aman
       homeScreen = Provider<WebHomeBloc>(
         create: (context) => provideWebHomeBloc(),
         dispose: (context, bloc) => bloc.dispose(),
