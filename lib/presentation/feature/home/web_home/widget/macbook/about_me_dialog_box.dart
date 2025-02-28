@@ -21,7 +21,6 @@ class AboutMeDialogBox extends StatelessWidget {
     // required this.subTitle,
   });
 
-  // bool _isHovered = false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -32,7 +31,7 @@ class AboutMeDialogBox extends StatelessWidget {
       child: Dialog(
         backgroundColor: Theme.of(context).colorScheme.tertiary,
         child: Container(
-          height: 220.h,
+          height: 250.h,
           width: 200.w,
           padding: horizontalPadding8,
           decoration: BoxDecoration(
@@ -51,9 +50,10 @@ class AboutMeDialogBox extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
+          child: ListView(
             // mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.start,
+            padding: EdgeInsets.zero,
             children: [
               verticalMargin4,
 
@@ -98,7 +98,7 @@ class AboutMeDialogBox extends StatelessWidget {
                             ),
                             const Spacer(),
                             SizedBox(
-                              width: 40.w,
+                              width: 44,
                             )
                           ],
                         ),
@@ -115,17 +115,21 @@ class AboutMeDialogBox extends StatelessWidget {
               ),
               verticalMargin12,
 
-              const CustomText(
-                'Shinas Najeer Koya',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              const Center(
+                child: CustomText(
+                  'Shinas Najeer Koya',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
 
-              const CustomText(
-                'Flutter Engineer',
-                fontSize: 14,
-                // fontWeight: FontWeight.bold,
-                fontColor: Colors.grey,
+              const Center(
+                child: CustomText(
+                  'Flutter Engineer',
+                  fontSize: 14,
+                  // fontWeight: FontWeight.bold,
+                  fontColor: Colors.grey,
+                ),
               ),
 
               verticalMargin12,

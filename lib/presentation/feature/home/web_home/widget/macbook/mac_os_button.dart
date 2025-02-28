@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 
@@ -25,8 +24,8 @@ class MacOSButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 7.h,
-        height: 7.w,
+        width: 12,
+        height: 12,
         padding: const EdgeInsets.all(2.5),
         decoration: BoxDecoration(
           color: color,
