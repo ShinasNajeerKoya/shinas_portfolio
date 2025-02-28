@@ -11,6 +11,7 @@ class DetailsRow extends StatelessWidget {
   final String value;
   final double? valueHeight;
   final double? valueWidth;
+  final int? maxLines;
 
   const DetailsRow({
     super.key,
@@ -21,6 +22,7 @@ class DetailsRow extends StatelessWidget {
     required this.value,
     this.valueHeight,
     this.valueWidth,
+    this.maxLines,
   });
 
   @override
@@ -57,19 +59,24 @@ class DetailsRow extends StatelessWidget {
         horizontalMargin4,
 
         /// Second Container (Fixed, Rounded Borders)
-        Container(
-          width: valueWidth ?? 200,
-          height: valueHeight,
-          alignment: Alignment.bottomLeft,
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-          decoration: BoxDecoration(
-            color: isHovered ? Colors.white.withOpacity(0.2) : Colors.transparent,
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: CustomText(
-            value,
-            fontSize: 13,
-            maxLines: 10,
+        Expanded(
+          child: Container(
+            // width: valueWidth ?? 200.w,
+            // height: valueHeight,
+            alignment: Alignment.bottomLeft,
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            decoration: BoxDecoration(
+              color: isHovered ? Colors.white.withOpacity(0.2) : Colors.transparent,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: CustomText(
+                value,
+                fontSize: 13,
+                maxLines: maxLines,
+              ),
+            ),
           ),
         ),
       ],

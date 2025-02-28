@@ -170,6 +170,7 @@ class AboutMeDialogBox extends StatelessWidget {
                       value:
                           'Flutter, Dart \nFirebase, Supabase \nREST, Git\nFlutter, Dart \nFirebase, Supabase \nREST, Git\n ',
                       isHovered: isHovered,
+                      maxLines: 7,
                     );
                   },
                 ),

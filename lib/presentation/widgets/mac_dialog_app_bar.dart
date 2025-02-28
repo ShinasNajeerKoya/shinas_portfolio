@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_os_button.dart';
@@ -43,12 +41,12 @@ class MacDialogAppBar extends StatelessWidget {
                     iconColor: Colors.black,
                     isHovered: isHovered,
                   ),
-                  horizontalMargin4,
+                  const SizedBox(width: 6),
                   MacOSButton(
                     color: Colors.yellow,
                     isHovered: isHovered,
                   ),
-                  horizontalMargin4,
+                  const SizedBox(width: 6),
                   MacOSButton(
                     color: Colors.green,
                     isHovered: isHovered,
