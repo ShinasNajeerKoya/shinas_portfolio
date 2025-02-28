@@ -15,9 +15,15 @@ class WebHomeBloc {
   final appBarTitleValue = BehaviorSubject<String>.seeded('FinderV');
 
   final isMouseHovered = BehaviorSubject<bool>.seeded(false);
+
+  /// about me
   final isExperienceHovered = BehaviorSubject<bool>.seeded(false);
   final isSkillsHovered = BehaviorSubject<bool>.seeded(false);
 
+  /// contact
+  final isContactPhoneHovered = BehaviorSubject<bool>.seeded(false);
+  final isContactEmailHovered = BehaviorSubject<bool>.seeded(false);
+  final isContactWebsiteHovered = BehaviorSubject<bool>.seeded(false);
 
   WebHomeBloc() {
     // initDetails();
@@ -43,7 +49,7 @@ class WebHomeBloc {
     //   },
     // );
 
-    final dialog = MenuDialogFactory.getDialog(title:title, bloc: bloc);
+    final dialog = MenuDialogFactory.getDialog(title: title, bloc: bloc);
 
     if (dialog is SizedBox) return;
 

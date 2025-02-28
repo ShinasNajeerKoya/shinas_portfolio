@@ -10,7 +10,7 @@ class MenuDialogFactory {
     final dialogMap = <String, Widget Function()>{
       MenuItemsConstantKeys.aboutMe: () => AboutMeDialogBox(bloc: bloc),
       MenuItemsConstantKeys.projects: () => ProjectsDialogBox(bloc: bloc),
-      MenuItemsConstantKeys.contact: () => ContactDialogBox(),
+      MenuItemsConstantKeys.contact: () => ContactDialogBox(bloc: bloc),
     };
 
     return dialogMap[title]?.call() ?? const SizedBox(); // Default to empty widget if no match
