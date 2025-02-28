@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/web_home_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -33,9 +34,11 @@ class MyApp extends StatelessWidget {
         );
 
         return child ?? const HomePage();
+        // return child ?? const WebHomeScreen();
         // return const HomePage();
       },
       home: const HomePage(),
+      // home: const WebHomeScreen(),
     );
 
     /*

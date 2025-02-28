@@ -55,8 +55,8 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                     // context.isMacOS
                     isMacOS
                         ? MacAppBar(
-                      bloc: bloc,
-                    )
+                            bloc: bloc,
+                          )
                         : Container(
                             height: 15.h,
                             color: Colors.transparent,
