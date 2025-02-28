@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 class ContactService {
   static const String _phoneNumber = DetailsConstantValues.phoneNumber;
   static const String _email = DetailsConstantValues.email;
-  static const String _portfolioUrl = DetailsConstantValues.portfolioUrl;
+  static const String _portfolioUrl = DetailsConstantValues.websiteUrl;
 
   static const String _prefilledEmailData = "mailto:$_email?subject=Hello&body=Hi there,";
 

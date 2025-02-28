@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shinas_koya_portfolio/config/constants/details_constants.dart';
 import 'package:shinas_koya_portfolio/config/helper/contact_button_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
@@ -146,7 +147,8 @@ class ContactDialogBox extends StatelessWidget {
                       onEnter: (_) => bloc!.isContactEmailHovered.add(true),
                       onExit: (_) => bloc!.isContactEmailHovered.add(false),
                       title: 'Email',
-                      value: 'shinasnajeerkoya@gmail.com',
+                      // value: 'shinasnajeerkoya@gmail.com',
+                      value: DetailsConstantValues.email,
                       isHovered: isHovered,
                     );
                   },
@@ -160,7 +162,8 @@ class ContactDialogBox extends StatelessWidget {
                       onEnter: (_) => bloc!.isContactWebsiteHovered.add(true),
                       onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
                       title: 'Website',
-                      value: 'null null',
+                      // value: 'null null',
+                      value: DetailsConstantValues.websiteUrl,
                       isHovered: isHovered,
                     );
                   },

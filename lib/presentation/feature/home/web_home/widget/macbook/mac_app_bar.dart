@@ -78,11 +78,11 @@ class MacAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomBackdropFilter(
       borderRadius: 0.r,
-      height: 12.h,
+      height: 28,
       width: double.maxFinite,
       borderColor: Colors.transparent,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 1.h),
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         child: Row(
           children: [
             CustomIconButton(
@@ -92,7 +92,7 @@ class MacAppBar extends StatelessWidget {
                 bloc!.appBarTitleValue.add('FinderV');
               },
             ),
-            horizontalMargin12,
+            SizedBox(width: 16),
             StreamBuilder<String>(
                 stream: bloc!.appBarTitleValue,
                 builder: (context, titleSnapshot) {
@@ -100,11 +100,11 @@ class MacAppBar extends StatelessWidget {
 
                   return CustomText(
                     title,
-                    fontSize: 7.sp,
+                    fontSize: 12,
                     fontWeight: FontWeight.w600,
                   );
                 }),
-            horizontalMargin8,
+            SizedBox(width: 12),
 
             ///
             // CustomTextButton(
@@ -132,7 +132,7 @@ class MacAppBar extends StatelessWidget {
             // ),
             ...List.generate(menuItems.length, (index) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4.w),
+                padding: EdgeInsets.symmetric(horizontal: 6),
                 child: CustomTextButton(
                   menuItems[index][MenuItemsConstantKeys.title],
                   onTap: () {
@@ -142,14 +142,14 @@ class MacAppBar extends StatelessWidget {
                     bloc!.showCustomDialog(
                       // context: navigatorKey.currentContext!,
                       context: context,
-                      bloc:bloc,
+                      bloc: bloc,
                       title: menuItems[index][MenuItemsConstantKeys.title],
                       // subTitle: 'sub title',
                     );
 
                     ///
                   },
-                  fontSize: 7.sp,
+                  fontSize: 12,
                 ),
               );
             }),
@@ -157,10 +157,10 @@ class MacAppBar extends StatelessWidget {
             ///
             Spacer(),
             Container(
-              width: 15.w,
+              width: 28,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(2.r),
+                borderRadius: BorderRadius.circular(4),
               ),
               child: Center(
                 child: CustomTextButton(
@@ -169,7 +169,7 @@ class MacAppBar extends StatelessWidget {
                   onTap: () {
                     log('language selection button tapped');
                   },
-                  fontSize: 7.sp,
+                  fontSize: 12,
                   letterSpacing: 1,
                   fontWeight: FontWeight.w900,
                 ),
@@ -178,7 +178,7 @@ class MacAppBar extends StatelessWidget {
             horizontalMargin8,
             CustomText(
               DateFormat('E, MMM d, h:mm a').format(DateTime.now()),
-              fontSize: 7.5.sp,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
           ],
