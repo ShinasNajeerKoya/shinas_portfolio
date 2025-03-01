@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shinas_koya_portfolio/config/bloc/bloc_provider.dart';
-import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
-import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/web_home_screen.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/splash/web_splash_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,19 +12,11 @@ class HomePage extends StatelessWidget {
     Widget homeScreen;
 
     if (kIsWeb || Platform.isMacOS || Platform.isWindows) {
-      homeScreen = Provider<WebHomeBloc>(
-        create: (context) => provideWebHomeBloc(),
-        dispose: (context, bloc) => bloc.dispose(),
-        child: const WebHomeScreen(),
-      ); // Web Layout
+      homeScreen = const WebSplashPage(); // Web Layout
     } else {
       // homeScreen = const MobileHomeScreen(); // Mobile Layout
       /// temporary removing for aman
-      homeScreen = Provider<WebHomeBloc>(
-        create: (context) => provideWebHomeBloc(),
-        dispose: (context, bloc) => bloc.dispose(),
-        child: const WebHomeScreen(),
-      );
+      homeScreen = const WebSplashPage();
     }
 
     return homeScreen;
@@ -37,7 +26,7 @@ class HomePage extends StatelessWidget {
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter/material.dart';
 // import 'package:responsive_builder/responsive_builder.dart';
-// import 'package:shinas_koya_portfolio/presentation/feature/home/web/web_home_screen.dart';
+// import 'package:shinas_koya_portfolio/presentation/feature/home/web/mac_home_screen.dart';
 //
 // class HomePage extends StatelessWidget {
 //   const HomePage({super.key});

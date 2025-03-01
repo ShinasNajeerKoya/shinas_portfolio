@@ -7,10 +7,10 @@ enum MainLayoutEnum {
   packages,
   resume,
   github,
-  linkedin,
-  fullscreen,
   flappyBird,
-  settings,
+  fullscreen,
+  linkedin,
+  // settings,
   figma,
   windows,
 }

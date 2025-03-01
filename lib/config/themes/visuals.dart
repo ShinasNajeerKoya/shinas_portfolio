@@ -14,6 +14,7 @@ class AppIcons {
   static const String kAppleLogo = '$_iconBasePath/apple_logo.svg';
 
   static const String kCancelIcon = '$_iconBasePath/cancel_icon.svg';
+  static const String kSplashAppleIcon = '$_iconBasePath/splash_apple_logo.svg';
 
   // main layout icons -- mac
   static const String kChromeMacIcon = '$_iconBasePath/mac_chrome_icon.svg';
@@ -31,6 +32,10 @@ class AppIcons {
   static const String kWebsiteMacIcon = '$_iconBasePath/mac_website_icon.svg';
   static const String kWindowsMacIcon = '$_iconBasePath/mac_windows_icon.svg';
   static const String kResumeMacIcon = '$_iconBasePath/mac_resume_icon.svg';
+  static const String kFullScreenMacIcon = '$_iconBasePath/mac_full_screen_icon.svg';
+
+
+  static const String kSlantedArrowMacIcon = '$_iconBasePath/mac_arrow_icon.svg';
 
   ///
 // static const String kThemesIcon = '$_iconBasePath/themes.svg';
