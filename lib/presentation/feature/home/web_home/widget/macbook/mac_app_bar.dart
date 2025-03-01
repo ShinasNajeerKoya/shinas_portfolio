@@ -160,6 +160,7 @@ class MacAppBar extends StatelessWidget {
                   onTap: () {
                     log('language selection button tapped');
                   },
+                  
                   fontSize: 12,
                   letterSpacing: 1,
                   fontWeight: FontWeight.w900,
