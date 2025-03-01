@@ -1,11 +1,11 @@
 {
-    "name": "shinas_koya_portfolio",
-    "short_name": "shinas_koya_portfolio",
+    "name": "My Portfolio",
+    "short_name": "My Portfolio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project for portfolio.",
+    "description": "Welcome to my portfolio.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
