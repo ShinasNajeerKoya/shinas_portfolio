@@ -460,7 +460,11 @@ class MacHomeScreen extends StatelessWidget {
                 final layout = MainLayoutEnum.values[index];
 
                 return InkWell(
-                  onTap: DesktopLayoutHelper.getMainLayoutOnTap(layoutEnum: layout, bloc: bloc),
+                  onTap: DesktopLayoutHelper.getMainLayoutOnTap(
+                    layoutEnum: layout,
+                    bloc: bloc,
+                    context: context,
+                  ),
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   child: Column(

@@ -72,6 +72,15 @@ class WebHomeBloc {
     );
   }
 
+  void showFeatureComingSoonSnackbar({required BuildContext context}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("This feature will be available in the future soon."),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
   void dispose() {
     splashSubject.close();
     permissionDeniedSubject.close();

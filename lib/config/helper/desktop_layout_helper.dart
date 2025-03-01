@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
+import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
+import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
 class DesktopLayoutHelper {
@@ -57,27 +59,49 @@ class DesktopLayoutHelper {
 
   ///
 
-  static void Function()? getMainLayoutOnTap(
-      {required MainLayoutEnum layoutEnum, required WebHomeBloc? bloc}) {
+  static void Function()? getMainLayoutOnTap({
+    required MainLayoutEnum layoutEnum,
+    required WebHomeBloc? bloc,
+    required BuildContext context,
+  }) {
     switch (layoutEnum) {
       case MainLayoutEnum.projects:
-        return () => debugPrint("Open Projects");
+        return () {
+          bloc!.appBarTitleValue.add(MenuItemsConstantKeys.projects);
+
+          bloc.showCustomDialog(
+            context: context,
+            bloc: bloc,
+            title: MenuItemsConstantKeys.projects,
+          );
+        };
       case MainLayoutEnum.packages:
-        return () => debugPrint("Open Packages");
+        return () {
+          bloc!.showFeatureComingSoonSnackbar(
+            context: context,
+          );
+        };
       case MainLayoutEnum.resume:
         return () => debugPrint("Open Resume");
       case MainLayoutEnum.github:
-        return () => debugPrint("Open GitHub Profile");
+        return () => ContactService.handleWeb(SocialMediaPlatformEnum.github);
       case MainLayoutEnum.linkedin:
-        return () => debugPrint("Open LinkedIn Profile");
+        return () => ContactService.handleWeb(SocialMediaPlatformEnum.linkedIn);
       case MainLayoutEnum.fullscreen:
         return () => debugPrint("Toggle Fullscreen");
       case MainLayoutEnum.flappyBird:
-        return () => debugPrint("Launch Flappy Bird Game");
-      // case MainLayoutEnum.settings:
+        return () {
+          bloc!.showFeatureComingSoonSnackbar(
+            context: context,
+          );
+        }; // case MainLayoutEnum.settings:
       //   return () => debugPrint("Open Settings");
       case MainLayoutEnum.figma:
-        return () => debugPrint("Open Figma");
+        return () {
+          bloc!.showFeatureComingSoonSnackbar(
+            context: context,
+          );
+        };
       case MainLayoutEnum.windows:
         return () => bloc!.togglePlatform();
     }

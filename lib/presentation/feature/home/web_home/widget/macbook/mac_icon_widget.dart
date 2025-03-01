@@ -29,7 +29,6 @@ class MacIconWidget extends StatelessWidget {
             DesktopLayoutHelper.getMainLayoutIcon(layout),
           ),
         ),
-        // Notification Badge (Only if notificationCount > 0)
         if (notificationCountValue != null)
           Positioned(
             top: -6,

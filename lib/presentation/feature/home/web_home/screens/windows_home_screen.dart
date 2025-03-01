@@ -464,7 +464,11 @@ class WindowsHomeScreen extends StatelessWidget {
                 final layout = MainLayoutEnum.values[index];
 
                 return InkWell(
-                  onTap: DesktopLayoutHelper.getMainLayoutOnTap(layoutEnum: layout, bloc: bloc),
+                  onTap: DesktopLayoutHelper.getMainLayoutOnTap(
+                    layoutEnum: layout,
+                    bloc: bloc,
+                    context: context,
+                  ),
                   child: Column(
                     children: [
                       MacIconWidget(

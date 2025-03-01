@@ -6,12 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shinas_koya_portfolio/config/constants/details_constants.dart';
+import 'package:shinas_koya_portfolio/config/helper/social_media_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+enum SocialMediaPlatformEnum { website, linkedIn, github }
 
 class ContactService {
   static const String _phoneNumber = DetailsConstantValues.phoneNumber;
   static const String _email = DetailsConstantValues.email;
-  static const String _portfolioUrl = DetailsConstantValues.websiteUrl;
+  static const String _websiteUrl = DetailsConstantValues.websiteUrl;
+  static const String _portfolioUrl = DetailsConstantValues.portfolioUrl;
+
+  // static const String _linkedInUrl = DetailsConstantValues.linkedInUrl;
+  // static const String _githubUrl = DetailsConstantValues.githubUrl;
 
   static const String _prefilledEmailData = "mailto:$_email?subject=Hello&body=Hi there,";
 
@@ -80,19 +87,24 @@ class ContactService {
   //   }
   // }
 
-  static Future<void> handleWeb() async {
+  static Future<void> handleWeb(SocialMediaPlatformEnum platformType) async {
+    final String url = SocialMediaHelper.getSocialMediaUrl(platformType);
+
+    if (url.isEmpty) {
+      debugPrint("Invalid platform type or URL not available");
+      return;
+    }
+
     if (kIsWeb) {
-      //
-      // for web
-      html.window.open(_portfolioUrl, "testingForWebsite");
+      // Open in web
+      html.window.open(url, "newTab");
     } else {
-      //
-      // for mobile
-      final Uri websiteUri = Uri.parse(_portfolioUrl);
-      if (await canLaunchUrl(websiteUri)) {
-        await launchUrl(websiteUri, mode: LaunchMode.externalApplication);
+      // Open in mobile browser
+      final Uri uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
-        debugPrint("Could not open website");
+        debugPrint("Could not open URL: $url");
       }
     }
   }

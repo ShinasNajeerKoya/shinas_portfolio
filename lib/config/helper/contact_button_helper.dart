@@ -13,7 +13,7 @@ class ContactButtonHelper {
         ContactService.handleEmail();
         break;
       case 'Web':
-        ContactService.handleWeb();
+        ContactService.handleWeb(SocialMediaPlatformEnum.website);
         break;
       case 'Share':
         ContactService.handleShare();
