@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:popover/popover.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
@@ -82,7 +84,7 @@ class MacAppBar extends StatelessWidget {
       width: double.maxFinite,
       borderColor: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
         child: Row(
           children: [
             CustomIconButton(
@@ -90,6 +92,14 @@ class MacAppBar extends StatelessWidget {
               onTap: () {
                 log('iOS logo tapped');
                 bloc!.appBarTitleValue.add('FinderV');
+                // const CustomPopupMenuButton();
+                showPopover(
+                  context: context,
+                  bodyBuilder: (context) => MenuPopUp(
+                    bloc: bloc,
+                  ),
+                  backgroundColor: Colors.transparent,
+                );
               },
             ),
             const SizedBox(width: 16),
@@ -107,52 +117,33 @@ class MacAppBar extends StatelessWidget {
             const SizedBox(width: 12),
 
             ///
-            // CustomTextButton(
-            //   "About Me",
-            //   onTap: () {
-            //     log('About Me tapped');
-            //   },
-            //   fontSize: 7.sp,
-            // ),
-            // horizontalMargin8,
-            // CustomTextButton(
-            //   "Contact",
-            //   onTap: () {
-            //     log('Contact tapped');
-            //   },
-            //   fontSize: 7.sp,
-            // ),
-            // horizontalMargin8,
-            // CustomTextButton(
-            //   "Projects",
-            //   onTap: () {
-            //     log('projects tapped');
-            //   },
-            //   fontSize: 7.sp,
-            // ),
-            ...List.generate(menuItems.length, (index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: CustomTextButton(
-                  menuItems[index][MenuItemsConstantKeys.title],
-                  onTap: () {
-                    bloc!.appBarTitleValue.add(menuItems[index][MenuItemsConstantKeys.title]);
 
-                    ///
-                    bloc!.showCustomDialog(
-                      // context: navigatorKey.currentContext!,
-                      context: context,
-                      bloc: bloc,
-                      title: menuItems[index][MenuItemsConstantKeys.title],
-                      // subTitle: 'sub title',
-                    );
+            ...List.generate(
+              menuItems.length,
+              (index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: CustomTextButton(
+                    menuItems[index][MenuItemsConstantKeys.title],
+                    onTap: () {
+                      bloc!.appBarTitleValue.add(menuItems[index][MenuItemsConstantKeys.title]);
 
-                    ///
-                  },
-                  fontSize: 12,
-                ),
-              );
-            }),
+                      ///
+                      bloc!.showCustomDialog(
+                        // context: navigatorKey.currentContext!,
+                        context: context,
+                        bloc: bloc,
+                        title: menuItems[index][MenuItemsConstantKeys.title],
+                        // subTitle: 'sub title',
+                      );
+
+                      ///
+                    },
+                    fontSize: 12,
+                  ),
+                );
+              },
+            ),
 
             ///
             const Spacer(),
@@ -185,5 +176,210 @@ class MacAppBar extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MenuPopUp extends StatelessWidget {
+  final WebHomeBloc? bloc;
+
+  const MenuPopUp({
+    super.key,
+    required this.bloc,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomBackdropFilter(
+      height: 130,
+      width: 200,
+      backgroundColor: Colors.white.withOpacity(0.08),
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        children: [
+          MenuPopupItems(
+            title: MenuItemsConstantKeys.aboutMe,
+            onEnter: (_) => bloc!.isContactPhoneHovered.add(true),
+            onExit: (_) => bloc!.isContactPhoneHovered.add(false),
+            bloc: bloc,
+          ),
+          MenuPopupItems(
+            title: MenuItemsConstantKeys.contact,
+            onEnter: (_) => bloc!.isContactEmailHovered.add(true),
+            onExit: (_) => bloc!.isContactEmailHovered.add(false),
+            bloc: bloc,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            child: Divider(
+              height: 0.5,
+              endIndent: 10,
+              color: Colors.grey.withOpacity(0.5),
+            ),
+          ),
+          MenuPopupItems(
+            title: MenuItemsConstantKeys.projects,
+            onEnter: (_) => bloc!.isContactWebsiteHovered.add(true),
+            onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
+            bloc: bloc,
+          ),
+          // StreamBuilder<bool>(
+          //     stream: bloc!.isContactEmailHovered,
+          //     builder: (context, mouseHoveredSnapshot) {
+          //       final isHovered = mouseHoveredSnapshot.data ?? false;
+          //
+          //       return MouseRegion(
+          //         onEnter: (_) => bloc!.isContactEmailHovered.add(true),
+          //         onExit: (_) => bloc!.isContactEmailHovered.add(false),
+          //         child: InkWell(
+          //           onTap: () {
+          //             bloc!.appBarTitleValue.add(menuItems[1][MenuItemsConstantKeys.title]);
+          //
+          //             Navigator.pop(context);
+          //
+          //             ///
+          //             bloc!.showCustomDialog(
+          //               // context: navigatorKey.currentContext!,
+          //               context: context,
+          //               bloc: bloc,
+          //               title: menuItems[1][MenuItemsConstantKeys.title],
+          //               // subTitle: 'sub title',
+          //             );
+          //           },
+          //           child: Container(
+          //             height: 26,
+          //             width: 180,
+          //             alignment: Alignment.centerLeft,
+          //             padding: const EdgeInsets.symmetric(horizontal: 8),
+          //             decoration: BoxDecoration(
+          //               color: isHovered ? Colors.blue : Colors.transparent,
+          //               borderRadius: BorderRadius.circular(4),
+          //             ),
+          //             child: CustomText(
+          //               menuItems[1][MenuItemsConstantKeys.title],
+          //             ),
+          //           ),
+          //         ),
+          //       );
+          //     }),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+          //   child: Divider(
+          //     height: 0.5,
+          //     endIndent: 10,
+          //     color: Colors.grey.withOpacity(0.5),
+          //   ),
+          // ),
+          // StreamBuilder<bool>(
+          //     stream: bloc!.isContactWebsiteHovered,
+          //     builder: (context, mouseHoveredSnapshot) {
+          //       final isHovered = mouseHoveredSnapshot.data ?? false;
+          //
+          //       return MouseRegion(
+          //         onEnter: (_) => bloc!.isContactWebsiteHovered.add(true),
+          //         onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
+          //         child: InkWell(
+          //           onTap: () {
+          //             bloc!.appBarTitleValue.add(menuItems[2][MenuItemsConstantKeys.title]);
+          //             Navigator.pop(context);
+          //
+          //             ///
+          //             bloc!.showCustomDialog(
+          //               // context: navigatorKey.currentContext!,
+          //               context: context,
+          //               bloc: bloc,
+          //               title: menuItems[2][MenuItemsConstantKeys.title],
+          //               // subTitle: 'sub title',
+          //             );
+          //           },
+          //           child: Container(
+          //             height: 26,
+          //             width: 180,
+          //             alignment: Alignment.centerLeft,
+          //             padding: const EdgeInsets.symmetric(horizontal: 8),
+          //             decoration: BoxDecoration(
+          //               color: isHovered ? Colors.blue : Colors.transparent,
+          //               borderRadius: BorderRadius.circular(4),
+          //             ),
+          //             child: CustomText(
+          //               menuItems[2][MenuItemsConstantKeys.title],
+          //             ),
+          //           ),
+          //         ),
+          //       );
+          //     }),
+        ],
+      ),
+    );
+  }
+}
+
+class MenuPopupItems extends StatelessWidget {
+  const MenuPopupItems({
+    super.key,
+    required this.bloc,
+    this.onEnter,
+    this.onExit,
+    required this.title,
+  });
+
+  final String title;
+  final WebHomeBloc? bloc;
+  final Function(PointerEnterEvent)? onEnter;
+  final Function(PointerExitEvent)? onExit;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<bool>(
+        // stream: bloc!.isContactPhoneHovered,
+        stream: getStream(title),
+        builder: (context, mouseHoveredSnapshot) {
+          final isHovered = mouseHoveredSnapshot.data ?? false;
+          return MouseRegion(
+            onEnter: onEnter,
+            onExit: onExit,
+            child: InkWell(
+              onTap: () {
+                bloc!.appBarTitleValue.add(title);
+
+                Navigator.pop(context);
+
+                ///
+                bloc!.showCustomDialog(
+                  // context: navigatorKey.currentContext!,
+                  context: context,
+                  bloc: bloc,
+                  title: title,
+                  // subTitle: 'sub title',
+                );
+              },
+              child: Container(
+                height: 26,
+                width: 180,
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                decoration: BoxDecoration(
+                  color: isHovered ? Colors.blue : Colors.transparent,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: CustomText(
+                  title,
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
+  Stream<bool> getStream(String titleValue) {
+    switch (titleValue) {
+      case MenuItemsConstantKeys.aboutMe:
+        return bloc!.isContactPhoneHovered;
+      case MenuItemsConstantKeys.contact:
+        return bloc!.isContactEmailHovered;
+      case MenuItemsConstantKeys.projects:
+        return bloc!.isContactWebsiteHovered;
+      default:
+        return bloc!.isContactPhoneHovered;
+    }
   }
 }

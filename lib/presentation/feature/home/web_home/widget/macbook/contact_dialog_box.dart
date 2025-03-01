@@ -216,7 +216,7 @@ class ContactDialogBox extends StatelessWidget {
 }
 
 class CustomContactDivider extends StatelessWidget {
-  const CustomContactDivider({
+  const   CustomContactDivider({
     super.key,
   });
 

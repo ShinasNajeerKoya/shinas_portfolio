@@ -23,8 +23,7 @@ dependencies:
   url_launcher: ^6.3.1
   url_launcher_web: ^2.3.3
   share_plus: ^10.1.2
-
-
+  popover: ^0.3.1
 
 
 
