@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.dart';
 
 class ProjectsDialogBox extends StatelessWidget {
@@ -57,6 +58,14 @@ class ProjectsDialogBox extends StatelessWidget {
                   titlePadding: 52,
                 ),
                 verticalMargin16,
+                const Spacer(),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText('Projects will be updated here soon.'),
+                  ],
+                ),
+                const Spacer(),
 
                 /// **Profile Image**
                 // Row(
@@ -105,8 +114,6 @@ class ProjectsDialogBox extends StatelessWidget {
                 //     }),
                 //   ),
                 // ),
-
-                verticalMargin12,
 
                 /// **Experience**
 
