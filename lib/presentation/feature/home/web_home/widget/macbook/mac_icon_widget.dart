@@ -52,7 +52,7 @@ class MacIconWidget extends StatelessWidget {
           ),
         // Slanted Arrow (For Projects, GitHub, and LinkedIn)
         if (hasSlantedArrow)
-          Positioned(
+          const Positioned(
             bottom: -2,
             left: -2,
             child: CustomSvgIcon(

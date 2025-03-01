@@ -392,7 +392,7 @@ class MacHomeScreen extends StatelessWidget {
     // precacheImage(AssetImage(AppImages.kMacOsBg), context);
 
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(AppImages.kMacOsBg),
           fit: BoxFit.cover,
@@ -461,6 +461,8 @@ class MacHomeScreen extends StatelessWidget {
 
                 return InkWell(
                   onTap: DesktopLayoutHelper.getMainLayoutOnTap(layoutEnum: layout, bloc: bloc),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   child: Column(
                     children: [
                       MacIconWidget(
@@ -573,7 +575,7 @@ class MacHomeScreen extends StatelessWidget {
           Container(
             margin: verticalPadding4,
             height: 30.h,
-            child: CustomBackdropFilter(
+            child: const CustomBackdropFilter(
               child: Center(
                 child: Text("Glass Effect", style: TextStyle(color: Colors.white)),
               ),

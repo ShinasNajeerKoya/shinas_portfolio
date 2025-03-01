@@ -393,13 +393,70 @@ class WebHomePage extends StatelessWidget {
             stream: bloc.isMacPlatform,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
 
               bool isMacOS = snapshot.data ?? true;
-              return isMacOS ? MacHomeScreen(bloc: bloc) : WindowsHomeScreen(bloc: bloc);
+              // return isMacOS ? MacHomeScreen(bloc: bloc) : WindowsHomeScreen(bloc: bloc);
+              return AnimatedSwitcher(
+                duration: const Duration(milliseconds: 500), // Adjust transition speed
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+
+                child: isMacOS ? MacHomeScreen(bloc: bloc) : WindowsHomeScreen(bloc: bloc),
+              );
             }),
       );
     });
   }
 }
+
+///
+// transitionBuilder: (Widget child, Animation<double> animation) {
+//   return SlideTransition(
+//     position: Tween<Offset>(
+//       begin: const Offset(1, 0), // Start from right
+//       end: Offset.zero, // Move to center
+//     ).animate(animation),
+//     child: child,
+//   );
+// },
+///
+// transitionBuilder: (Widget child, Animation<double> animation) {
+//   return ScaleTransition(
+//     scale: animation,
+//     child: child,
+//   );
+// },
+
+///
+
+// transitionBuilder: (Widget child, Animation<double> animation) {
+//   return RotationTransition(
+//     turns: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+//     child: child,
+//   );
+// },
+
+///
+
+// transitionBuilder: (Widget child, Animation<double> animation) {
+//   return SizeTransition(
+//     sizeFactor: animation,
+//     child: child,
+//   );
+// },
+///
+// transitionBuilder: (Widget child, Animation<double> animation) {
+//   return SlideTransition(
+//     position: Tween<Offset>(
+//       begin: const Offset(0, 1), // Start from bottom
+//       end: Offset.zero, // Move to center
+//     ).animate(animation),
+//     child: child,
+//   );
+// },
