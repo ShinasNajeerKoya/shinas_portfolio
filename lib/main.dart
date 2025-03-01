@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Portfolio',
+      title: 'My Portfolio', 
       debugShowCheckedModeBanner: false,
       // Hide the default debug banner
       theme: ThemeData(
