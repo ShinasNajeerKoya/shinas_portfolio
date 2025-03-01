@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 
 class CustomIconButton extends StatelessWidget {
@@ -23,8 +22,8 @@ class CustomIconButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: SizedBox(
-        height: height ?? 12.h,
-        width: height ?? 15.w,
+        height: height ?? 15,
+        width: width ?? 18,
         // color: Colors.brown,
         child: CustomSvgIcon(
           icon,

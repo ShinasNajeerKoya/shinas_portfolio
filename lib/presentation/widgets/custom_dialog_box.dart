@@ -5,8 +5,11 @@ import 'package:shinas_koya_portfolio/config/themes/units.dart';
 class CustomDialogBox extends StatelessWidget {
   final String title;
   final String subTitle;
+
   const CustomDialogBox({
-    super.key, required this.title, required this.subTitle,
+    super.key,
+    required this.title,
+    required this.subTitle,
   });
 
   @override

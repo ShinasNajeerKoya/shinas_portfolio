@@ -31,7 +31,7 @@ class CustomText extends StatelessWidget {
       style: TextStyle(
         letterSpacing: letterSpacing,
         color: fontColor ?? Colors.white,
-        fontSize: fontSize ?? 14.sp,
+        fontSize: fontSize ?? 14,
         fontWeight: fontWeight ?? FontWeight.w400,
       ),
       // style: Theme.of(context).textTheme.titleSmall,

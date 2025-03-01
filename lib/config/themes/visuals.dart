@@ -13,6 +13,8 @@ class AppIcons {
   static const String kBlankIcon = '$_iconBasePath/blank_icon.svg';
   static const String kAppleLogo = '$_iconBasePath/apple_logo.svg';
 
+  static const String kCancelIcon = '$_iconBasePath/cancel_icon.svg';
+
   ///
 // static const String kThemesIcon = '$_iconBasePath/themes.svg';
 // static const String kModeIcon = '$_iconBasePath/mode.svg';

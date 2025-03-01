@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
-import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/mac_app_bar.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_app_bar.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
 
 class WebHomeScreen extends StatefulWidget {
@@ -55,8 +55,8 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                     // context.isMacOS
                     isMacOS
                         ? MacAppBar(
-                      bloc: bloc,
-                    )
+                            bloc: bloc,
+                          )
                         : Container(
                             height: 15.h,
                             color: Colors.transparent,

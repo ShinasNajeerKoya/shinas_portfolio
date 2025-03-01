@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
-
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/web_home_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-
 void main() {
+  // Manually register the plugin for web
+
   runApp(const MyApp());
 }
 
@@ -18,15 +19,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'shinas koya portfolio',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      // navigatorObservers: [FlutterSmartDialog.observer],
       builder: (context, child) {
+        // FlutterSmartDialog.init();
         ScreenUtil.init(
           context,
           designSize: const Size(844, 390),
           minTextAdapt: true,
           splitScreenMode: true,
         );
-        return HomePage();
+
+        return child ?? const HomePage();
+        // return child ?? const WebHomeScreen();
+        // return const HomePage();
       },
+      home: const HomePage(),
+      // home: const WebHomeScreen(),
     );
 
     /*

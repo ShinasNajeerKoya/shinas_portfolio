@@ -57,6 +57,7 @@ final verticalMargin4 = SizedBox(height: 4.h);
 final verticalMargin5 = SizedBox(height: 5.h);
 final verticalMargin6 = SizedBox(height: 6.h);
 final verticalMargin8 = SizedBox(height: 8.h);
+final verticalMargin10 = SizedBox(height: 10.h);
 final verticalMargin12 = SizedBox(height: 12.h);
 final verticalMargin16 = SizedBox(height: 16.h);
 final verticalMargin20 = SizedBox(height: 20.h);
@@ -70,6 +71,7 @@ final verticalMargin100 = SizedBox(height: 100.h);
 
 const zeroPadding = EdgeInsets.zero;
 
+final horizontalPadding2 = EdgeInsets.symmetric(horizontal: 2.w);
 final horizontalPadding4 = EdgeInsets.symmetric(horizontal: 4.w);
 final horizontalPadding5 = EdgeInsets.symmetric(horizontal: 5.w);
 final horizontalPadding6 = EdgeInsets.symmetric(horizontal: 6.w);
