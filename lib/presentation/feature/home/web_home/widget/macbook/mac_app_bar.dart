@@ -28,54 +28,6 @@ class MacAppBar extends StatelessWidget {
     {"title": "Projects", "color": Colors.green},
   ];
 
-  // void _showDialog(String title, Color color) {
-  //   setState(() {
-  //     activeTitle = title; // Update app bar title
-  //   });
-  //
-  //   showDialog(
-  //     context: context,
-  //     barrierDismissible: false, // Prevent closing on tap outside
-  //     builder: (context) {
-  //       return Dialog(
-  //         shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(8.r),
-  //         ),
-  //         child: Container(
-  //           width: 100.w,
-  //           height: 100.h,
-  //           color: color,
-  //           child: Stack(
-  //             children: [
-  //               Center(
-  //                 child: CustomText(
-  //                   title,
-  //                   fontSize: 8.sp,
-  //                   fontWeight: FontWeight.w600,
-  //                   fontColor: Colors.white,
-  //                 ),
-  //               ),
-  //               Positioned(
-  //                 top: 8.h,
-  //                 right: 8.w,
-  //                 child: IconButton(
-  //                   icon: Icon(Icons.close, color: Colors.white),
-  //                   onPressed: () {
-  //                     Navigator.of(context).pop(); // Close dialog
-  //                     // setState(() {
-  //                     //   activeTitle = "Finder"; // Reset title
-  //                     // });
-  //                   },
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return CustomBackdropFilter(
@@ -147,6 +99,8 @@ class MacAppBar extends StatelessWidget {
 
             ///
             const Spacer(),
+
+            /// ** language selection **
             Container(
               width: 28,
               decoration: BoxDecoration(
@@ -159,14 +113,44 @@ class MacAppBar extends StatelessWidget {
                   fontColor: Colors.black,
                   onTap: () {
                     log('language selection button tapped');
+                    showPopover(
+                      // contentDxOffset: 200,
+                      // contentDyOffset: 200,
+                      context: context,
+                      direction: PopoverDirection.bottom,
+                      bodyBuilder: (context) => CustomBackdropFilter(
+                        height: 78,
+                        width: 100,
+                        backgroundColor: Colors.white.withOpacity(0.08),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            LanguageMenuItems(
+                              title: 'English',
+                              onEnter: (_) => bloc!.isContactPhoneHovered.add(true),
+                              onExit: (_) => bloc!.isContactPhoneHovered.add(false),
+                              bloc: bloc,
+                            ),
+                            LanguageMenuItems(
+                              title: 'Hindi',
+                              onEnter: (_) => bloc!.isContactEmailHovered.add(true),
+                              onExit: (_) => bloc!.isContactEmailHovered.add(false),
+                              bloc: bloc,
+                            ),
+                          ],
+                        ),
+                      ),
+                      backgroundColor: Colors.transparent,
+                    );
                   },
-                  
                   fontSize: 12,
                   letterSpacing: 1,
                   fontWeight: FontWeight.w900,
                 ),
               ),
             ),
+
             horizontalMargin8,
             CustomText(
               DateFormat('E, MMM d, h:mm a').format(DateTime.now()),
@@ -191,7 +175,7 @@ class MenuPopUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBackdropFilter(
-      height: 130,
+      height: 120,
       width: 200,
       backgroundColor: Colors.white.withOpacity(0.08),
       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -223,92 +207,80 @@ class MenuPopUp extends StatelessWidget {
             onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
             bloc: bloc,
           ),
-          // StreamBuilder<bool>(
-          //     stream: bloc!.isContactEmailHovered,
-          //     builder: (context, mouseHoveredSnapshot) {
-          //       final isHovered = mouseHoveredSnapshot.data ?? false;
-          //
-          //       return MouseRegion(
-          //         onEnter: (_) => bloc!.isContactEmailHovered.add(true),
-          //         onExit: (_) => bloc!.isContactEmailHovered.add(false),
-          //         child: InkWell(
-          //           onTap: () {
-          //             bloc!.appBarTitleValue.add(menuItems[1][MenuItemsConstantKeys.title]);
-          //
-          //             Navigator.pop(context);
-          //
-          //             ///
-          //             bloc!.showCustomDialog(
-          //               // context: navigatorKey.currentContext!,
-          //               context: context,
-          //               bloc: bloc,
-          //               title: menuItems[1][MenuItemsConstantKeys.title],
-          //               // subTitle: 'sub title',
-          //             );
-          //           },
-          //           child: Container(
-          //             height: 26,
-          //             width: 180,
-          //             alignment: Alignment.centerLeft,
-          //             padding: const EdgeInsets.symmetric(horizontal: 8),
-          //             decoration: BoxDecoration(
-          //               color: isHovered ? Colors.blue : Colors.transparent,
-          //               borderRadius: BorderRadius.circular(4),
-          //             ),
-          //             child: CustomText(
-          //               menuItems[1][MenuItemsConstantKeys.title],
-          //             ),
-          //           ),
-          //         ),
-          //       );
-          //     }),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-          //   child: Divider(
-          //     height: 0.5,
-          //     endIndent: 10,
-          //     color: Colors.grey.withOpacity(0.5),
-          //   ),
-          // ),
-          // StreamBuilder<bool>(
-          //     stream: bloc!.isContactWebsiteHovered,
-          //     builder: (context, mouseHoveredSnapshot) {
-          //       final isHovered = mouseHoveredSnapshot.data ?? false;
-          //
-          //       return MouseRegion(
-          //         onEnter: (_) => bloc!.isContactWebsiteHovered.add(true),
-          //         onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
-          //         child: InkWell(
-          //           onTap: () {
-          //             bloc!.appBarTitleValue.add(menuItems[2][MenuItemsConstantKeys.title]);
-          //             Navigator.pop(context);
-          //
-          //             ///
-          //             bloc!.showCustomDialog(
-          //               // context: navigatorKey.currentContext!,
-          //               context: context,
-          //               bloc: bloc,
-          //               title: menuItems[2][MenuItemsConstantKeys.title],
-          //               // subTitle: 'sub title',
-          //             );
-          //           },
-          //           child: Container(
-          //             height: 26,
-          //             width: 180,
-          //             alignment: Alignment.centerLeft,
-          //             padding: const EdgeInsets.symmetric(horizontal: 8),
-          //             decoration: BoxDecoration(
-          //               color: isHovered ? Colors.blue : Colors.transparent,
-          //               borderRadius: BorderRadius.circular(4),
-          //             ),
-          //             child: CustomText(
-          //               menuItems[2][MenuItemsConstantKeys.title],
-          //             ),
-          //           ),
-          //         ),
-          //       );
-          //     }),
         ],
+      ),
+    );
+  }
+}
+
+class LanguageMenuItems extends StatelessWidget {
+  const LanguageMenuItems({
+    super.key,
+    required this.bloc,
+    this.onEnter,
+    this.onExit,
+    required this.title,
+  });
+
+  final String title;
+  final WebHomeBloc? bloc;
+  final Function(PointerEnterEvent)? onEnter;
+  final Function(PointerExitEvent)? onExit;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<bool>(
+        stream: getStream(title),
+        builder: (context, mouseHoveredSnapshot) {
+          final isHovered = mouseHoveredSnapshot.data ?? false;
+          return MouseRegion(
+            onEnter: onEnter,
+            onExit: onExit,
+            child: InkWell(
+              onTap: () {
+                if (title == "Hindi") {
+                  _showFeatureComingSoonMessage(context);
+                }
+
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: 26,
+                width: 180,
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  color: isHovered ? Colors.blue : Colors.transparent,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: CustomText(
+                  title,
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
+  Stream<bool> getStream(String titleValue) {
+    switch (titleValue) {
+      case 'English':
+        return bloc!.isContactPhoneHovered;
+      case 'Hindi':
+        return bloc!.isContactEmailHovered;
+      // case MenuItemsConstantKeys.projects:
+      //   return bloc!.isContactWebsiteHovered;
+      default:
+        return bloc!.isContactPhoneHovered;
+    }
+  }
+
+  void _showFeatureComingSoonMessage(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("This feature will be available in the future soon."),
+        behavior: SnackBarBehavior.floating,
       ),
     );
   }
@@ -331,7 +303,6 @@ class MenuPopupItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<bool>(
-        // stream: bloc!.isContactPhoneHovered,
         stream: getStream(title),
         builder: (context, mouseHoveredSnapshot) {
           final isHovered = mouseHoveredSnapshot.data ?? false;
@@ -358,6 +329,7 @@ class MenuPopupItems extends StatelessWidget {
                 width: 180,
                 alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
                 decoration: BoxDecoration(
                   color: isHovered ? Colors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(4),
