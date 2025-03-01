@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shinas_koya_portfolio/config/utils/misc_util.dart';
 
+enum MainLayoutEnum {
+  projects,
+  packages,
+  resume,
+  github,
+  linkedin,
+  fullscreen,
+  flappyBird,
+  settings,
+  figma,
+  windows,
+}
+
 class WebHomeBloc {
   // final LocationRepository locationRepository;
   // final NotificationRepository notificationRepository;

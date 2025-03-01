@@ -64,39 +64,100 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                     verticalMargin20,
 
                     ///
+                    /// ** main layout section **
                     Expanded(
                       child: GridView.builder(
                         scrollDirection: Axis.horizontal,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 100, // Controls width, forces vertical layout
-                          mainAxisSpacing: 20, // Vertical spacing
-                          crossAxisSpacing: 20, // Horizontal spacing
-                          childAspectRatio: 1, // Ensures square shape
+                          maxCrossAxisExtent: 110,
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 20,
+                          childAspectRatio: 1,
                         ),
                         itemCount: 9,
                         itemBuilder: (context, index) {
-                          return Column(
-                            // mainAxisSize: MainAxisSize.min,
-                            children: [
-                              InkWell(
-                                onTap: () => bloc!.togglePlatform(),
-                                child: Container(
-                                  height: 30.h,
-                                  width: 30.h,
-                                  color: Colors.yellow.withOpacity(index * 0.09),
-                                ),
+                          return InkWell(
+                            onTap: () => bloc!.togglePlatform(),
+                            child: SizedBox(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    color: Colors.yellow.withOpacity(index * 0.09),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    "App ${index + 1}",
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 5),
-                              Text(
-                                "App ${index + 1}",
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ],
+                            ),
                           );
                         },
                       ),
                     ),
+
+                    /// ///
+
+                    // Expanded(
+                    //   child: LayoutBuilder(
+                    //     builder: (context, constraints) {
+                    //       double itemHeight = 50 + 5; // Item height + spacing
+                    //       int itemsPerColumn = (constraints.maxHeight / itemHeight).floor();
+                    //       itemsPerColumn =
+                    //           itemsPerColumn > 0 ? itemsPerColumn : 1; // Ensure at least 1 item per column
+                    //
+                    //       List<List<int>> columns = [];
+                    //       for (int i = 0; i < 9; i++) {
+                    //         int columnIndex = i ~/ itemsPerColumn;
+                    //         if (columns.length <= columnIndex) {
+                    //           columns.add([]);
+                    //         }
+                    //         columns[columnIndex].add(i);
+                    //       }
+                    //
+                    //       return Row(
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: columns.map((colItems) {
+                    //           return Expanded(
+                    //             child: ListView.builder(
+                    //               scrollDirection: Axis.horizontal,
+                    //               physics: const NeverScrollableScrollPhysics(),
+                    //               // Prevent individual scrolling
+                    //               itemCount: colItems.length,
+                    //               itemBuilder: (context, index) {
+                    //                 int itemIndex = colItems[index];
+                    //                 return Padding(
+                    //                   padding: const EdgeInsets.only(bottom: 5),
+                    //                   child: InkWell(
+                    //                     onTap: () => bloc!.togglePlatform(),
+                    //                     child: Column(
+                    //                       children: [
+                    //                         Container(
+                    //                           height: 50,
+                    //                           width: 50,
+                    //                           color: Colors.yellow.withOpacity(itemIndex * 0.09),
+                    //                         ),
+                    //                         const SizedBox(height: 5),
+                    //                         Text(
+                    //                           "App ${itemIndex + 1}",
+                    //                           style: const TextStyle(color: Colors.white),
+                    //                         ),
+                    //                       ],
+                    //                     ),
+                    //                   ),
+                    //                 );
+                    //               },
+                    //             ),
+                    //           );
+                    //         }).toList(),
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
 
                     /// reference code for dynamic layout changing container
 /*

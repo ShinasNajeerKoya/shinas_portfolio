@@ -15,6 +15,23 @@ class AppIcons {
 
   static const String kCancelIcon = '$_iconBasePath/cancel_icon.svg';
 
+  // main layout icons -- mac
+  static const String kChromeMacIcon = '$_iconBasePath/mac_chrome_icon.svg';
+  static const String kContactMacIcon = '$_iconBasePath/mac_contact_icon.svg';
+  static const String kDartMacIcon = '$_iconBasePath/mac_dart_icon.svg';
+  static const String kFigmaMacIcon = '$_iconBasePath/mac_figma_icon.svg';
+  static const String kFlappyBirdMacIcon = '$_iconBasePath/mac_flappy_bird_icon.svg';
+  static const String kFlutterMacIcon = '$_iconBasePath/mac_flutter_icon.svg';
+  static const String kGithubMacIcon = '$_iconBasePath/mac_github_icon.svg';
+  static const String kLinkedInMacIcon = '$_iconBasePath/mac_linked_in_icon.svg';
+  static const String kMailMacIcon = '$_iconBasePath/mac_mail_icon.svg';
+  static const String kPhoneMacIcon = '$_iconBasePath/mac_phone_icon.svg';
+  static const String kSettingsMacIcon = '$_iconBasePath/mac_settings_icon.svg';
+  static const String kWeatherMacIcon = '$_iconBasePath/mac_weather_icon.svg';
+  static const String kWebsiteMacIcon = '$_iconBasePath/mac_website_icon.svg';
+  static const String kWindowsMacIcon = '$_iconBasePath/mac_windows_icon.svg';
+  static const String kResumeMacIcon = '$_iconBasePath/mac_resume_icon.svg';
+
   ///
 // static const String kThemesIcon = '$_iconBasePath/themes.svg';
 // static const String kModeIcon = '$_iconBasePath/mode.svg';
