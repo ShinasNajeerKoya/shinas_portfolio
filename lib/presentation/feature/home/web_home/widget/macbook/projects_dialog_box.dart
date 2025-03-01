@@ -66,6 +66,7 @@ class ProjectsDialogBox extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
+                
 
                 /// **Profile Image**
                 // Row(
