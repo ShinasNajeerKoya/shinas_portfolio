@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
-import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/screens/mac_home_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -17,15 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'shinas koya portfolio',
+      title: 'Shinas Koya Portfolio',
       debugShowCheckedModeBanner: false,
+      // Hide the default debug banner
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // navigatorObservers: [FlutterSmartDialog.observer],
       builder: (context, child) {
-        // FlutterSmartDialog.init();
         ScreenUtil.init(
           context,
           designSize: const Size(844, 390),
@@ -33,23 +31,20 @@ class MyApp extends StatelessWidget {
           splitScreenMode: true,
         );
 
-        return child ?? const HomePage();
-        // return child ?? const WebHomeScreen();
-        // return const HomePage();
+        return Banner(
+          message: "Development",
+          location: BannerLocation.bottomEnd,
+          color: Colors.green,
+          textStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 10,
+            color: Colors.white,
+          ),
+          child: child ?? const HomePage(),
+        );
       },
       home: const HomePage(),
-      // home: const WebHomeScreen(),
     );
-
-    /*
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      title: 'iCriptSnappie',
-      home: const HomePage(),
-    );
-
-    */
   }
 }
 

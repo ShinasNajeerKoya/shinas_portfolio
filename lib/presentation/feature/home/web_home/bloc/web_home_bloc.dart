@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shinas_koya_portfolio/config/utils/misc_util.dart';
@@ -79,6 +81,14 @@ class WebHomeBloc {
         behavior: SnackBarBehavior.floating,
       ),
     );
+  }
+
+  void toggleFullScreen() {
+    if (html.document.fullscreenElement == null) {
+      html.document.documentElement?.requestFullscreen();
+    } else {
+      html.document.exitFullscreen();
+    }
   }
 
   void dispose() {

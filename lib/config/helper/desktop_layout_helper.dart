@@ -88,7 +88,10 @@ class DesktopLayoutHelper {
       case MainLayoutEnum.linkedin:
         return () => ContactService.handleWeb(SocialMediaPlatformEnum.linkedIn);
       case MainLayoutEnum.fullscreen:
-        return () => debugPrint("Toggle Fullscreen");
+        return () {
+          debugPrint("Full Screen Tapped");
+          bloc!.toggleFullScreen();
+        };
       case MainLayoutEnum.flappyBird:
         return () {
           bloc!.showFeatureComingSoonSnackbar(
