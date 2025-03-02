@@ -1,7 +1,7 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:shinas_koya_portfolio/config/helper/desktop_layout_helper.dart';
+import 'package:shinas_koya_portfolio/config/helper/mac_bottom_bar_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
@@ -393,8 +393,6 @@ class MacHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // precacheImage(AssetImage(AppImages.kMacOsBg), context);
-
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -405,7 +403,7 @@ class MacHomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // context.isMacOS
+          /// ** app bar section **
           MacAppBar(
             bloc: bloc,
           ),
@@ -413,41 +411,6 @@ class MacHomeScreen extends StatelessWidget {
 
           ///
           /// ** main layout section **
-          // Expanded(
-          //   child: GridView.builder(
-          //     scrollDirection: Axis.horizontal,
-          //     physics: const NeverScrollableScrollPhysics(),
-          //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          //       maxCrossAxisExtent: 110,
-          //       mainAxisSpacing: 20,
-          //       crossAxisSpacing: 20,
-          //       childAspectRatio: 1,
-          //     ),
-          //     itemCount: 9,
-          //     itemBuilder: (context, index) {
-          //       return InkWell(
-          //         onTap: () => bloc!.togglePlatform(),
-          //         child: SizedBox(
-          //           child: Column(
-          //             children: [
-          //               Container(
-          //                 height: 50,
-          //                 width: 50,
-          //                 color: Colors.yellow.withOpacity(index * 0.09),
-          //                 child: CustomSvgIcon(AppIcons.kFlutterMacIcon),
-          //               ),
-          //               const SizedBox(height: 5),
-          //               Text(
-          //                 "App ${index + 1}",
-          //                 style: const TextStyle(color: Colors.white),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
 
           Expanded(
             child: GridView.builder(
@@ -490,135 +453,112 @@ class MacHomeScreen extends StatelessWidget {
             ),
           ),
 
-          /// ///
-
-          // Expanded(
-          //   child: LayoutBuilder(
-          //     builder: (context, constraints) {
-          //       double itemHeight = 50 + 5; // Item height + spacing
-          //       int itemsPerColumn = (constraints.maxHeight / itemHeight).floor();
-          //       itemsPerColumn =
-          //           itemsPerColumn > 0 ? itemsPerColumn : 1; // Ensure at least 1 item per column
-          //
-          //       List<List<int>> columns = [];
-          //       for (int i = 0; i < 9; i++) {
-          //         int columnIndex = i ~/ itemsPerColumn;
-          //         if (columns.length <= columnIndex) {
-          //           columns.add([]);
-          //         }
-          //         columns[columnIndex].add(i);
-          //       }
-          //
-          //       return Row(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: columns.map((colItems) {
-          //           return Expanded(
-          //             child: ListView.builder(
-          //               scrollDirection: Axis.horizontal,
-          //               physics: const NeverScrollableScrollPhysics(),
-          //               // Prevent individual scrolling
-          //               itemCount: colItems.length,
-          //               itemBuilder: (context, index) {
-          //                 int itemIndex = colItems[index];
-          //                 return Padding(
-          //                   padding: const EdgeInsets.only(bottom: 5),
-          //                   child: InkWell(
-          //                     onTap: () => bloc!.togglePlatform(),
-          //                     child: Column(
-          //                       children: [
-          //                         Container(
-          //                           height: 50,
-          //                           width: 50,
-          //                           color: Colors.yellow.withOpacity(itemIndex * 0.09),
-          //                         ),
-          //                         const SizedBox(height: 5),
-          //                         Text(
-          //                           "App ${itemIndex + 1}",
-          //                           style: const TextStyle(color: Colors.white),
-          //                         ),
-          //                       ],
-          //                     ),
-          //                   ),
-          //                 );
-          //               },
-          //             ),
-          //           );
-          //         }).toList(),
-          //       );
-          //     },
-          //   ),
-          // ),
-
-          /// reference code for dynamic layout changing container
-/*
-
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 900),
-                      child: Wrap(
-                        spacing: 25,
-                        runSpacing: 25,
-                        children: [
-                          for (int i = 0; i < 10; i++)
-                            Container(
-                              height: 60,
-                              width: 60,
-                              color: Colors.blue,
-                            ),
-                        ],
-                      ),
-                    ),
-*/
-
           ///
           /// ** made with flutter **
           const MadeWithFlutterWidget(),
 
-          //bottom bar
-          // context.isMacOS
-          // AnimatedTextExample(),
+          /// ** Bottom bar **
 
-          ///
-
-          Container(
-            margin: verticalPadding4,
-            height: 30.h,
-            child: const CustomBackdropFilter(
-              child: Center(
-                child: Text("Glass Effect", style: TextStyle(color: Colors.white)),
-              ),
-            ),
-          )
+          MacBottomBar(bloc: bloc)
         ],
       ),
     );
   }
 }
 
-class AnimatedTextExample extends StatelessWidget {
+class MacBottomBar extends StatelessWidget {
+  const MacBottomBar({
+    super.key,
+    required this.bloc,
+  });
+
+  final WebHomeBloc? bloc;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 250,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      height: 60,
+      child: CustomBackdropFilter(
+        width: 370,
+        borderRadius: 16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: MacBottomBarEnum.values.map((bottomOption) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5), // 5 padding between icons
+              child: Tooltip(
+                margin: const EdgeInsets.only(bottom: 5),
+                message: MacBottomBarHelper.getBottomBarTooltip(bottomOption),
+                textStyle: const TextStyle(color: Colors.white),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: InkWell(
+                  onTap: MacBottomBarHelper.getBottomOptionOnTap(
+                    bottomOption: bottomOption,
+                    bloc: bloc,
+                    context: context,
+                  ),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: bottomOption == MacBottomBarEnum.meet
+                        ? const MacMeetingCalendarWidget() // Custom widget for 'meet' option
+                        : CustomSvgIcon(
+                            MacBottomBarHelper.getBottomOptionIcon(bottomOption),
+                          ),
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class MacMeetingCalendarWidget extends StatelessWidget {
+  const MacMeetingCalendarWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    String day = DateFormat('EEE').format(DateTime.now());
+    String date = DateFormat('dd').format(DateTime.now());
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Stack(
         children: [
-          const CustomSvgIcon(
-            AppIcons.kAppleLogo,
-            height: 18,
+          Positioned(
+            top: 1,
+            left: 10,
+            // right: 0,
+            child: CustomText(
+              day.toUpperCase(),
+              fontSize: 9,
+              fontColor: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(width: 4),
-          const CustomText("Made with "),
-          AnimatedTextKit(
-            repeatForever: true,
-            pause: const Duration(milliseconds: 500),
-            animatedTexts: [
-              RotateAnimatedText('Flutter',
-                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-              RotateAnimatedText('Care',
-                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-              RotateAnimatedText('Love',
-                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-            ],
+          Positioned(
+            top: 5,
+            left: 4,
+            child: CustomText(
+              date,
+              fontSize: 28,
+              fontColor: Colors.black,
+              fontWeight: FontWeight.normal,
+            ),
           ),
         ],
       ),
@@ -626,187 +566,50 @@ class AnimatedTextExample extends StatelessWidget {
   }
 }
 
-//
-// @override
-// Widget build(BuildContext context) {
-//
-//
-//   ///
-//
-//   /*final screenSize = MediaQuery.of(context).size;
-//     final screenWidth = screenSize.width;
-//     final screenHeight = screenSize.height;
-//
-//     return LayoutBuilder(
-//       builder: (context, constraints) {
-//         return Scaffold(
-//           key: scaffoldKey,
-//           backgroundColor: Colors.yellow,
-//           endDrawer: constraints.maxWidth >= 800 ? null : null,
-//           body: StreamBuilder<bool>(
-//               stream: bloc!.isMacPlatform,
-//               builder: (context, snapshot) {
-//                 bool isMacOS = snapshot.data ?? true;
-//                 return Container(
-//                   decoration: BoxDecoration(
-//                     image: DecorationImage(
-//                       image: AssetImage(isMacOS ? AppImages.kMacOsBg : AppImages.kWindowsOsBg),
-//                       fit: BoxFit.cover,
-//                     ),
-//                   ),
-//                   child: ListView(
-//                     scrollDirection: Axis.vertical,
-//                     children: [
-//                       // SKILLS
-//                       SizedBox(
-//                         width: screenWidth,
-//                         height: 20,
-//                         child: isMacOS
-//                             ? Container(
-//                                 width: double.maxFinite,
-//                                 height: 10,
-//                                 color: Colors.yellow,
-//                               )
-//                             : Container(
-//                                 width: double.maxFinite,
-//                                 height: 10,
-//                                 color: Colors.transparent,
-//                               ),
-//                       ),
-//
-//                       const SizedBox(height: 30),
-//
-//                       // PROJECTS
-//                       const ProjectSection(),
-//
-//                       // const SizedBox(height: 30),
-//
-//                       // CONTACT
-//                       Container(
-//                         padding: EdgeInsets.fromLTRB(25, 20, 25, 60),
-//                         color: Colors.black,
-//                         child: Column(
-//                           children: [
-//                             // title
-//                             Text(
-//                               "Get In Touch",
-//                               style: TextStyle(
-//                                 fontWeight: FontWeight.bold,
-//                                 fontSize: 24,
-//                                 color: Colors.red,
-//                               ),
-//                             ),
-//
-//                             const SizedBox(height: 50),
-//
-//                             ConstrainedBox(
-//                               constraints: const BoxConstraints(maxWidth: 700),
-//                               child: Row(
-//                                 children: [
-//                                   // Flexible(
-//                                   //   // name
-//                                   //   child: CustomTextField(hintText: "Your name"),
-//                                   // ),
-//                                   const SizedBox(width: 15),
-//                                   // Flexible(
-//                                   //   // email
-//                                   //   child: CustomTextField(hintText: "Your email"),
-//                                   // ),
-//                                 ],
-//                               ),
-//                             ),
-//                             const SizedBox(height: 15),
-//                             // message
-//                             ConstrainedBox(
-//                               constraints: const BoxConstraints(maxWidth: 700),
-//                               child: SizedBox(),
-//                             ),
-//                             const SizedBox(height: 20),
-//                             // send button
-//                             SizedBox(
-//                               // color: Colors.yellow,
-//                               width: double.maxFinite,
-//                               height: 40,
-//                               child: const SizedBox(),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//
-//                       // FOOTER
-//                       SizedBox(
-//                         height: 500,
-//                         width: double.maxFinite,
-//                         // color: Colors.blueGrey,
-//                       ),
-//                     ],
-//                   ),
-//                 );
-//               }),
-//         );
-//       },
-//     );
-//
-//
-//     */
-//
-//   ///
-// }
-
-// class ProjectSection extends StatelessWidget {
-//   const ProjectSection({super.key});
+// class MacMeetingCalendarWidget extends StatelessWidget {
+//   const MacMeetingCalendarWidget({super.key});
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     final screenWidth = MediaQuery.of(context).size.width;
+//     String day = DateFormat('EEE').format(DateTime.now()); // Example: "SAT"
+//     String date = DateFormat('d').format(DateTime.now()); // Example: "20"
+//
 //     return Container(
-//       width: screenWidth,
-//       padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+//       width: 50,
+//       // Adjust width to match UI
+//       height: 55,
+//       // Adjust height to match UI
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(12), // More rounded corners
+//         boxShadow: [
+//           BoxShadow(
+//             color: Colors.black.withOpacity(0.1),
+//             blurRadius: 6,
+//             offset: const Offset(0, 2),
+//           ),
+//         ],
+//       ),
+//       alignment: Alignment.center,
 //       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
 //         children: [
-//           // Work Projects title
 //           Text(
-//             "Work Projects",
-//             style: TextStyle(
-//               fontSize: 24,
+//             day.toUpperCase(), // Uppercase like in the image
+//             style: const TextStyle(
+//               fontSize: 14, // Slightly larger for visibility
 //               fontWeight: FontWeight.bold,
-//               color: Colors.brown.withOpacity(0.2),
+//               color: Colors.red, // Match the red color in the image
+//               letterSpacing: 1, // Slight spacing for better readability
 //             ),
 //           ),
-//           const SizedBox(height: 50),
-//
-//           // Work projects cards
-//           ConstrainedBox(
-//             constraints: const BoxConstraints(maxWidth: 900),
-//             child: Wrap(
-//               spacing: 25,
-//               runSpacing: 25,
-//               children: [
-//                 for (int i = 0; i < 4; i++) ProjectCardWidget(),
-//               ],
-//             ),
-//           ),
-//           const SizedBox(height: 80),
-//           // Hobby Projects title
-//           const Text(
-//             "Hobby Projects",
-//             style: TextStyle(
-//               fontSize: 24,
+//           const SizedBox(height: 2), // Add spacing for better layout
+//           Text(
+//             date,
+//             style: const TextStyle(
+//               fontSize: 30, // Large and bold for date
 //               fontWeight: FontWeight.bold,
-//               color: Colors.brown,
-//             ),
-//           ),
-//           const SizedBox(height: 50),
-//
-//           // Hobby projects cards
-//           ConstrainedBox(
-//             constraints: const BoxConstraints(maxWidth: 900),
-//             child: Wrap(
-//               spacing: 25,
-//               runSpacing: 25,
-//               children: [
-//                 for (int i = 0; i < 3; i++) ProjectCardWidget(),
-//               ],
+//               color: Colors.black,
 //             ),
 //           ),
 //         ],

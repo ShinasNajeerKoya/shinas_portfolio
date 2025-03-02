@@ -17,6 +17,16 @@ enum MainLayoutEnum {
   windows,
 }
 
+enum MacBottomBarEnum {
+  phone,
+  website,
+  email,
+  project,
+  meet,
+  settings,
+  contact,
+}
+
 class WebHomeBloc {
   // final LocationRepository locationRepository;
   // final NotificationRepository notificationRepository;

@@ -120,8 +120,8 @@ class DesktopLayoutHelper {
         return '13+';
       case MainLayoutEnum.linkedin:
         return '2k+';
-      case MainLayoutEnum.figma:
-        return '2';
+      // case MainLayoutEnum.figma:
+      //   return '2';
       // case MainLayoutEnum.flappyBird:
       //   return '10+';
       default:

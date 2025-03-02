@@ -1,4 +1,3 @@
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +31,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
           ),
           AnimatedTextKit(
             repeatForever: true,
-            pause: const Duration(milliseconds: 250),
+            pause: const Duration(milliseconds: 350),
             animatedTexts: [
               buildRotateAnimatedText('Flutter'),
               buildRotateAnimatedText('Care'),
@@ -43,6 +42,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
       ),
     );
   }
+
   RotateAnimatedText buildRotateAnimatedText(String text) {
     return RotateAnimatedText(
       text,

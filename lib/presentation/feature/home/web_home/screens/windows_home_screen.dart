@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:shinas_koya_portfolio/config/helper/desktop_layout_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/made_with_flutter_widget.dart';
 
 //
 // class WebHomeScreen extends StatefulWidget {
@@ -389,13 +388,8 @@ class WindowsHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // precacheImage(AssetImage(AppImages.kMacOsBg), context);
-
-    final scaffoldKey = GlobalKey<ScaffoldState>();
-    final bloc = Provider.of<WebHomeBloc>(context, listen: false);
-
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(AppImages.kWindowsOsBg),
           fit: BoxFit.cover,
@@ -404,50 +398,17 @@ class WindowsHomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // context.isMacOS
-          Container(
-            height: 15.h,
-            color: Colors.transparent,
+          /// ** app bar section **
+          // MacAppBar(
+          //   bloc: bloc,
+          // ),
+          const SizedBox(
+            height: 28,
           ),
           verticalMargin20,
 
           ///
           /// ** main layout section **
-          // Expanded(
-          //   child: GridView.builder(
-          //     scrollDirection: Axis.horizontal,
-          //     physics: const NeverScrollableScrollPhysics(),
-          //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          //       maxCrossAxisExtent: 110,
-          //       mainAxisSpacing: 20,
-          //       crossAxisSpacing: 20,
-          //       childAspectRatio: 1,
-          //     ),
-          //     itemCount: 9,
-          //     itemBuilder: (context, index) {
-          //       return InkWell(
-          //         onTap: () => bloc!.togglePlatform(),
-          //         child: SizedBox(
-          //           child: Column(
-          //             children: [
-          //               Container(
-          //                 height: 50,
-          //                 width: 50,
-          //                 color: Colors.yellow.withOpacity(index * 0.09),
-          //                 child: CustomSvgIcon(AppIcons.kFlutterMacIcon),
-          //               ),
-          //               const SizedBox(height: 5),
-          //               Text(
-          //                 "App ${index + 1}",
-          //                 style: const TextStyle(color: Colors.white),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
 
           Expanded(
             child: GridView.builder(
@@ -469,6 +430,8 @@ class WindowsHomeScreen extends StatelessWidget {
                     bloc: bloc,
                     context: context,
                   ),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   child: Column(
                     children: [
                       MacIconWidget(
@@ -488,104 +451,20 @@ class WindowsHomeScreen extends StatelessWidget {
             ),
           ),
 
-          /// ///
-
-          // Expanded(
-          //   child: LayoutBuilder(
-          //     builder: (context, constraints) {
-          //       double itemHeight = 50 + 5; // Item height + spacing
-          //       int itemsPerColumn = (constraints.maxHeight / itemHeight).floor();
-          //       itemsPerColumn =
-          //           itemsPerColumn > 0 ? itemsPerColumn : 1; // Ensure at least 1 item per column
-          //
-          //       List<List<int>> columns = [];
-          //       for (int i = 0; i < 9; i++) {
-          //         int columnIndex = i ~/ itemsPerColumn;
-          //         if (columns.length <= columnIndex) {
-          //           columns.add([]);
-          //         }
-          //         columns[columnIndex].add(i);
-          //       }
-          //
-          //       return Row(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: columns.map((colItems) {
-          //           return Expanded(
-          //             child: ListView.builder(
-          //               scrollDirection: Axis.horizontal,
-          //               physics: const NeverScrollableScrollPhysics(),
-          //               // Prevent individual scrolling
-          //               itemCount: colItems.length,
-          //               itemBuilder: (context, index) {
-          //                 int itemIndex = colItems[index];
-          //                 return Padding(
-          //                   padding: const EdgeInsets.only(bottom: 5),
-          //                   child: InkWell(
-          //                     onTap: () => bloc!.togglePlatform(),
-          //                     child: Column(
-          //                       children: [
-          //                         Container(
-          //                           height: 50,
-          //                           width: 50,
-          //                           color: Colors.yellow.withOpacity(itemIndex * 0.09),
-          //                         ),
-          //                         const SizedBox(height: 5),
-          //                         Text(
-          //                           "App ${itemIndex + 1}",
-          //                           style: const TextStyle(color: Colors.white),
-          //                         ),
-          //                       ],
-          //                     ),
-          //                   ),
-          //                 );
-          //               },
-          //             ),
-          //           );
-          //         }).toList(),
-          //       );
-          //     },
-          //   ),
-          // ),
-
-          /// reference code for dynamic layout changing container
-/*
-
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 900),
-                      child: Wrap(
-                        spacing: 25,
-                        runSpacing: 25,
-                        children: [
-                          for (int i = 0; i < 10; i++)
-                            Container(
-                              height: 60,
-                              width: 60,
-                              color: Colors.blue,
-                            ),
-                        ],
-                      ),
-                    ),
-*/
-
           ///
-          // "made with flutter"
-          CustomBackdropFilter(
-            borderRadius: 50.r,
-            height: 15.h,
-            width: 100,
-            child: Container(),
-          ),
+          /// ** made with flutter **
+          const MadeWithFlutterWidget(),
 
-          //bottom bar
-          // context.isMacOS
+          /// ** Bottom bar **
+
+          // MacBottomBar(bloc: bloc)
           Container(
-            margin: topPadding4,
-            width: double.maxFinite,
-            height: 34.h,
-            child: CustomBackdropFilter(
-              child: Center(
-                child: Text("Glass Effect", style: TextStyle(color: Colors.white)),
-              ),
+            margin: const EdgeInsets.only(top: 6),
+            child: const CustomBackdropFilter(
+              borderRadius: 0,
+              width: double.maxFinite,
+              height: 66,
+              child: Text("testing"),
             ),
           )
         ],
