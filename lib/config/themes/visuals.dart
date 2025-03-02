@@ -38,6 +38,28 @@ class AppIcons {
 
   static const String kSlantedArrowMacIcon = '$_iconBasePath/mac_arrow_icon.svg';
 
+  // main layout icons -- windows
+  static const String kArrowMarkWindowsIcon = '$_iconBasePath/windows_arrow_mark.svg';
+  static const String kCalculatorWindowsIcon = '$_iconBasePath/windows_calculator_icon.svg';
+  static const String kCalendarWindowsIcon = '$_iconBasePath/windows_calendar_icon.svg';
+  static const String kChromeWindowsIcon = '$_iconBasePath/windows_chrome_icon.svg';
+  static const String kDartWindowsIcon = '$_iconBasePath/windows_dart_icon.svg';
+  static const String kEdgeWindowsIcon = '$_iconBasePath/windows_edge_icon.svg';
+  static const String kFigmaWindowsIcon = '$_iconBasePath/windows_figma_icon.svg';
+  static const String kFlappyBirdWindowsIcon = '$_iconBasePath/windows_flappy_bird_icon.svg';
+  static const String kFlutterWindowsIcon = '$_iconBasePath/windows_flutter_icon.svg';
+  static const String kFullscreenWindowsIcon = '$_iconBasePath/windows_full_screen_icon.svg';
+  static const String kGithubWindowsIcon = '$_iconBasePath/windows_github_icon.svg';
+  static const String kLinkedInWindowsIcon = '$_iconBasePath/windows_linked_in_icon.svg';
+  static const String kMacSwitchWindowsIcon = '$_iconBasePath/windows_mac_switch_icon.svg';
+  static const String kMailWindowsIcon = '$_iconBasePath/windows_mail_icon.svg';
+  static const String kMenuWindowsIcon = '$_iconBasePath/windows_menu_icon.svg';
+  static const String kStoreMSWindowsIcon = '$_iconBasePath/windows_microsoft_store_icon.svg';
+  static const String kPhoneWindowsIcon = '$_iconBasePath/windows_phone_icon.svg';
+  static const String kResumeWindowsIcon = '$_iconBasePath/windows_resume_icon.svg';
+  static const String kSettingsWindowsIcon = '$_iconBasePath/windows_settings_icon.svg';
+  static const String kWeatherWindowsIcon = '$_iconBasePath/windows_weather_icon.svg';
+
   ///
 // static const String kThemesIcon = '$_iconBasePath/themes.svg';
 // static const String kModeIcon = '$_iconBasePath/mode.svg';
@@ -238,7 +260,7 @@ class AppImages {
   static const String _imageBasePath = 'assets/images';
 
   static const String kMacOsBg = '$_imageBasePath/mac_os_bg.jpg';
-  static const String kWindowsOsBg = '$_imageBasePath/windows_11_bg.jpeg';
+  static const String kWindowsOsBg = '$_imageBasePath/windows_11_bg.jpg';
 
   ///
   ///

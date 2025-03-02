@@ -5,7 +5,7 @@ import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constan
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
 class DesktopLayoutHelper {
-  static String getMainLayoutTitle(MainLayoutEnum layout) {
+  static String getMainLayoutTitle(MainLayoutEnum layout, bool isMacOs) {
     switch (layout) {
       case MainLayoutEnum.projects:
         return "Projects";
@@ -25,14 +25,14 @@ class DesktopLayoutHelper {
       //   return "Settings";
       case MainLayoutEnum.figma:
         return "Figma";
-      case MainLayoutEnum.windows:
-        return "Windows";
+      case MainLayoutEnum.windowsOrMac:
+        return isMacOs ? "Windows" : "MacOS Mode";
     }
   }
 
   ///
 
-  static String getMainLayoutIcon(MainLayoutEnum layout) {
+  static String getMacLayoutIcon(MainLayoutEnum layout) {
     switch (layout) {
       case MainLayoutEnum.projects:
         return AppIcons.kFlutterMacIcon;
@@ -52,8 +52,35 @@ class DesktopLayoutHelper {
       //   return AppIcons.kSettingsMacIcon;
       case MainLayoutEnum.figma:
         return AppIcons.kFigmaMacIcon;
-      case MainLayoutEnum.windows:
+      case MainLayoutEnum.windowsOrMac:
         return AppIcons.kWindowsMacIcon;
+    }
+  }
+
+  ///
+
+  static String getWindowsLayoutIcon(MainLayoutEnum layout) {
+    switch (layout) {
+      case MainLayoutEnum.projects:
+        return AppIcons.kFlutterWindowsIcon;
+      case MainLayoutEnum.packages:
+        return AppIcons.kDartWindowsIcon;
+      case MainLayoutEnum.resume:
+        return AppIcons.kResumeWindowsIcon;
+      case MainLayoutEnum.github:
+        return AppIcons.kGithubWindowsIcon;
+      case MainLayoutEnum.linkedin:
+        return AppIcons.kLinkedInWindowsIcon;
+      case MainLayoutEnum.fullscreen:
+        return AppIcons.kFullscreenWindowsIcon;
+      case MainLayoutEnum.flappyBird:
+        return AppIcons.kFlappyBirdWindowsIcon;
+      // case MainLayoutEnum.settings:
+      //   return AppIcons.kSettingsMacIcon;
+      case MainLayoutEnum.figma:
+        return AppIcons.kFigmaWindowsIcon;
+      case MainLayoutEnum.windowsOrMac:
+        return AppIcons.kMacSwitchWindowsIcon;
     }
   }
 
@@ -105,7 +132,7 @@ class DesktopLayoutHelper {
             context: context,
           );
         };
-      case MainLayoutEnum.windows:
+      case MainLayoutEnum.windowsOrMac:
         return () => bloc!.togglePlatform();
     }
   }

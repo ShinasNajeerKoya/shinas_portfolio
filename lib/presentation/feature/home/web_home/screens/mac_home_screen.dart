@@ -436,16 +436,22 @@ class MacHomeScreen extends StatelessWidget {
                   highlightColor: Colors.transparent,
                   child: Column(
                     children: [
-                      MacIconWidget(
+                      MainLayoutIconWidget(
                         layout: layout,
+                        bloc: bloc,
                         notificationCountValue: DesktopLayoutHelper.getNotificationCount(layout),
                         hasSlantedArrow: DesktopLayoutHelper.shouldShowArrow(layout),
                       ),
                       const SizedBox(height: 5),
-                      Text(
-                        DesktopLayoutHelper.getMainLayoutTitle(layout),
-                        style: const TextStyle(color: Colors.white),
-                      ),
+                      StreamBuilder<bool>(
+                          stream: bloc!.isMacPlatform,
+                          builder: (context, platformSnapshot) {
+                            bool isMacOS = platformSnapshot.data ?? true;
+                            return Text(
+                              DesktopLayoutHelper.getMainLayoutTitle(layout, isMacOS),
+                              style: const TextStyle(color: Colors.white),
+                            );
+                          }),
                     ],
                   ),
                 );

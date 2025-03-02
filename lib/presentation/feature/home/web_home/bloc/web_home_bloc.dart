@@ -14,7 +14,7 @@ enum MainLayoutEnum {
   linkedin,
   // settings,
   figma,
-  windows,
+  windowsOrMac,
 }
 
 enum MacBottomBarEnum {
@@ -30,12 +30,12 @@ enum MacBottomBarEnum {
 class WebHomeBloc {
   // final LocationRepository locationRepository;
   // final NotificationRepository notificationRepository;
-
-  final splashSubject = BehaviorSubject<String>();
-  final permissionDeniedSubject = BehaviorSubject<bool>.seeded(false);
+  //
+  // final splashSubject = BehaviorSubject<String>();
+  // final permissionDeniedSubject = BehaviorSubject<bool>.seeded(false);
 
   ///
-  final isMacPlatform = BehaviorSubject<bool>.seeded(true);
+  final isMacPlatform = BehaviorSubject<bool>.seeded(false);
 
   final appBarTitleValue = BehaviorSubject<String>.seeded('FinderV');
 
@@ -102,7 +102,7 @@ class WebHomeBloc {
   }
 
   void dispose() {
-    splashSubject.close();
-    permissionDeniedSubject.close();
+    // splashSubject.close();
+    // permissionDeniedSubject.close();
   }
 }

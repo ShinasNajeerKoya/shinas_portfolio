@@ -12,6 +12,7 @@ class CustomBackdropFilter extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
+  final BoxBorder? border;
 
   const CustomBackdropFilter({
     super.key,
@@ -23,6 +24,7 @@ class CustomBackdropFilter extends StatelessWidget {
     required this.child,
     this.padding,
     this.margin,
+    this.border,
   });
 
   @override
@@ -39,7 +41,7 @@ class CustomBackdropFilter extends StatelessWidget {
           decoration: BoxDecoration(
             color: backgroundColor ?? Colors.black.withOpacity(0.2),
             borderRadius: BorderRadius.circular(borderRadius ?? 10),
-            border: Border.all(color: borderColor ?? Colors.white.withOpacity(0.2)), // Light border
+            border:border?? Border.all(color: borderColor ?? Colors.white.withOpacity(0.2)), // Light border
           ),
           child: child, // Allowing custom widgets inside
         ),
