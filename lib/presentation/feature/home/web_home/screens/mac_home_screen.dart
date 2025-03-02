@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/helper/desktop_layout_helper.dart';
@@ -7,6 +8,9 @@ import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/we
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_app_bar.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/made_with_flutter_widget.dart';
 
 //
 // class WebHomeScreen extends StatefulWidget {
@@ -566,16 +570,15 @@ class MacHomeScreen extends StatelessWidget {
 */
 
           ///
-          // "made with flutter"
-          CustomBackdropFilter(
-            borderRadius: 50.r,
-            height: 15.h,
-            width: 100,
-            child: Container(),
-          ),
+          /// ** made with flutter **
+          const MadeWithFlutterWidget(),
 
           //bottom bar
           // context.isMacOS
+          // AnimatedTextExample(),
+
+          ///
+
           Container(
             margin: verticalPadding4,
             height: 30.h,
@@ -585,6 +588,38 @@ class MacHomeScreen extends StatelessWidget {
               ),
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class AnimatedTextExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 250,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const CustomSvgIcon(
+            AppIcons.kAppleLogo,
+            height: 18,
+          ),
+          const SizedBox(width: 4),
+          const CustomText("Made with "),
+          AnimatedTextKit(
+            repeatForever: true,
+            pause: const Duration(milliseconds: 500),
+            animatedTexts: [
+              RotateAnimatedText('Flutter',
+                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              RotateAnimatedText('Care',
+                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              RotateAnimatedText('Love',
+                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+            ],
+          ),
         ],
       ),
     );

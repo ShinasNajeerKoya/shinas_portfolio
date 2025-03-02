@@ -16,6 +16,8 @@ class AppIcons {
   static const String kCancelIcon = '$_iconBasePath/cancel_icon.svg';
   static const String kSplashAppleIcon = '$_iconBasePath/splash_apple_logo.svg';
 
+  static const String kFlutterIcon = '$_iconBasePath/flutter_inside_icon.svg';
+
   // main layout icons -- mac
   static const String kChromeMacIcon = '$_iconBasePath/mac_chrome_icon.svg';
   static const String kContactMacIcon = '$_iconBasePath/mac_contact_icon.svg';
@@ -33,7 +35,6 @@ class AppIcons {
   static const String kWindowsMacIcon = '$_iconBasePath/mac_windows_icon.svg';
   static const String kResumeMacIcon = '$_iconBasePath/mac_resume_icon.svg';
   static const String kFullScreenMacIcon = '$_iconBasePath/mac_full_screen_icon.svg';
-
 
   static const String kSlantedArrowMacIcon = '$_iconBasePath/mac_arrow_icon.svg';
 
