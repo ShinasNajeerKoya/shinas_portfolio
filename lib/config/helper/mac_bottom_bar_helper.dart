@@ -95,32 +95,4 @@ class MacBottomBarHelper {
         }; // case MainLayoutEnum.settings:
     }
   }
-
-  ///
-
-  static String? getNotificationCount(MainLayoutEnum layout) {
-    switch (layout) {
-      case MainLayoutEnum.projects:
-        return '10+';
-      case MainLayoutEnum.github:
-        return '13+';
-      case MainLayoutEnum.linkedin:
-        return '2k+';
-      case MainLayoutEnum.figma:
-        return '2';
-      // case MainLayoutEnum.flappyBird:
-      //   return '10+';
-      default:
-        return null;
-    }
-  }
-
-  ///
-
-  /// Returns whether the arrow mark should be shown.
-  static bool shouldShowArrow(MainLayoutEnum layout) {
-    return layout == MainLayoutEnum.projects ||
-        layout == MainLayoutEnum.github ||
-        layout == MainLayoutEnum.linkedin;
-  }
 }

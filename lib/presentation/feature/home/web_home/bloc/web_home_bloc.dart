@@ -26,6 +26,13 @@ enum MacBottomBarEnum {
   settings,
   contact,
 }
+enum WindowsBottomBarEnum {
+  menu,
+  website,
+  project,
+  mail,
+  meet,
+}
 
 class WebHomeBloc {
   // final LocationRepository locationRepository;

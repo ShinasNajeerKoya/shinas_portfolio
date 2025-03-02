@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shinas_koya_portfolio/config/helper/desktop_layout_helper.dart';
+import 'package:shinas_koya_portfolio/config/helper/windows_bottom_bar_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/made_with_flutter_widget.dart';
 
 //
@@ -472,10 +476,73 @@ class WindowsHomeScreen extends StatelessWidget {
               border: Border(
                 top: BorderSide(color: Colors.white.withOpacity(0.2)),
               ),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               backgroundColor: Colors.black.withOpacity(0.6),
               width: double.maxFinite,
               height: 66,
-              child: Text("testing"),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CustomSvgIcon(AppIcons.kWeatherWindowsIcon),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: WindowsBottomBarEnum.values.map((bottomOption) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5), // 5 padding between icons
+                        child: Tooltip(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          message: WindowsBottomBarHelper.getBottomBarTooltip(bottomOption),
+                          textStyle: const TextStyle(color: Colors.white),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.7),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: InkWell(
+                            onTap: WindowsBottomBarHelper.getBottomOptionOnTap(
+                              bottomOption: bottomOption,
+                              bloc: bloc,
+                              context: context,
+                            ),
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: CustomSvgIcon(
+                                WindowsBottomBarHelper.getBottomOptionIcon(bottomOption),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                  SizedBox(
+                    // width: 150,
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 30, child: CustomText("EN")),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomText(
+                              DateFormat('h:mm a').format(DateTime.now()),
+                            ),
+                            const SizedBox(width: 10),
+                            CustomText(
+                              DateFormat('MM/dd/yyyy').format(DateTime.now()),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

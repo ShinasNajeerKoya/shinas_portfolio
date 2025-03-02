@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         return Banner(
           message: "Development",
-          location: BannerLocation.bottomEnd,
+          location: BannerLocation.topEnd,
           color: Colors.green,
           textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
