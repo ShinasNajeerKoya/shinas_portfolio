@@ -70,11 +70,13 @@ class MacBottomBarHelper {
           );
         };
       case MacBottomBarEnum.meet:
-        return () {
-          bloc!.showFeatureComingSoonSnackbar(
-            context: context,
-          );
-        };
+        // return () {
+        //   bloc!.showFeatureComingSoonSnackbar(
+        //     context: context,
+        //   );
+        // };
+        return () => ContactService.handleWeb(SocialMediaPlatformEnum.scheduleMeeting);
+
       case MacBottomBarEnum.settings:
         return () {
           bloc!.showFeatureComingSoonSnackbar(

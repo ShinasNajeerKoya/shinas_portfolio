@@ -11,6 +11,8 @@ class SocialMediaHelper {
         return DetailsConstantValues.linkedInUrl;
       case SocialMediaPlatformEnum.github:
         return DetailsConstantValues.githubUrl;
+      case SocialMediaPlatformEnum.scheduleMeeting:
+        return DetailsConstantValues.meetingScheduleUrl;
       // case SocialMediaPlatformEnum.figma:
       //   return DetailsConstantValues.portfolioUrl; // Assuming portfolioUrl is used for Figma
       default:

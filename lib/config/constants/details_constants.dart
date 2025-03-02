@@ -5,5 +5,6 @@ class DetailsConstantValues {
   static const String portfolioUrl = "https://shinasnajeerkoya.github.io/shinaskoya.github.io/";
   static const String linkedInUrl = "https://www.linkedin.com/in/shinasnajeerkoya/";
   static const String githubUrl = "https://github.com/ShinasNajeerKoya";
+  static const String meetingScheduleUrl = "https://calendly.com/shinasnajeerkoya/30min";
   // static const String figmaUrl = "https://github.com/ShinasNajeerKoya";
 }

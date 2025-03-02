@@ -9,12 +9,12 @@ import 'package:shinas_koya_portfolio/config/constants/details_constants.dart';
 import 'package:shinas_koya_portfolio/config/helper/social_media_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-enum SocialMediaPlatformEnum { website, linkedIn, github }
+enum SocialMediaPlatformEnum { website, linkedIn, github, scheduleMeeting }
 
 class ContactService {
   static const String _phoneNumber = DetailsConstantValues.phoneNumber;
   static const String _email = DetailsConstantValues.email;
-  static const String _websiteUrl = DetailsConstantValues.websiteUrl;
+  // static const String _websiteUrl = DetailsConstantValues.websiteUrl;
   static const String _portfolioUrl = DetailsConstantValues.portfolioUrl;
 
   // static const String _linkedInUrl = DetailsConstantValues.linkedInUrl;
