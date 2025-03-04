@@ -2,9 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:shinas_koya_portfolio/config/constants/details_constants.dart';
-import 'package:shinas_koya_portfolio/config/themes/units.dart';
+import 'package:shinas_koya_portfolio/config/helper/windows_menu_items_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/windows/windows_menu_items_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 
@@ -39,23 +40,34 @@ class WindowsMenuWidget extends StatelessWidget {
               // mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                verticalMargin4,
-                Expanded(
-                  child: Container(
-                    // height: 60,
-                    // height: 110,
-                    // width: double.maxFinite,
-                    color: Colors.yellow,
-                    // child: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [],
-                    // ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 100,
+                  width: double.maxFinite,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: WindowsMenuItemsEnum.values.map((menuItem) {
+                      return WindowsMenuItemsIconWidget(
+                        title: WindowsMenuItemHelper.getWindowsMenuItemTitle(menuItem),
+                        icon: WindowsMenuItemHelper.getWindowsMenuItemIcon(menuItem),
+                        onTap: WindowsMenuItemHelper.getWindowsMenuItemOnTap(
+                          menuItem: menuItem,
+                          bloc: bloc,
+                          context: context,
+                        ),
+                        notificationCountValue:
+                            WindowsMenuItemHelper.getWindowsMenuItemNotificationCount(menuItem),
+                      );
+                    }).toList(),
                   ),
                 ),
                 const Spacer(),
 
                 CustomBackdropFilter(
-                  height: 60,
+                  height: 70,
                   width: double.maxFinite,
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   backgroundColor: Colors.black.withOpacity(0.3),
