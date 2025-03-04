@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shinas_koya_portfolio/config/constants/details_constants.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
@@ -123,7 +124,7 @@ class AboutMeDialogBox extends StatelessWidget {
 
                 const Center(
                   child: CustomText(
-                    'Shinas Najeer Koya',
+                    DetailsConstantValues.name,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -131,7 +132,7 @@ class AboutMeDialogBox extends StatelessWidget {
 
                 const Center(
                   child: CustomText(
-                    'Flutter Engineer',
+                    DetailsConstantValues.jobRole,
                     fontSize: 14,
                     // fontWeight: FontWeight.bold,
                     fontColor: Colors.grey,

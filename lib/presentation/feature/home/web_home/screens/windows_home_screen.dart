@@ -7,7 +7,7 @@ import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
-import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_icon_widget.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/main_layout_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
@@ -491,6 +491,9 @@ class WindowsHomeScreen extends StatelessWidget {
                     child: CustomSvgIcon(AppIcons.kWeatherWindowsIcon),
                   ),
                   const Spacer(),
+                  const SizedBox(
+                    width: 100,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: WindowsBottomBarEnum.values.expand((bottomOption) {
