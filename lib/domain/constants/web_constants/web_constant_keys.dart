@@ -5,4 +5,8 @@ class MenuItemsConstantKeys {
   static const String aboutMe = 'About Me';
   static const String contact = 'Contact';
   static const String projects = 'Projects';
+
+  static const String menu = 'Menu';
+
+
 }

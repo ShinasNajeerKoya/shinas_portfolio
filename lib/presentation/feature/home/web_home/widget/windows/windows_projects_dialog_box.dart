@@ -6,10 +6,10 @@ import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/we
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.dart';
 
-class ProjectsDialogBox extends StatelessWidget {
+class WindowsProjectsDialogBox extends StatelessWidget {
   final WebHomeBloc? bloc;
 
-  const ProjectsDialogBox({
+  const WindowsProjectsDialogBox({
     super.key,
     required this.bloc,
   });
@@ -62,11 +62,10 @@ class ProjectsDialogBox extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText('Projects will be updated here soon.'),
+                    CustomText('Projects will be updated here soon. -- for windows'),
                   ],
                 ),
                 const Spacer(),
-                
 
                 /// **Profile Image**
                 // Row(

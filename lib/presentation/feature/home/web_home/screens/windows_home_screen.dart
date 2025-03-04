@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shinas_koya_portfolio/config/helper/desktop_layout_helper.dart';
 import 'package:shinas_koya_portfolio/config/helper/windows_bottom_bar_helper.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
+import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
@@ -395,7 +397,7 @@ class WindowsHomeScreen extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppImages.kWindowsOsBg),
+          image: AssetImage(AppImages.kMacOsBg),
           fit: BoxFit.cover,
         ),
       ),
@@ -481,46 +483,101 @@ class WindowsHomeScreen extends StatelessWidget {
               width: double.maxFinite,
               height: 66,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(
                     height: 20,
                     width: 20,
                     child: CustomSvgIcon(AppIcons.kWeatherWindowsIcon),
                   ),
+                  const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: WindowsBottomBarEnum.values.map((bottomOption) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5), // 5 padding between icons
-                        child: Tooltip(
-                          margin: const EdgeInsets.only(bottom: 5),
-                          message: WindowsBottomBarHelper.getBottomBarTooltip(bottomOption),
-                          textStyle: const TextStyle(color: Colors.white),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.7),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: InkWell(
-                            onTap: WindowsBottomBarHelper.getBottomOptionOnTap(
-                              bottomOption: bottomOption,
-                              bloc: bloc,
-                              context: context,
+                    children: WindowsBottomBarEnum.values.expand((bottomOption) {
+                      List<Widget> children = [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Tooltip(
+                            margin: const EdgeInsets.only(bottom: 5),
+                            message: WindowsBottomBarHelper.getBottomBarTooltip(bottomOption),
+                            textStyle: const TextStyle(color: Colors.white),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.7),
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            splashColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            child: SizedBox(
-                              height: 40,
-                              width: 40,
-                              child: CustomSvgIcon(
-                                WindowsBottomBarHelper.getBottomOptionIcon(bottomOption),
+                            child: InkWell(
+                              onTap: WindowsBottomBarHelper.getBottomOptionOnTap(
+                                bottomOption: bottomOption,
+                                bloc: bloc,
+                                context: context,
+                              ),
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              child: SizedBox(
+                                height: 40,
+                                width: 40,
+                                child: CustomSvgIcon(
+                                  WindowsBottomBarHelper.getBottomOptionIcon(bottomOption),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      );
+                      ];
+
+                      if (bottomOption == WindowsBottomBarEnum.values.first) {
+                        children.add(
+                          InkWell(
+                            onTap: () {
+                              bloc?.showCustomDialog(
+                                context: context,
+                                bloc: bloc,
+                                title: MenuItemsConstantKeys.menu,
+                              );
+                            },
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 2),
+                              child: CustomBackdropFilter(
+                                width: 165,
+                                height: 38,
+                                backgroundColor: Colors.white.withOpacity(0.03),
+                                padding: const EdgeInsets.only(left: 8),
+                                borderRadius: 40,
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      CupertinoIcons.search,
+                                      size: 14,
+                                      color: Colors.grey.withOpacity(0.7),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    CustomText("Search",
+                                        fontColor: Colors.grey.withOpacity(0.7), fontWeight: FontWeight.bold),
+                                    const Spacer(),
+                                    const SizedBox(
+                                      height: 23,
+                                      // width: 40,
+
+                                      child: CustomSvgIcon(
+                                        AppIcons.kLighthouseBottomBarWindowsIcon,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+
+                      return children;
                     }).toList(),
                   ),
+                  const Spacer(),
                   SizedBox(
                     // width: 150,
                     child: Row(

@@ -34,6 +34,7 @@ enum WindowsBottomBarEnum {
   meet,
 }
 
+
 class WebHomeBloc {
   // final LocationRepository locationRepository;
   // final NotificationRepository notificationRepository;
@@ -81,7 +82,7 @@ class WebHomeBloc {
     //   },
     // );
 
-    final dialog = MenuDialogFactory.getDialog(title: title, bloc: bloc);
+    final dialog = MenuDialogFactory.getDialogBox(title: title, bloc: bloc);
 
     if (dialog is SizedBox) return;
 

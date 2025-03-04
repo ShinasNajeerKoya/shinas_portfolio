@@ -2,7 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/web_home_page.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/splash/web_splash_page.dart';
+
+import '../../../config/bloc/bloc_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +17,12 @@ class HomePage extends StatelessWidget {
     Widget homeScreen;
 
     if (kIsWeb || Platform.isMacOS || Platform.isWindows) {
-      homeScreen = const WebSplashPage(); // Web Layout
+      // homeScreen = const WebSplashPage(); // Web Layout
+      homeScreen = Provider<WebHomeBloc>(
+        create: (context) => provideWebHomeBloc(),
+        dispose: (context, bloc) => bloc.dispose(),
+        child: const WebHomePage(),
+      ); // Web Layout
     } else {
       // homeScreen = const MobileHomeScreen(); // Mobile Layout
       /// temporary removing for aman

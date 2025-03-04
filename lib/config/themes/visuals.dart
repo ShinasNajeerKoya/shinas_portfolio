@@ -60,6 +60,8 @@ class AppIcons {
   static const String kSettingsWindowsIcon = '$_iconBasePath/windows_settings_icon.svg';
   static const String kWeatherWindowsIcon = '$_iconBasePath/windows_weather_icon.svg';
 
+  static const String kLighthouseBottomBarWindowsIcon = '$_iconBasePath/windows_bottombar_lighthouse.svg';
+
   ///
 // static const String kThemesIcon = '$_iconBasePath/themes.svg';
 // static const String kModeIcon = '$_iconBasePath/mode.svg';

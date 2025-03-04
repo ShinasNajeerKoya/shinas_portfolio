@@ -47,8 +47,10 @@ class WindowsBottomBarHelper {
     switch (bottomOption) {
       case WindowsBottomBarEnum.menu:
         return () {
-          bloc!.showFeatureComingSoonSnackbar(
+          bloc?.showCustomDialog(
             context: context,
+            bloc: bloc,
+            title: MenuItemsConstantKeys.menu,
           );
         };
 
