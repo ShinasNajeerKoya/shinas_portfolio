@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -9,6 +8,7 @@ class CustomText extends StatelessWidget {
   final Color? fontColor;
   final double? letterSpacing;
   final int? maxLines;
+  final double? lineHeight;
 
   const CustomText(
     this.text, {
@@ -19,6 +19,7 @@ class CustomText extends StatelessWidget {
     this.maxLines,
     this.letterSpacing,
     this.textAlign,
+    this.lineHeight,
   });
 
   @override
@@ -33,6 +34,7 @@ class CustomText extends StatelessWidget {
         color: fontColor ?? Colors.white,
         fontSize: fontSize ?? 14,
         fontWeight: fontWeight ?? FontWeight.w400,
+        height: lineHeight,
       ),
       // style: Theme.of(context).textTheme.titleSmall,
     );

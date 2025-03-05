@@ -3,8 +3,13 @@ class DetailsConstantValues {
   static const String jobRole = "Flutter Engineer";
   static const String phoneNumber = "+918088670650";
   static const String experience = "3+ years";
-  static const String skills = 'Flutter, Dart \nFirebase, Supabase \nREST, Git\nFlutter, Dart \nFirebase, '
-      'Supabase \nREST, Git\n ';
+  static const String skills = 'Flutter, Dart, Figma '
+      '\nFirebase, Supabase, Hive'
+      '\nClean Architecture, MVVM'
+      '\nBloC, RxDart, Provider, Riverpod '
+      '\nREST APIs, Git, Github Hosting, Bitbucket'
+      '\nCI/CD, Jira, Redmine, Trello';
+
   static const String email = "shinasnajeerkoya@gmail.com";
   static const String websiteUrl = "https://shinasnajeerkoya.github.io/shinas_portfolio_website/";
   static const String portfolioUrl = "https://shinasnajeerkoya.github.io/shinaskoya.github.io/";

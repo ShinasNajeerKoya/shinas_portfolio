@@ -44,10 +44,6 @@ class WindowsDetailsRow extends StatelessWidget {
             child: IntrinsicWidth(
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                // decoration: BoxDecoration(
-                //   color: isHovered ? Colors.white.withOpacity(0.4) : Colors.transparent,
-                //   borderRadius: BorderRadius.circular(4),
-                // ),
                 child: CustomText(
                   title,
                   fontSize: 13,
@@ -59,7 +55,7 @@ class WindowsDetailsRow extends StatelessWidget {
         ),
         horizontalMargin4,
 
-        /// Second Container (Fixed, Rounded Borders)
+        /// Second Container
         Expanded(
           child: MouseRegion(
             onEnter: onEnter,
@@ -80,6 +76,7 @@ class WindowsDetailsRow extends StatelessWidget {
                     value,
                     fontSize: 13,
                     maxLines: maxLines,
+                    lineHeight: 1.5,
                   ),
                 ),
               ),
@@ -88,6 +85,8 @@ class WindowsDetailsRow extends StatelessWidget {
         ),
 
         horizontalMargin4,
+
+        /// Icon Container
 
         if (isHovered)
           InkWell(

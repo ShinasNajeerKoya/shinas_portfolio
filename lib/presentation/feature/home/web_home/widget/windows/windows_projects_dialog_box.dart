@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.dart';
 
 class WindowsProjectsDialogBox extends StatelessWidget {
   final WebHomeBloc? bloc;
@@ -28,7 +28,7 @@ class WindowsProjectsDialogBox extends StatelessWidget {
           child: Container(
             height: 300.h,
             width: 650.w,
-            padding: horizontalPadding8,
+            // padding: horizontalPadding8,
             decoration: BoxDecoration(
               color: AppColors.kMacPrimaryDarkColor,
               borderRadius: BorderRadius.circular(10.r),
@@ -49,14 +49,86 @@ class WindowsProjectsDialogBox extends StatelessWidget {
               // mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                verticalMargin4,
+                // verticalMargin4,
 
                 /// **App bar section**
-                MacDialogAppBar(
-                  bloc: bloc,
-                  title: '',
-                  titlePadding: 52,
-                ),
+                // MacDialogAppBar(
+                //   bloc: bloc,
+                //   title: '',
+                //   titlePadding: 52,
+                // ),
+                StreamBuilder<bool>(
+                    stream: bloc!.isMouseHovered,
+                    builder: (context, mouseHoveredSnapshot) {
+                      final isHovered = mouseHoveredSnapshot.data ?? false;
+
+                      return SizedBox(
+                        height: 30,
+                        width: double.maxFinite,
+                        child: Row(
+                          children: [
+                            const Spacer(),
+
+                            MouseRegion(
+                              onEnter: (_) => bloc!.isMouseHovered.add(true),
+                              onExit: (_) => bloc!.isMouseHovered.add(false),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                splashColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: isHovered ? Colors.red : Colors.transparent,
+                                    borderRadius: BorderRadius.only(topRight: Radius.circular(10.r)),
+                                  ),
+                                  child: const Icon(
+                                    CupertinoIcons.clear,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
+                                ),
+                              ),
+                            )
+                            /*
+                            MacOSButton(
+                              onTap: () {
+                                Navigator.of(context).pop();
+                                bloc!.appBarTitleValue.add('Finder');
+                              },
+                              color: Colors.red,
+                              icon: AppIcons.kCancelIcon,
+                              iconColor: Colors.black,
+                              isHovered: isHovered,
+                            ),*/
+                            // const SizedBox(width: 6),
+                            // MacOSButton(
+                            //   color: Colors.yellow,
+                            //   isHovered: isHovered,
+                            // ),
+                            // const SizedBox(width: 6),
+                            // MacOSButton(
+                            //   color: Colors.green,
+                            //   isHovered: isHovered,
+                            // ),
+                            // const Spacer(),
+                            // CustomText(
+                            //   title,
+                            //   fontSize: 12,
+                            //   fontWeight: FontWeight.bold,
+                            // ),
+                            // const Spacer(),
+                            // SizedBox(
+                            //   width: titlePadding ?? 44,
+                            // )
+                          ],
+                        ),
+                      );
+                    }),
                 verticalMargin16,
                 const Spacer(),
                 const Row(

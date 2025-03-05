@@ -397,7 +397,7 @@ class WindowsHomeScreen extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppImages.kMacOsBg),
+          image: AssetImage(AppImages.kWindowsOsBg),
           fit: BoxFit.cover,
         ),
       ),

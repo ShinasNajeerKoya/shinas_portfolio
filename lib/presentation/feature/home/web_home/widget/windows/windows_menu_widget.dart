@@ -82,7 +82,7 @@ class WindowsMenuWidget extends StatelessWidget {
                             ? Expanded(
                                 child: Padding(
                                   // height: 200,
-                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  padding: const EdgeInsets.symmetric(horizontal: 15),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
@@ -117,7 +117,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                               // value: 'shinasnajeerkoya@gmail.com',
                                               value: DetailsConstantValues.email,
                                               isHovered: isHovered,
-                                              contactButton:ContactOptionEnum.email,
+                                              contactButton: ContactOptionEnum.email,
                                             );
                                           },
                                         ),
@@ -134,7 +134,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                               // value: 'shinasnajeerkoya@gmail.com',
                                               value: DetailsConstantValues.websiteUrl,
                                               isHovered: isHovered,
-                                              contactButton:ContactOptionEnum.web,
+                                              contactButton: ContactOptionEnum.web,
                                             );
                                           },
                                         ),
@@ -143,6 +143,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                           title: 'Experience',
                                           value: DetailsConstantValues.experience,
                                         ),
+                                        const SizedBox(height: 5),
                                         const WindowsDetailsRow(
                                           title: 'Skills',
                                           value: DetailsConstantValues.skills,
