@@ -58,7 +58,7 @@ class MacAppBar extends StatelessWidget {
             StreamBuilder<String>(
                 stream: bloc!.appBarTitleValue,
                 builder: (context, titleSnapshot) {
-                  final title = titleSnapshot.data ?? 'FinderB';
+                  final title = titleSnapshot.data ?? 'Finder';
 
                   return CustomText(
                     title,
