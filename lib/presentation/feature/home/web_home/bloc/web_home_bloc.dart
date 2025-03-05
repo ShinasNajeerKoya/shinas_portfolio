@@ -51,7 +51,7 @@ class WebHomeBloc {
   // final permissionDeniedSubject = BehaviorSubject<bool>.seeded(false);
 
   ///
-  final isMacPlatform = BehaviorSubject<bool>.seeded(false);
+  final isMacPlatform = BehaviorSubject<bool>.seeded(true);
 
   final appBarTitleValue = BehaviorSubject<String>.seeded('Finder');
 
@@ -68,9 +68,6 @@ class WebHomeBloc {
 
   /// windows menu items
   final isMenuContExpanded = BehaviorSubject<bool>.seeded(false);
-
-
-
 
   WebHomeBloc() {
     // initDetails();
