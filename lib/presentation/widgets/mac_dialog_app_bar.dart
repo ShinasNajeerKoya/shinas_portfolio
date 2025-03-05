@@ -34,7 +34,7 @@ class MacDialogAppBar extends StatelessWidget {
                   MacOSButton(
                     onTap: () {
                       Navigator.of(context).pop();
-                      bloc!.appBarTitleValue.add('FinderV');
+                      bloc!.appBarTitleValue.add('Finder');
                     },
                     color: Colors.red,
                     icon: AppIcons.kCancelIcon,

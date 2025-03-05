@@ -43,7 +43,7 @@ class MacAppBar extends StatelessWidget {
               icon: AppIcons.kAppleLogo,
               onTap: () {
                 log('iOS logo tapped');
-                bloc!.appBarTitleValue.add('FinderV');
+                bloc!.appBarTitleValue.add('Finder');
                 // const CustomPopupMenuButton();
                 showPopover(
                   context: context,

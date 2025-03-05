@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/constants/details_constants.dart';
@@ -10,7 +9,7 @@ import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constan
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/details_row.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/mac_details_row.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.dart';
 
 class ContactDialogBox extends StatelessWidget {
@@ -20,13 +19,6 @@ class ContactDialogBox extends StatelessWidget {
     super.key,
     required this.bloc,
   });
-
-  final List<Map<String, dynamic>> contactOptions = [
-    {'title': 'Call', 'icon': CupertinoIcons.phone_fill, 'tooltip': 'Call me'},
-    {'title': 'Email', 'icon': CupertinoIcons.envelope_fill, 'tooltip': 'Send me an email'},
-    {'title': 'Web', 'icon': CupertinoIcons.globe, 'tooltip': 'Visit my website'},
-    {'title': 'Share', 'icon': CupertinoIcons.share, 'tooltip': 'Share my portfolio'},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -105,21 +97,26 @@ class ContactDialogBox extends StatelessWidget {
 
                 /// **contact icons list**
 
-                SizedBox(
-                  height: 60,
-                  width: 250,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(contactOptions.length, (index) {
-                      final option = contactOptions[index];
-                      return ContactOptionColumn(
-                        title: option['title'],
-                        icon: option['icon'],
-                        tooltip: option['tooltip'],
+                StreamBuilder<bool>(
+                    stream: bloc!.isMacPlatform,
+                    builder: (context, platformSnapshot) {
+                      final isMacOs = platformSnapshot.data ?? true;
+                      return SizedBox(
+                        height: 60,
+                        width: 250,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: ContactOptionEnum.values.map((option) {
+                            return _ContactOptionColumn(
+                              title: ContactButtonHelper.getContactButtonTitle(option),
+                              icon: ContactButtonHelper.getContactButtonIcon(option, isMacOs),
+                              tooltip: ContactButtonHelper.getContactButtonTooltip(option),
+                              onTap: () => ContactButtonHelper.handleContactOnTap(context, option),
+                            );
+                          }).toList(),
+                        ),
                       );
                     }),
-                  ),
-                ),
 
                 verticalMargin12,
 
@@ -129,7 +126,7 @@ class ContactDialogBox extends StatelessWidget {
                   stream: bloc!.isContactPhoneHovered,
                   builder: (context, mouseHoveredSnapshot) {
                     final isHovered = mouseHoveredSnapshot.data ?? false;
-                    return DetailsRow(
+                    return MacDetailsRow(
                       onEnter: (_) => bloc!.isContactPhoneHovered.add(true),
                       onExit: (_) => bloc!.isContactPhoneHovered.add(false),
                       title: 'Phone',
@@ -143,7 +140,7 @@ class ContactDialogBox extends StatelessWidget {
                   stream: bloc!.isContactEmailHovered,
                   builder: (context, mouseHoveredSnapshot) {
                     final isHovered = mouseHoveredSnapshot.data ?? false;
-                    return DetailsRow(
+                    return MacDetailsRow(
                       onEnter: (_) => bloc!.isContactEmailHovered.add(true),
                       onExit: (_) => bloc!.isContactEmailHovered.add(false),
                       title: 'Email',
@@ -158,7 +155,7 @@ class ContactDialogBox extends StatelessWidget {
                   stream: bloc!.isContactWebsiteHovered,
                   builder: (context, mouseHoveredSnapshot) {
                     final isHovered = mouseHoveredSnapshot.data ?? false;
-                    return DetailsRow(
+                    return MacDetailsRow(
                       onEnter: (_) => bloc!.isContactWebsiteHovered.add(true),
                       onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
                       title: 'Website',
@@ -216,14 +213,17 @@ class ContactDialogBox extends StatelessWidget {
 }
 
 class CustomContactDivider extends StatelessWidget {
-  const   CustomContactDivider({
+  final double? horizontalPaddingValue;
+
+  const CustomContactDivider({
     super.key,
+    this.horizontalPaddingValue,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPaddingValue ?? 20, vertical: 8),
       child: Divider(
         height: 0.5,
         endIndent: 10,
@@ -233,16 +233,17 @@ class CustomContactDivider extends StatelessWidget {
   }
 }
 
-class ContactOptionColumn extends StatelessWidget {
+class _ContactOptionColumn extends StatelessWidget {
   final IconData icon;
   final String title;
   final String tooltip;
+  final Function()? onTap;
 
-  const ContactOptionColumn({
-    super.key,
+  const _ContactOptionColumn({
     required this.icon,
     required this.title,
     required this.tooltip,
+    required this.onTap,
   });
 
   @override
@@ -253,7 +254,7 @@ class ContactOptionColumn extends StatelessWidget {
         MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
-            onTap: () => ContactButtonHelper.handleContactTap(context, title),
+            onTap: onTap,
             child: Tooltip(
               margin: topPadding8,
               message: tooltip,

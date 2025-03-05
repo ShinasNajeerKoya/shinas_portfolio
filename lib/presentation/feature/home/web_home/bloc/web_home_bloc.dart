@@ -53,7 +53,7 @@ class WebHomeBloc {
   ///
   final isMacPlatform = BehaviorSubject<bool>.seeded(false);
 
-  final appBarTitleValue = BehaviorSubject<String>.seeded('FinderV');
+  final appBarTitleValue = BehaviorSubject<String>.seeded('Finder');
 
   final isMouseHovered = BehaviorSubject<bool>.seeded(false);
 
@@ -65,6 +65,12 @@ class WebHomeBloc {
   final isContactPhoneHovered = BehaviorSubject<bool>.seeded(false);
   final isContactEmailHovered = BehaviorSubject<bool>.seeded(false);
   final isContactWebsiteHovered = BehaviorSubject<bool>.seeded(false);
+
+  /// windows menu items
+  final isMenuContExpanded = BehaviorSubject<bool>.seeded(false);
+
+
+
 
   WebHomeBloc() {
     // initDetails();

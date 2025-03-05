@@ -28,8 +28,8 @@ class WindowsMenuItemsIconWidget extends StatelessWidget {
           Column(
             children: [
               SizedBox(
-                height: 60,
-                width: 60,
+                height: 55,
+                width: 55,
                 // color: Colors.yellow.withOpacity(0.2),
                 child: CustomSvgIcon(
                   icon,

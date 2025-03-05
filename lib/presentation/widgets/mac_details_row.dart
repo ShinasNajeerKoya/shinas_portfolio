@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 
-class DetailsRow extends StatelessWidget {
+class MacDetailsRow extends StatelessWidget {
   final Function(PointerEnterEvent)? onEnter;
   final Function(PointerExitEvent)? onExit;
   final bool isHovered;
@@ -13,7 +13,7 @@ class DetailsRow extends StatelessWidget {
   final double? valueWidth;
   final int? maxLines;
 
-  const DetailsRow({
+  const MacDetailsRow({
     super.key,
     this.onEnter,
     this.onExit,

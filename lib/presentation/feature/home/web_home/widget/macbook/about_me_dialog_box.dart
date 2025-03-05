@@ -8,7 +8,7 @@ import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constan
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/details_row.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/mac_details_row.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.dart';
 
 class AboutMeDialogBox extends StatelessWidget {
@@ -147,11 +147,11 @@ class AboutMeDialogBox extends StatelessWidget {
                   stream: bloc!.isExperienceHovered,
                   builder: (context, mouseHoveredSnapshot) {
                     final isHovered = mouseHoveredSnapshot.data ?? false;
-                    return DetailsRow(
+                    return MacDetailsRow(
                       onEnter: (_) => bloc!.isExperienceHovered.add(true),
                       onExit: (_) => bloc!.isExperienceHovered.add(false),
                       title: 'Experience',
-                      value: '3+ years',
+                      value: DetailsConstantValues.experience,
                       isHovered: isHovered,
                     );
                   },
@@ -164,12 +164,11 @@ class AboutMeDialogBox extends StatelessWidget {
                   stream: bloc!.isSkillsHovered,
                   builder: (context, mouseHoveredSnapshot) {
                     final isHovered = mouseHoveredSnapshot.data ?? false;
-                    return DetailsRow(
+                    return MacDetailsRow(
                       onEnter: (_) => bloc!.isSkillsHovered.add(true),
                       onExit: (_) => bloc!.isSkillsHovered.add(false),
                       title: 'Skills',
-                      value:
-                          'Flutter, Dart \nFirebase, Supabase \nREST, Git\nFlutter, Dart \nFirebase, Supabase \nREST, Git\n ',
+                      value: DetailsConstantValues.skills,
                       isHovered: isHovered,
                       maxLines: 7,
                     );

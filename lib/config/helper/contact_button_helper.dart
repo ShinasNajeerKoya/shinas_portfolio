@@ -1,25 +1,64 @@
-
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
 
+enum ContactOptionEnum {
+  call,
+  email,
+  web,
+  share,
+}
+
 class ContactButtonHelper {
+  static String getContactButtonTooltip(ContactOptionEnum contactOption) {
+    switch (contactOption) {
+      case ContactOptionEnum.call:
+        return 'Call me';
+      case ContactOptionEnum.email:
+        return 'Send me an email';
+      case ContactOptionEnum.web:
+        return 'Visit my website';
+      case ContactOptionEnum.share:
+        return 'Share my portfolio';
+    }
+  }
+
+  static String getContactButtonTitle(ContactOptionEnum contactOption) {
+    switch (contactOption) {
+      case ContactOptionEnum.call:
+        return 'Call';
+      case ContactOptionEnum.email:
+        return 'Email';
+      case ContactOptionEnum.web:
+        return 'Web';
+      case ContactOptionEnum.share:
+        return 'Share';
+    }
+  }
+
+  static IconData getContactButtonIcon(ContactOptionEnum contactOption, bool isMacOs) {
+    switch (contactOption) {
+      case ContactOptionEnum.call:
+        return isMacOs ? CupertinoIcons.phone_fill : CupertinoIcons.phone;
+      case ContactOptionEnum.email:
+        return isMacOs ? CupertinoIcons.envelope_fill : CupertinoIcons.envelope;
+      case ContactOptionEnum.web:
+        return isMacOs ? CupertinoIcons.globe : CupertinoIcons.compass;
+      case ContactOptionEnum.share:
+        return isMacOs ? CupertinoIcons.share : CupertinoIcons.share;
+    }
+  }
+
   /// Handles the action based on the given [title]
-  static Future<void> handleContactTap(BuildContext context, String title) async {
-    switch (title) {
-      case 'Call':
-        ContactService.handleCall(context);
-        break;
-      case 'Email':
-        ContactService.handleEmail();
-        break;
-      case 'Web':
-        ContactService.handleWeb(SocialMediaPlatformEnum.website);
-        break;
-      case 'Share':
-        ContactService.handleShare();
-        break;
-      default:
-        debugPrint("Unknown action: $title");
+  static Future<void> handleContactOnTap(BuildContext context, ContactOptionEnum contactOption) async {
+    switch (contactOption) {
+      case ContactOptionEnum.call:
+        return ContactService.handleCall(context);
+      case ContactOptionEnum.email:
+        return ContactService.handleEmail();
+      case ContactOptionEnum.web:
+        return ContactService.handleWeb(SocialMediaPlatformEnum.website);
+      case ContactOptionEnum.share:
+        return ContactService.handleShare();
     }
   }
 }
