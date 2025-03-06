@@ -1,9 +1,9 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:popover/popover.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
@@ -238,8 +238,16 @@ class LanguageMenuItems extends StatelessWidget {
             onExit: onExit,
             child: InkWell(
               onTap: () {
+                // if (title == "Hindi") {
+                //   _showFeatureComingSoonMessage(context);
+                // }
+
                 if (title == "Hindi") {
-                  _showFeatureComingSoonMessage(context);
+                  // Set locale to Kannada when "Hindi" is selected
+                  context.setLocale(const Locale('kn'));
+                } else {
+                  // Default to English
+                  context.setLocale(const Locale('en'));
                 }
 
                 Navigator.pop(context);

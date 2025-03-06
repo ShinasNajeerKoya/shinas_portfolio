@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
@@ -76,7 +78,7 @@ class MacProjectsDialogBox extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           CustomText(
-                            "Featured",
+                            LocaleKeys.featured.toLocalizeString,
                             fontSize: 30,
                           ),
                           const CustomDivider(horizontalPaddingValue: 0),
