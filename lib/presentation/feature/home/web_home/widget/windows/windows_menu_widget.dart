@@ -8,8 +8,9 @@ import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/we
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/contact_dialog_box.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/windows/windows_menu_items_icon_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_backdrop_filter.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/windows_details_row.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/windows/windows_details_row.dart';
 
 class WindowsMenuWidget extends StatelessWidget {
   final WebHomeBloc? bloc;
@@ -86,7 +87,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
-                                        const CustomContactDivider(horizontalPaddingValue: 0),
+                                        const CustomDivider(horizontalPaddingValue: 0),
                                         StreamBuilder<bool>(
                                           stream: bloc!.isContactPhoneHovered,
                                           builder: (context, mouseHoveredSnapshot) {
@@ -103,7 +104,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                             );
                                           },
                                         ),
-                                        const CustomContactDivider(horizontalPaddingValue: 0),
+                                        const CustomDivider(horizontalPaddingValue: 0),
                                         StreamBuilder<bool>(
                                           stream: bloc!.isContactEmailHovered,
                                           builder: (context, mouseHoveredSnapshot) {
@@ -121,7 +122,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                             );
                                           },
                                         ),
-                                        const CustomContactDivider(horizontalPaddingValue: 0),
+                                        const CustomDivider(horizontalPaddingValue: 0),
                                         StreamBuilder<bool>(
                                           stream: bloc!.isContactWebsiteHovered,
                                           builder: (context, mouseHoveredSnapshot) {
@@ -138,7 +139,7 @@ class WindowsMenuWidget extends StatelessWidget {
                                             );
                                           },
                                         ),
-                                        const CustomContactDivider(horizontalPaddingValue: 0),
+                                        const CustomDivider(horizontalPaddingValue: 0),
                                         const WindowsDetailsRow(
                                           title: 'Experience',
                                           value: DetailsConstantValues.experience,

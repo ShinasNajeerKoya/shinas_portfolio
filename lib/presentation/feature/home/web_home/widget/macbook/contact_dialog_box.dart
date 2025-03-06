@@ -7,10 +7,11 @@ import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_details_row.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/mac_details_row.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/mac_dialog_app_bar.dart';
 
 class ContactDialogBox extends StatelessWidget {
   final WebHomeBloc? bloc;
@@ -135,7 +136,7 @@ class ContactDialogBox extends StatelessWidget {
                     );
                   },
                 ),
-                const CustomContactDivider(),
+                const CustomDivider(),
                 StreamBuilder<bool>(
                   stream: bloc!.isContactEmailHovered,
                   builder: (context, mouseHoveredSnapshot) {
@@ -150,7 +151,7 @@ class ContactDialogBox extends StatelessWidget {
                     );
                   },
                 ),
-                const CustomContactDivider(),
+                const CustomDivider(),
                 StreamBuilder<bool>(
                   stream: bloc!.isContactWebsiteHovered,
                   builder: (context, mouseHoveredSnapshot) {
@@ -207,27 +208,6 @@ class ContactDialogBox extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CustomContactDivider extends StatelessWidget {
-  final double? horizontalPaddingValue;
-
-  const CustomContactDivider({
-    super.key,
-    this.horizontalPaddingValue,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: horizontalPaddingValue ?? 20, vertical: 8),
-      child: Divider(
-        height: 0.5,
-        endIndent: 10,
-        color: Colors.grey.withOpacity(0.3),
       ),
     );
   }
