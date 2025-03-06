@@ -1,6 +1,6 @@
 {
   "title": "My Portfolio",
-  "welcome_message": "Welcome to my portfolio!",
-  "featured": "Featured"
-
+  "welcomeMessage": "Welcome to my portfolio!",
+  "featured": "Featured",
+  "myProjects": "My Projects"
 }

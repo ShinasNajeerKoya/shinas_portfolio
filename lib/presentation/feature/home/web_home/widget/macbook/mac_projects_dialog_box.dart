@@ -70,24 +70,15 @@ class MacProjectsDialogBox extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    Container(
-                      height: 70,
-                      // color: Colors.red,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomText(
-                            LocaleKeys.featured.toLocalizeString,
-                            fontSize: 30,
-                          ),
-                          const CustomDivider(horizontalPaddingValue: 0),
-                        ],
-                      ),
+                    ProjectTitleWidget(
+                      title: LocaleKeys.featured.toLocalizeString,
                     ),
                     Container(
                       height: 300,
                       color: Colors.yellow,
+                    ),
+                    ProjectTitleWidget(
+                      title: LocaleKeys.myProjects.toLocalizeString,
                     ),
                     Container(
                       height: 200,
@@ -107,6 +98,33 @@ class MacProjectsDialogBox extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ProjectTitleWidget extends StatelessWidget {
+  final String title;
+
+  const ProjectTitleWidget({
+    super.key,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 70,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          CustomText(
+            title,
+            fontSize: 30,
+          ),
+          const CustomDivider(horizontalPaddingValue: 0),
+        ],
       ),
     );
   }
