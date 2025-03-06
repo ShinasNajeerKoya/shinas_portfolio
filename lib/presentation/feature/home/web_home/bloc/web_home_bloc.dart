@@ -6,8 +6,8 @@ import 'package:shinas_koya_portfolio/config/utils/misc_util.dart';
 
 enum MainLayoutEnum {
   projects,
-  packages,
   resume,
+  packages,
   github,
   flappyBird,
   fullscreen,

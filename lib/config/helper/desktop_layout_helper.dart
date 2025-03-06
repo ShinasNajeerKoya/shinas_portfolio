@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
+import 'package:shinas_koya_portfolio/data/service/pdf_service.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
@@ -109,7 +110,7 @@ class DesktopLayoutHelper {
           );
         };
       case MainLayoutEnum.resume:
-        return () => debugPrint("Open Resume");
+        return () => PDFHelper.openResume();
       case MainLayoutEnum.github:
         return () => ContactService.handleWeb(SocialMediaPlatformEnum.github);
       case MainLayoutEnum.linkedin:
