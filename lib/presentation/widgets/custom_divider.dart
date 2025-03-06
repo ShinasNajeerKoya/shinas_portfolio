@@ -14,7 +14,7 @@ class CustomDivider extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: horizontalPaddingValue ?? 20, vertical: 8),
       child: Divider(
         height: 0.5,
-        endIndent: 10,
+        // endIndent: 10,
         color: Colors.grey.withOpacity(0.3),
       ),
     );

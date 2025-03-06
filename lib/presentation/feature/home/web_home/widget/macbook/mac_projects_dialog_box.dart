@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
+import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/project_title_widget.dart';
 
 class MacProjectsDialogBox extends StatelessWidget {
   final WebHomeBloc? bloc;
@@ -50,7 +51,7 @@ class MacProjectsDialogBox extends StatelessWidget {
             // mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              verticalMargin4,
+              verticalMargin6,
 
               /// **App bar section**
               MacDialogAppBar(
@@ -58,7 +59,7 @@ class MacProjectsDialogBox extends StatelessWidget {
                 title: '',
                 titlePadding: 52,
               ),
-              verticalMargin4,
+              verticalMargin6,
               // const Spacer(),
               // const Row(
               //   mainAxisAlignment: MainAxisAlignment.center,
@@ -68,63 +69,112 @@ class MacProjectsDialogBox extends StatelessWidget {
               // ),
               // const Spacer(),
               Expanded(
-                child: ListView(
-                  children: [
-                    ProjectTitleWidget(
-                      title: LocaleKeys.featured.toLocalizeString,
-                    ),
-                    Container(
-                      height: 300,
-                      color: Colors.yellow,
-                    ),
-                    ProjectTitleWidget(
-                      title: LocaleKeys.myProjects.toLocalizeString,
-                    ),
-                    Container(
-                      height: 200,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      color: Colors.grey,
-                    ),
-                    Container(
-                      height: 200,
-                      color: Colors.green,
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView(
+                    children: [
+                      ProjectTitleWidget(
+                        title: LocaleKeys.featured.toLocalizeString,
+                      ),
+                      Container(
+                        height: 250,
+                        // color: Colors.yellow.withOpacity(0.2),
+                        child: Row(
+                          children: [
+                            // Left child - Column
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 20),
+                                  CustomText(
+                                    "Project Title Here",
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                    fontColor: Colors.white,
+                                  ),
+                                  SizedBox(height: 4),
+                                  CustomText(
+                                    "Category",
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    fontColor: Colors.white.withOpacity(0.6),
+                                  ),
+                                  SizedBox(height: 16),
+                                  CustomText(
+                                    "Brief Info on app",
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    fontColor: Colors.white,
+                                  ),
+                                  SizedBox(height: 30),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                                    child: CustomText(
+                                      "See more",
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      fontColor: Colors.blue,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+
+                            // Right child - Image with fade effect
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.r),
+                                child: ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return const LinearGradient(
+                                      begin: Alignment.centerRight,
+                                      end: Alignment.centerLeft,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.transparent,
+                                      ],
+                                      stops: [0.0, 0.7],
+                                    ).createShader(bounds);
+                                  },
+                                  blendMode: BlendMode.dstIn, // Applies the fade effect
+                                  child: Image.asset(
+                                    AppImages.kMacOsBg,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      ProjectTitleWidget(
+                        title: LocaleKeys.myProjects.toLocalizeString,
+                      ),
+                      Container(
+                        height: 200,
+                        color: Colors.blue,
+                      ),
+                      Container(
+                        height: 200,
+                        color: Colors.grey,
+                      ),
+                      Container(
+                        height: 200,
+                        color: Colors.green,
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ProjectTitleWidget extends StatelessWidget {
-  final String title;
-
-  const ProjectTitleWidget({
-    super.key,
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          CustomText(
-            title,
-            fontSize: 30,
-          ),
-          const CustomDivider(horizontalPaddingValue: 0),
-        ],
       ),
     );
   }

@@ -14,7 +14,7 @@ class MadeWithFlutterWidget extends StatelessWidget {
     return CustomBackdropFilter(
       borderRadius: 50.r,
       height: 25,
-      width: 150,
+      width: 160,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
