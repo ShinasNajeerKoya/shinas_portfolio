@@ -88,6 +88,54 @@ class MacProjectsDialogBox extends StatelessWidget {
   }
 }
 
+// class ProjectsGridViewWidget extends StatelessWidget {
+//   const ProjectsGridViewWidget({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return LayoutBuilder(
+//       builder: (context, constraints) {
+//         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+//         double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+//
+//         // Fetch data from Hive
+//         final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
+//         final List<ProjectMetadata> projects = box.values.toList();
+//
+//         if (projects.isEmpty) {
+//           return Center(
+//               child: CustomText(
+//             "No projects available",
+//             fontColor: Colors.white,
+//           ));
+//         }
+//
+//         return GridView.builder(
+//           physics: const NeverScrollableScrollPhysics(),
+//           shrinkWrap: true,
+//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//             crossAxisCount: crossAxisCount,
+//             crossAxisSpacing: 15,
+//             mainAxisSpacing: 80,
+//             childAspectRatio: aspectRatio,
+//           ),
+//           itemCount: projects.length,
+//           itemBuilder: (context, index) {
+//             final project = projects[index];
+//
+//             return ProjectItemWidget(
+//               color: index.isEven ? Colors.blue : Colors.green,
+//               title: project.kannadaTitle,
+//               category: project.category,
+//               imageUrl: project.thumbnailImage,
+//             );
+//           },
+//         );
+//       },
+//     );
+//   }
+// }
+
 class ProjectsGridViewWidget extends StatelessWidget {
   const ProjectsGridViewWidget({super.key});
 
@@ -100,14 +148,18 @@ class ProjectsGridViewWidget extends StatelessWidget {
 
         // Fetch data from Hive
         final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
-        final List<ProjectMetadata> projects = box.values.toList();
 
-        if (projects.isEmpty) {
+        // Filter only normal projects (isFeatured == false)
+        final List<ProjectMetadata> normalProjects =
+            box.values.where((project) => !project.isFeatured).toList();
+
+        if (normalProjects.isEmpty) {
           return Center(
-              child: CustomText(
-            "No projects available",
-            fontColor: Colors.white,
-          ));
+            child: CustomText(
+              "No projects available",
+              fontColor: Colors.white,
+            ),
+          );
         }
 
         return GridView.builder(
@@ -119,9 +171,9 @@ class ProjectsGridViewWidget extends StatelessWidget {
             mainAxisSpacing: 80,
             childAspectRatio: aspectRatio,
           ),
-          itemCount: projects.length,
+          itemCount: normalProjects.length,
           itemBuilder: (context, index) {
-            final project = projects[index];
+            final project = normalProjects[index];
 
             return ProjectItemWidget(
               color: index.isEven ? Colors.blue : Colors.green,
@@ -135,44 +187,6 @@ class ProjectsGridViewWidget extends StatelessWidget {
     );
   }
 }
-
-// class ProjectsGridViewWidget extends StatelessWidget {
-//   const ProjectsGridViewWidget({
-//     super.key,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return LayoutBuilder(
-//       builder: (context, constraints) {
-//         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
-//         double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
-//
-//         return GridView.builder(
-//           physics: const NeverScrollableScrollPhysics(),
-//           // Prevents internal scrolling
-//           shrinkWrap: true,
-//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//             crossAxisCount: crossAxisCount, // Dynamically set based on width
-//             crossAxisSpacing: 15,
-//             mainAxisSpacing: 80,
-//             childAspectRatio: aspectRatio, // Adjusts aspect ratio
-//           ),
-//           itemCount: 5,
-//           // Temporary count
-//           itemBuilder: (context, index) {
-//             return ProjectItemWidget(
-//               color: index.isEven ? Colors.blue : Colors.green, // Just to differentiate
-//               title: "Project $index",
-//               category: "Category $index",
-//               imageUrl: "https://via.placeholder.com/150",
-//             );
-//           },
-//         );
-//       },
-//     );
-//   }
-// }
 
 class ProjectItemWidget extends StatelessWidget {
   final Color color;

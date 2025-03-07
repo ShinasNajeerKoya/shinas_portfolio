@@ -26,6 +26,9 @@ class ProjectMetadata {
   @HiveField(6)
   final String thumbnailImage;
 
+  @HiveField(7)
+  final bool isFeatured;
+
   ProjectMetadata({
     required this.key,
     required this.englishTitle,
@@ -34,10 +37,11 @@ class ProjectMetadata {
     this.subTitle,
     required this.icon,
     required this.thumbnailImage,
+    required this.isFeatured,
   });
 
   // Convert JSON to Model
-  factory ProjectMetadata.fromJson(Map<String, dynamic> json) {
+  factory ProjectMetadata.fromJson(Map<String, dynamic> json, {required bool isFeatured}) {
     return ProjectMetadata(
       key: json[ProjectMetadataConstantKey.key],
       englishTitle: json[ProjectMetadataConstantKey.englishTitle],
@@ -46,6 +50,7 @@ class ProjectMetadata {
       subTitle: json[ProjectMetadataConstantKey.subTitle],
       icon: json[ProjectMetadataConstantKey.icon],
       thumbnailImage: json[ProjectMetadataConstantKey.thumbnailImage],
+      isFeatured: isFeatured,
     );
   }
 
