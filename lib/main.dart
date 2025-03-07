@@ -2,15 +2,26 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:shinas_koya_portfolio/config/constants/hive_constants/hive_constant_keys.dart';
+import 'package:shinas_koya_portfolio/core/hive_adapters/hive_adapters.dart';
+import 'package:shinas_koya_portfolio/data/dao/project_metadata/project_metadata.dart';
+import 'package:shinas_koya_portfolio/data/service/project_service/project_service.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
-  // Manually register the plugin for web
-
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Hive.initFlutter();
+
+  await registerHiveAdapters();
+
+  await Hive.openBox<ProjectMetadata>(HiveConstantKeys.projectsBox); // Open Box
+
+  final projectService = ProjectService();
+  await projectService.loadJsonToHive();
 
   runApp(
     EasyLocalization(

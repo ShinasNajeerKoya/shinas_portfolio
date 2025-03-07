@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:shinas_koya_portfolio/config/constants/hive_constants/hive_constant_keys.dart';
 import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
+import 'package:shinas_koya_portfolio/data/dao/project_metadata/project_metadata.dart';
 import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
@@ -60,14 +63,6 @@ class MacProjectsDialogBox extends StatelessWidget {
                 titlePadding: 52,
               ),
               verticalMargin6,
-              // const Spacer(),
-              // const Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     CustomText('Projects will be updated here soon.'),
-              //   ],
-              // ),
-              // const Spacer(),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -76,104 +71,450 @@ class MacProjectsDialogBox extends StatelessWidget {
                       ProjectTitleWidget(
                         title: LocaleKeys.featured.toLocalizeString,
                       ),
-                      Container(
-                        height: 250,
-                        // color: Colors.yellow.withOpacity(0.2),
-                        child: Row(
-                          children: [
-                            // Left child - Column
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 20),
-                                  CustomText(
-                                    "Project Title Here",
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.bold,
-                                    fontColor: Colors.white,
-                                  ),
-                                  SizedBox(height: 4),
-                                  CustomText(
-                                    "Category",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                    fontColor: Colors.white.withOpacity(0.6),
-                                  ),
-                                  SizedBox(height: 16),
-                                  CustomText(
-                                    "Brief Info on app",
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal,
-                                    fontColor: Colors.white,
-                                  ),
-                                  SizedBox(height: 30),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                                    child: CustomText(
-                                      "See more",
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      fontColor: Colors.blue,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-
-                            // Right child - Image with fade effect
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.r),
-                                child: ShaderMask(
-                                  shaderCallback: (Rect bounds) {
-                                    return const LinearGradient(
-                                      begin: Alignment.centerRight,
-                                      end: Alignment.centerLeft,
-                                      colors: [
-                                        Colors.white,
-                                        Colors.transparent,
-                                      ],
-                                      stops: [0.0, 0.7],
-                                    ).createShader(bounds);
-                                  },
-                                  blendMode: BlendMode.dstIn, // Applies the fade effect
-                                  child: Image.asset(
-                                    AppImages.kMacOsBg,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      const FeaturedProjectWidget(),
                       ProjectTitleWidget(
                         title: LocaleKeys.myProjects.toLocalizeString,
                       ),
-                      Container(
-                        height: 200,
-                        color: Colors.blue,
-                      ),
-                      Container(
-                        height: 200,
-                        color: Colors.grey,
-                      ),
-                      Container(
-                        height: 200,
-                        color: Colors.green,
-                      ),
+                      ProjectsGridViewWidget(),
                     ],
                   ),
                 ),
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProjectsGridViewWidget extends StatelessWidget {
+  const ProjectsGridViewWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+        double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+
+        // Fetch data from Hive
+        final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
+        final List<ProjectMetadata> projects = box.values.toList();
+
+        if (projects.isEmpty) {
+          return Center(
+              child: CustomText(
+            "No projects available",
+            fontColor: Colors.white,
+          ));
+        }
+
+        return GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 80,
+            childAspectRatio: aspectRatio,
+          ),
+          itemCount: projects.length,
+          itemBuilder: (context, index) {
+            final project = projects[index];
+
+            return ProjectItemWidget(
+              color: index.isEven ? Colors.blue : Colors.green,
+              title: project.kannadaTitle,
+              category: project.category,
+              imageUrl: project.thumbnailImage,
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+// class ProjectsGridViewWidget extends StatelessWidget {
+//   const ProjectsGridViewWidget({
+//     super.key,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return LayoutBuilder(
+//       builder: (context, constraints) {
+//         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+//         double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+//
+//         return GridView.builder(
+//           physics: const NeverScrollableScrollPhysics(),
+//           // Prevents internal scrolling
+//           shrinkWrap: true,
+//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//             crossAxisCount: crossAxisCount, // Dynamically set based on width
+//             crossAxisSpacing: 15,
+//             mainAxisSpacing: 80,
+//             childAspectRatio: aspectRatio, // Adjusts aspect ratio
+//           ),
+//           itemCount: 5,
+//           // Temporary count
+//           itemBuilder: (context, index) {
+//             return ProjectItemWidget(
+//               color: index.isEven ? Colors.blue : Colors.green, // Just to differentiate
+//               title: "Project $index",
+//               category: "Category $index",
+//               imageUrl: "https://via.placeholder.com/150",
+//             );
+//           },
+//         );
+//       },
+//     );
+//   }
+// }
+
+class ProjectItemWidget extends StatelessWidget {
+  final Color color;
+  final String title;
+  final String category;
+  final String imageUrl;
+
+  const ProjectItemWidget({
+    required this.color,
+    required this.title,
+    required this.category,
+    required this.imageUrl,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        // color: color,
+        // image: Dec,
+        // image: DecorationImage(image: AssetImage(AppImages.kWindowsOsBg)),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // padding: const EdgeInsets.all(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: const DecorationImage(
+                      image: AssetImage(AppImages.kMacOsBg),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    title,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  CustomText(
+                    category,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    fontColor: Colors.white.withOpacity(0.7),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              ContainerButton(
+                title: LocaleKeys.see.toLocalizeString,
+                onTap: () {},
+                margin: const EdgeInsets.only(right: 5),
+              )
+            ],
+          ),
+          const SizedBox(height: 10),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: AssetImage(imageUrl),
+                    fit: BoxFit.cover,
+                  )),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+//
+// class FeaturedProjectWidget extends StatelessWidget {
+//   const FeaturedProjectWidget({
+//     super.key,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 250,
+//       // color: Colors.yellow.withOpacity(0.2),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           // Left child - Column
+//           Expanded(
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 const SizedBox(height: 20),
+//                 const CustomText(
+//                   "Project Title Here",
+//                   fontSize: 26,
+//                   fontWeight: FontWeight.bold,
+//                   fontColor: Colors.white,
+//                 ),
+//                 const SizedBox(height: 4),
+//                 CustomText(
+//                   "Category",
+//                   fontSize: 14,
+//                   fontWeight: FontWeight.normal,
+//                   fontColor: Colors.white.withOpacity(0.6),
+//                 ),
+//                 const SizedBox(height: 16),
+//                 const CustomText(
+//                   "Brief Info on app",
+//                   fontSize: 16,
+//                   fontWeight: FontWeight.normal,
+//                   fontColor: Colors.white,
+//                 ),
+//                 const SizedBox(height: 30),
+//                 ContainerButton(
+//                   title: LocaleKeys.seeMore.toLocalizeString,
+//                   onTap: () {},
+//                 )
+//               ],
+//             ),
+//           ),
+//
+//           // Right child - Image with fade effect
+//           SizedBox(
+//             width: 500,
+//             child: ClipRRect(
+//               borderRadius: BorderRadius.circular(10.r),
+//               child: ShaderMask(
+//                 shaderCallback: (Rect bounds) {
+//                   return const LinearGradient(
+//                     begin: Alignment.centerRight,
+//                     end: Alignment.centerLeft,
+//                     colors: [
+//                       Colors.white,
+//                       Colors.transparent,
+//                     ],
+//                     stops: [0.0, 0.7],
+//                   ).createShader(bounds);
+//                 },
+//                 blendMode: BlendMode.dstIn, // Applies the fade effect
+//                 child: Image.asset(
+//                   AppImages.kMacOsBg,
+//                   fit: BoxFit.cover,
+//                   height: 250,
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class FeaturedProjectWidget extends StatelessWidget {
+  const FeaturedProjectWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isSmallScreen = constraints.maxWidth < 600;
+
+        return SizedBox(
+          height: 250,
+          child: isSmallScreen
+              ? Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Background Image
+                    Positioned.fill(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.r),
+                        child: ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return const LinearGradient(
+                              begin: Alignment.centerRight,
+                              end: Alignment.centerLeft,
+                              colors: [
+                                Colors.white,
+                                Colors.transparent,
+                              ],
+                              stops: [0.0, 0.7],
+                            ).createShader(bounds);
+                          },
+                          blendMode: BlendMode.dstIn,
+                          child: Image.asset(
+                            AppImages.kMacOsBg,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Text Overlay
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const CustomText(
+                            "Project Title Here",
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            fontColor: Colors.white,
+                          ),
+                          const SizedBox(height: 4),
+                          CustomText(
+                            "Category",
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            fontColor: Colors.white.withOpacity(0.8),
+                          ),
+                          const SizedBox(height: 16),
+                          const CustomText(
+                            "Brief Info on app",
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            fontColor: Colors.white,
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 20),
+                          ContainerButton(
+                            title: LocaleKeys.seeMore.toLocalizeString,
+                            onTap: () {},
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Left - Text Content
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20),
+                          const CustomText(
+                            "Project Title Here",
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            fontColor: Colors.white,
+                          ),
+                          const SizedBox(height: 4),
+                          CustomText(
+                            "Category",
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            fontColor: Colors.white.withOpacity(0.6),
+                          ),
+                          const SizedBox(height: 16),
+                          const CustomText(
+                            "Brief Info on app",
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            fontColor: Colors.white,
+                          ),
+                          const SizedBox(height: 30),
+                          ContainerButton(
+                            title: LocaleKeys.seeMore.toLocalizeString,
+                            onTap: () {},
+                          )
+                        ],
+                      ),
+                    ),
+
+                    // Right - Image
+                    SizedBox(
+                      width: 500,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.r),
+                        child: ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return const LinearGradient(
+                              begin: Alignment.centerRight,
+                              end: Alignment.centerLeft,
+                              colors: [
+                                Colors.white,
+                                Colors.transparent,
+                              ],
+                              stops: [0.0, 0.7],
+                            ).createShader(bounds);
+                          },
+                          blendMode: BlendMode.dstIn,
+                          child: Image.asset(
+                            AppImages.kMacOsBg,
+                            fit: BoxFit.cover,
+                            height: 250,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+        );
+      },
+    );
+  }
+}
+
+class ContainerButton extends StatelessWidget {
+  final String title;
+  final Function()? onTap;
+  final EdgeInsetsGeometry? margin;
+
+  const ContainerButton({
+    super.key,
+    required this.title,
+    this.onTap,
+    this.margin,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        margin: margin ?? EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+        child: CustomText(
+          title,
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          fontColor: Colors.blue,
         ),
       ),
     );

@@ -1,0 +1,20 @@
+{
+  "ai_chatbot": {
+    "createdDate": "2023-09-12",
+    "description": "This chatbot uses NLP to process human language and generate responses.",
+    "demoImages": [
+      "assets/images/chatbot_1.png",
+      "assets/images/chatbot_2.png"
+    ],
+    "developers": ["Shinas Koya", "John Doe"]
+  },
+  "ecommerce_app": {
+    "createdDate": "2023-08-20",
+    "description": "A fully functional e-commerce mobile application with payment integration.",
+    "demoImages": [
+      "assets/images/ecommerce_1.png",
+      "assets/images/ecommerce_2.png"
+    ],
+    "developers": ["Shinas Koya", "Jane Doe"]
+  }
+}

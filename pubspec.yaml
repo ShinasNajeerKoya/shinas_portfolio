@@ -27,6 +27,8 @@ dependencies:
   animated_text_kit: ^4.2.3
   easy_localization: ^3.0.7
   google_fonts: ^6.1.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 
 
@@ -37,6 +39,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^4.0.0
+  hive_generator: ^2.0.0
+  build_runner: ^2.1.7
 
 flutter:
 
@@ -50,4 +54,5 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/languages/
+    - assets/projects_data/
     - assets/resume/Flutter_Developer_Shinas_Koya.pdf

@@ -23,7 +23,7 @@ class ProjectTitleWidget extends StatelessWidget {
             fontSize: 30,
           ),
           const CustomDivider(horizontalPaddingValue: 0),
-          const SizedBox(height: 10)
+          const   SizedBox(height: 10)
         ],
       ),
     );
