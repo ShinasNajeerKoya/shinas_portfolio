@@ -1,0 +1,104 @@
+{
+  "featuredProjects": [
+    {
+      "key": "ai_chatbot",
+      "englishTitle": "AI Chatbot",
+      "kannadaTitle": "AI Chatbot - kannada",
+      "category": "Machine Learning",
+      "subTitle": "An intelligent chatbot using NLP",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "ecommerce_app",
+      "englishTitle": "E-commerce App",
+      "kannadaTitle": "E-commerce App - kannada",
+      "category": "Mobile Development",
+      "subTitle": "A complete shopping experience",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    }
+  ],
+  "normalProjects": [
+    {
+      "key": "savory_safari",
+      "englishTitle": "Savory Safari",
+      "kannadaTitle": "Savory Safari - kannadaTitle",
+      "category": "Culinary",
+      "icon": "assets/project_images/project_icons/savory_safari_app_logo.svg",
+      "thumbnailImage": "assets/project_images/thumbnails/savory_safari_thumbnail.jpg"
+    },
+    {
+      "key": "pepper_train",
+      "englishTitle": "Pepper Train",
+      "kannadaTitle": "Pepper Train - kannada ",
+      "category": "E - commerce",
+      "icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
+      "thumbnailImage": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg"
+    },
+    {
+      "key": "paarsel_logistics",
+      "englishTitle": "Paarsel Logistics",
+      "kannadaTitle": "Paarsel Logistics - kannada",
+      "category": "Courier Application",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "flamingo",
+      "englishTitle": "Flamingo",
+      "kannadaTitle": "Flamingo - new",
+      "category": "Document reader Application",
+      "icon": "assets/project_images/project_icons/flamingo_app_logo.svg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "e_tender",
+      "englishTitle": "E Tender",
+      "kannadaTitle": "E Tender - new",
+      "category": "Contracts management",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "cric_8",
+      "englishTitle": "Cric8",
+      "kannadaTitle": "Cric8 - new",
+      "category": "Scorecard Application",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "pixa_vista",
+      "englishTitle": "Pixa Vista",
+      "kannadaTitle": "Pixa Vista - new",
+      "category": "Wallpaper Application",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "connct_app",
+      "englishTitle": "Connct App",
+      "kannadaTitle": "Connct App - new",
+      "category": "Digital Business Card Application",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "note_trove",
+      "englishTitle": "Note Trove",
+      "kannadaTitle": "Note Trove - new",
+      "category": "Digital Business Card Application",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    },
+    {
+      "key": "clear_sky",
+      "englishTitle": "Clear Sky",
+      "kannadaTitle": "Clear Sky - kannadaTitle",
+      "category": "Weather forecasting",
+      "icon": "assets/images/mac_os_bg.jpg",
+      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+    }
+  ]
+}
