@@ -36,7 +36,6 @@
       "icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
       "thumbnailImage": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg"
     },
-
     {
       "key": "pixa_vista",
       "englishTitle": "Pixa Vista",
@@ -74,8 +73,8 @@
       "englishTitle": "Clear Sky",
       "kannadaTitle": "Clear Sky - kannadaTitle",
       "category": "Weather forecasting",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+      "icon": "assets/project_images/project_icons/clear_sky_app_logo.svg",
+      "thumbnailImage": "assets/project_images/thumbnails/clear_sky_mockup.jpg"
     }
   ]
 }
