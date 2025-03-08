@@ -19,6 +19,7 @@ class CustomDialogBox extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
+        // return true;
         return true;
       },
       child: Dialog(

@@ -6,10 +6,10 @@ import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
-import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_details_row.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_text_button.dart';
 
 class AboutMeDialogBox extends StatelessWidget {
   // final String title;
@@ -27,7 +27,8 @@ class AboutMeDialogBox extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
-        return false;
+        // return false;
+        return true;
       },
       child: Dialog(
         backgroundColor: Theme.of(context).colorScheme.tertiary,

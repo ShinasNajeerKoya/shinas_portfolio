@@ -25,7 +25,9 @@ class MacProjectsDialogBox extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
-        return false;
+        // return false;
+        return true;
+
       },
       child: Dialog(
         backgroundColor: Theme.of(context).colorScheme.tertiary,
