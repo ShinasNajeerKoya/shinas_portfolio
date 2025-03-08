@@ -3,6 +3,8 @@ import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shinas_koya_portfolio/config/utils/misc_util.dart';
+import 'package:shinas_koya_portfolio/data/model/project_metadata/project_metadata.dart';
+import 'package:shinas_koya_portfolio/domain/repository/project_metadata_repository/project_metadata_repository.dart';
 
 enum MainLayoutEnum {
   projects,
@@ -46,6 +48,9 @@ enum WindowsMenuItemsEnum {
 class WebHomeBloc {
   // final LocationRepository locationRepository;
   // final NotificationRepository notificationRepository;
+
+  final ProjectMetadataRepository projectMetadataRepository;
+
   //
   // final splashSubject = BehaviorSubject<String>();
   // final permissionDeniedSubject = BehaviorSubject<bool>.seeded(false);
@@ -69,13 +74,73 @@ class WebHomeBloc {
   /// windows menu items
   final isMenuContExpanded = BehaviorSubject<bool>.seeded(false);
 
-  WebHomeBloc() {
+  /// project metadata section
+  // final BehaviorSubject<List<ProjectMetadataModel>> projectsMetadata =
+  //     BehaviorSubject<List<ProjectMetadataModel>>();
+
+  final featuredProjects = BehaviorSubject<List<ProjectMetadataModel>>();
+  final normalProjects = BehaviorSubject<List<ProjectMetadataModel>>();
+
+  WebHomeBloc({required this.projectMetadataRepository}) {
     // initDetails();
+
+    // fetchProjectMetadata();
+    fetchProjectsMetadataFromJson();
   }
 
   void togglePlatform() {
     isMacPlatform.add(!isMacPlatform.value);
   }
+
+  /// logic to fetch the projects listing data
+  /// Fetch projects from JSON file
+
+  Future<void> fetchProjectsMetadataFromJson() async {
+    // try {
+    //
+    //   // Load the JSON file from assets
+    //   final String response = await rootBundle.loadString(ProjectData.kProjectMetaData);
+    //
+    //   // Decode the JSON data
+    //   final Map<String, dynamic> data = json.decode(response);
+    //
+    //   // Extract featured projects
+    //   List<ProjectMetadataModel> featuredProjects = (data['featuredProjects'] as List?)
+    //       ?.map((project) => ProjectMetadataModel.fromJson(project, isFeatured: true))
+    //       .toList() ??
+    //       [];
+    //
+    //   // Extract normal projects
+    //   List<ProjectMetadataModel> normalProjects = (data['normalProjects'] as List?)
+    //       ?.map((project) => ProjectMetadataModel.fromJson(project))
+    //       .toList() ??
+    //       [];
+    //
+    //   // Combine and add to the stream
+    //   List<ProjectMetadataModel> allProjects = [...featuredProjects, ...normalProjects];
+    //   projectsMetadata.add(allProjects);
+    //
+    //   return allProjects;
+    // } catch (e) {
+    //   debugPrint("Error loading projects: $e");
+    //   projectsMetadata.addError("Failed to load projects");
+    //
+    //   return [];
+    // }
+
+    try {
+      final featured = await projectMetadataRepository.fetchFeaturedProjects();
+      featuredProjects.add(featured);
+
+      final normal = await projectMetadataRepository.fetchNormalProjects();
+      normalProjects.add(normal);
+    } catch (e) {
+      featuredProjects.addError("Failed to load featured projects");
+      normalProjects.addError("Failed to load normal projects");
+    }
+  }
+
+  ///
 
   Future<void> showCustomDialog({
     required BuildContext context,
@@ -125,3 +190,20 @@ class WebHomeBloc {
     // permissionDeniedSubject.close();
   }
 }
+
+// void fetchProjectMetadata() async {
+//   List<ProjectMetadata> projects = [];
+//
+//
+//   if (kIsWeb) {
+//     // Fetch from JSON file directly in Web
+//     projects = await ProjectService().fetchProjectsFromJson();
+//   } else {
+//     // Fetch from Hive in Mobile/Desktop
+//     final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
+//     // return box.values.toList();
+//     projects = box.values.toList();
+//   }
+//
+//   projectsMetadata.add(projects);
+// }

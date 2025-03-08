@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
-import 'package:shinas_koya_portfolio/config/constants/hive_constants/hive_constant_keys.dart';
 import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
-import 'package:shinas_koya_portfolio/data/dao/project_metadata/project_metadata.dart';
+import 'package:shinas_koya_portfolio/data/model/project_metadata/project_metadata.dart';
 import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
@@ -76,7 +74,9 @@ class MacProjectsDialogBox extends StatelessWidget {
                       ProjectTitleWidget(
                         title: LocaleKeys.myProjects.toLocalizeString,
                       ),
-                      ProjectsGridViewWidget(),
+                      ProjectsGridViewWidget(
+                        bloc: bloc,
+                      ),
                     ],
                   ),
                 ),
@@ -88,47 +88,62 @@ class MacProjectsDialogBox extends StatelessWidget {
     );
   }
 }
-
+//
 // class ProjectsGridViewWidget extends StatelessWidget {
-//   const ProjectsGridViewWidget({super.key});
+//   final WebHomeBloc? bloc;
+//
+//   const ProjectsGridViewWidget({
+//     super.key,
+//     this.bloc,
+//   });
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     return LayoutBuilder(
-//       builder: (context, constraints) {
-//         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
-//         double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
-//
-//         // Fetch data from Hive
-//         final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
-//         final List<ProjectMetadata> projects = box.values.toList();
-//
-//         if (projects.isEmpty) {
-//           return Center(
-//               child: CustomText(
-//             "No projects available",
-//             fontColor: Colors.white,
-//           ));
+//     return FutureBuilder<List<ProjectMetadataModel>>(
+//       future: bloc?.fetchProjectsMetadataFromJson(),
+//       builder: (context, snapshot) {
+//         if (snapshot.connectionState == ConnectionState.waiting) {
+//           return const Center(child: CircularProgressIndicator());
 //         }
 //
-//         return GridView.builder(
-//           physics: const NeverScrollableScrollPhysics(),
-//           shrinkWrap: true,
-//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//             crossAxisCount: crossAxisCount,
-//             crossAxisSpacing: 15,
-//             mainAxisSpacing: 80,
-//             childAspectRatio: aspectRatio,
-//           ),
-//           itemCount: projects.length,
-//           itemBuilder: (context, index) {
-//             final project = projects[index];
+//         if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+//           return Center(
+//             child: CustomText(
+//               "No projects available",
+//               fontColor: Colors.white,
+//             ),
+//           );
+//         }
 //
-//             return ProjectItemWidget(
-//               color: index.isEven ? Colors.blue : Colors.green,
-//               title: project.kannadaTitle,
-//               category: project.category,
-//               imageUrl: project.thumbnailImage,
+//         final List<ProjectMetadataModel> normalProjects =
+//             snapshot.data!.where((project) => !project.isFeatured).toList();
+//
+//         return LayoutBuilder(
+//           builder: (context, constraints) {
+//             int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+//             double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+//
+//             return GridView.builder(
+//               physics: const NeverScrollableScrollPhysics(),
+//               shrinkWrap: true,
+//               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: crossAxisCount,
+//                 crossAxisSpacing: 15,
+//                 mainAxisSpacing: 80,
+//                 childAspectRatio: aspectRatio,
+//               ),
+//               itemCount: normalProjects.length,
+//               itemBuilder: (context, index) {
+//                 final project = normalProjects[index];
+//
+//                 return ProjectItemWidget(
+//                   color: index.isEven ? Colors.blue : Colors.green,
+//                   title: project.kannadaTitle,
+//                   category: project.category,
+//                   imageUrl: project.thumbnailImage,
+//                   appIcon: project.icon,
+//                 );
+//               },
 //             );
 //           },
 //         );
@@ -138,23 +153,23 @@ class MacProjectsDialogBox extends StatelessWidget {
 // }
 
 class ProjectsGridViewWidget extends StatelessWidget {
-  const ProjectsGridViewWidget({super.key});
+  final WebHomeBloc? bloc;
+
+  const ProjectsGridViewWidget({
+    super.key,
+    required this.bloc,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
-        double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+    return StreamBuilder<List<ProjectMetadataModel>>(
+      stream: bloc?.normalProjects,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-        // Fetch data from Hive
-        final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
-
-        // Filter only normal projects (isFeatured == false)
-        final List<ProjectMetadata> normalProjects =
-            box.values.where((project) => !project.isFeatured).toList();
-
-        if (normalProjects.isEmpty) {
+        if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
           return Center(
             child: CustomText(
               "No projects available",
@@ -163,25 +178,34 @@ class ProjectsGridViewWidget extends StatelessWidget {
           );
         }
 
-        return GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: crossAxisCount,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 80,
-            childAspectRatio: aspectRatio,
-          ),
-          itemCount: normalProjects.length,
-          itemBuilder: (context, index) {
-            final project = normalProjects[index];
+        final normalProjects = snapshot.data ?? [];
 
-            return ProjectItemWidget(
-              color: index.isEven ? Colors.blue : Colors.green,
-              title: project.kannadaTitle,
-              category: project.category,
-              imageUrl: project.thumbnailImage,
-              appIcon: project.icon,
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+            double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+
+            return GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 80,
+                childAspectRatio: aspectRatio,
+              ),
+              itemCount: normalProjects.length,
+              itemBuilder: (context, index) {
+                final project = normalProjects[index];
+
+                return ProjectItemWidget(
+                  color: index.isEven ? Colors.blue : Colors.green,
+                  title: project.englishTitle,
+                  category: project.category,
+                  imageUrl: project.thumbnailImage,
+                  appIcon: project.icon,
+                );
+              },
             );
           },
         );
@@ -224,7 +248,6 @@ class ProjectItemWidget extends StatelessWidget {
               SizedBox(
                 height: 60,
                 width: 60,
-
                 child: CustomSvgIcon(appIcon),
               ),
               const SizedBox(width: 10),
@@ -268,87 +291,6 @@ class ProjectItemWidget extends StatelessWidget {
     );
   }
 }
-//
-// class FeaturedProjectWidget extends StatelessWidget {
-//   const FeaturedProjectWidget({
-//     super.key,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 250,
-//       // color: Colors.yellow.withOpacity(0.2),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           // Left child - Column
-//           Expanded(
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.start,
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 const SizedBox(height: 20),
-//                 const CustomText(
-//                   "Project Title Here",
-//                   fontSize: 26,
-//                   fontWeight: FontWeight.bold,
-//                   fontColor: Colors.white,
-//                 ),
-//                 const SizedBox(height: 4),
-//                 CustomText(
-//                   "Category",
-//                   fontSize: 14,
-//                   fontWeight: FontWeight.normal,
-//                   fontColor: Colors.white.withOpacity(0.6),
-//                 ),
-//                 const SizedBox(height: 16),
-//                 const CustomText(
-//                   "Brief Info on app",
-//                   fontSize: 16,
-//                   fontWeight: FontWeight.normal,
-//                   fontColor: Colors.white,
-//                 ),
-//                 const SizedBox(height: 30),
-//                 ContainerButton(
-//                   title: LocaleKeys.seeMore.toLocalizeString,
-//                   onTap: () {},
-//                 )
-//               ],
-//             ),
-//           ),
-//
-//           // Right child - Image with fade effect
-//           SizedBox(
-//             width: 500,
-//             child: ClipRRect(
-//               borderRadius: BorderRadius.circular(10.r),
-//               child: ShaderMask(
-//                 shaderCallback: (Rect bounds) {
-//                   return const LinearGradient(
-//                     begin: Alignment.centerRight,
-//                     end: Alignment.centerLeft,
-//                     colors: [
-//                       Colors.white,
-//                       Colors.transparent,
-//                     ],
-//                     stops: [0.0, 0.7],
-//                   ).createShader(bounds);
-//                 },
-//                 blendMode: BlendMode.dstIn, // Applies the fade effect
-//                 child: Image.asset(
-//                   AppImages.kMacOsBg,
-//                   fit: BoxFit.cover,
-//                   height: 250,
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class FeaturedProjectWidget extends StatelessWidget {
   const FeaturedProjectWidget({super.key});
@@ -534,3 +476,307 @@ class ContainerButton extends StatelessWidget {
     );
   }
 }
+
+///
+
+// class ProjectsGridViewWidget extends StatelessWidget {
+//   const ProjectsGridViewWidget({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return LayoutBuilder(
+//       builder: (context, constraints) {
+//         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+//         double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+//
+//         // Fetch data from Hive
+//         final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
+//         final List<ProjectMetadata> projects = box.values.toList();
+//
+//         if (projects.isEmpty) {
+//           return Center(
+//               child: CustomText(
+//             "No projects available",
+//             fontColor: Colors.white,
+//           ));
+//         }
+//
+//         return GridView.builder(
+//           physics: const NeverScrollableScrollPhysics(),
+//           shrinkWrap: true,
+//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//             crossAxisCount: crossAxisCount,
+//             crossAxisSpacing: 15,
+//             mainAxisSpacing: 80,
+//             childAspectRatio: aspectRatio,
+//           ),
+//           itemCount: projects.length,
+//           itemBuilder: (context, index) {
+//             final project = projects[index];
+//
+//             return ProjectItemWidget(
+//               color: index.isEven ? Colors.blue : Colors.green,
+//               title: project.kannadaTitle,
+//               category: project.category,
+//               imageUrl: project.thumbnailImage,
+//             );
+//           },
+//         );
+//       },
+//     );
+//   }
+// }
+
+///
+
+// class ProjectsGridViewWidget extends StatelessWidget {
+//   final WebHomeBloc? bloc;
+//
+//   const ProjectsGridViewWidget({
+//     super.key,
+//     this.bloc,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     // Future<List<ProjectMetadataModel>> fetchProjects() async {
+//     //   return bloc?.fetchProjectsMetadataFromJson() ?? [];
+//     // }
+//
+//     // return StreamBuilder<List<ProjectMetadataModel>>(
+//     //   stream: bloc?.projectsMetadata,
+//     //   builder: (context, snapshot) {
+//     //     // final projectData = snapshot.data ?? [];
+//     //     // log('projectData in widget : ${projectData.first.kannadaTitle}');
+//     //
+//     //     // if (snapshot.connectionState == ConnectionState.waiting) {
+//     //     //   return const Center(child: CircularProgressIndicator());
+//     //     // }
+//     //
+//     //     // if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+//     //     //   return Center(
+//     //     //     child: CustomText(
+//     //     //       "No projects available",
+//     //     //       fontColor: Colors.white,
+//     //     //     ),
+//     //     //   );
+//     //     // }
+//     //
+//     //     final List<ProjectMetadataModel>? normalProjects =
+//     //         snapshot.data!.where((project) => !project.isFeatured).toList();
+//     //     final List<ProjectMetadataModel> normalProjectsvalue = normalProjects ?? [];
+//     //
+//     //     return LayoutBuilder(
+//     //       builder: (context, constraints) {
+//     //         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+//     //         double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+//     //
+//     //         return GridView.builder(
+//     //           physics: const NeverScrollableScrollPhysics(),
+//     //           shrinkWrap: true,
+//     //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//     //             crossAxisCount: crossAxisCount,
+//     //             crossAxisSpacing: 15,
+//     //             mainAxisSpacing: 80,
+//     //             childAspectRatio: aspectRatio,
+//     //           ),
+//     //           itemCount: normalProjectsvalue.length,
+//     //           itemBuilder: (context, index) {
+//     //             final project = normalProjectsvalue[index];
+//     //
+//     //             return ProjectItemWidget(
+//     //               color: index.isEven ? Colors.blue : Colors.green,
+//     //               title: project.kannadaTitle,
+//     //               category: project.category,
+//     //               imageUrl: project.thumbnailImage,
+//     //               appIcon: project.icon,
+//     //             );
+//     //           },
+//     //         );
+//     //       },
+//     //     );
+//     //   },
+//     // );
+//     FutureBuilder<List<ProjectMetadataModel>>(
+//       future: fetchProjects(),
+//       builder: (context, snapshot) {
+//         if (snapshot.connectionState == ConnectionState.waiting) {
+//           return const Center(child: CircularProgressIndicator());
+//         }
+//
+//         if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+//           return Center(
+//             child: CustomText(
+//               "No projects available",
+//               fontColor: Colors.white,
+//             ),
+//           );
+//         }
+//
+//         final List<ProjectMetadataModel> normalProjects =
+//         snapshot.data!.where((project) => !project.isFeatured).toList();
+//
+//         return LayoutBuilder(
+//           builder: (context, constraints) {
+//             int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+//             double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+//
+//             return GridView.builder(
+//               physics: const NeverScrollableScrollPhysics(),
+//               shrinkWrap: true,
+//               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: crossAxisCount,
+//                 crossAxisSpacing: 15,
+//                 mainAxisSpacing: 80,
+//                 childAspectRatio: aspectRatio,
+//               ),
+//               itemCount: normalProjects.length,
+//               itemBuilder: (context, index) {
+//                 final project = normalProjects[index];
+//
+//                 return ProjectItemWidget(
+//                   color: index.isEven ? Colors.blue : Colors.green,
+//                   title: project.kannadaTitle,
+//                   category: project.category,
+//                   imageUrl: project.thumbnailImage,
+//                   appIcon: project.icon,
+//                 );
+//               },
+//             );
+//           },
+//         );
+//       },
+//     );
+//   }
+//
+// // @override
+// // Widget build(BuildContext context) {
+// //   return LayoutBuilder(
+// //     builder: (context, constraints) {
+// //       int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
+// //       double aspectRatio = crossAxisCount == 2 ? 1.5 : 1.8;
+// //
+// //       // Fetch data from Hive
+// //       final Box<ProjectMetadata> box = Hive.box<ProjectMetadata>(HiveConstantKeys.projectsBox);
+// //
+// //       // Filter only normal projects (isFeatured == false)
+// //       final List<ProjectMetadata> normalProjects =
+// //           box.values.where((project) => !project.isFeatured).toList();
+// //
+// //       if (normalProjects.isEmpty) {
+// //         return Center(
+// //           child: CustomText(
+// //             "No projects available",
+// //             fontColor: Colors.white,
+// //           ),
+// //         );
+// //       }
+// //
+// //       return GridView.builder(
+// //         physics: const NeverScrollableScrollPhysics(),
+// //         shrinkWrap: true,
+// //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+// //           crossAxisCount: crossAxisCount,
+// //           crossAxisSpacing: 15,
+// //           mainAxisSpacing: 80,
+// //           childAspectRatio: aspectRatio,
+// //         ),
+// //         itemCount: normalProjects.length,
+// //         itemBuilder: (context, index) {
+// //           final project = normalProjects[index];
+// //
+// //           return ProjectItemWidget(
+// //             color: index.isEven ? Colors.blue : Colors.green,
+// //             title: project.kannadaTitle,
+// //             category: project.category,
+// //             imageUrl: project.thumbnailImage,
+// //             appIcon: project.icon,
+// //           );
+// //         },
+// //       );
+// //     },
+// //   );
+// // }
+// }
+
+//
+// class FeaturedProjectWidget extends StatelessWidget {
+//   const FeaturedProjectWidget({
+//     super.key,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 250,
+//       // color: Colors.yellow.withOpacity(0.2),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           // Left child - Column
+//           Expanded(
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 const SizedBox(height: 20),
+//                 const CustomText(
+//                   "Project Title Here",
+//                   fontSize: 26,
+//                   fontWeight: FontWeight.bold,
+//                   fontColor: Colors.white,
+//                 ),
+//                 const SizedBox(height: 4),
+//                 CustomText(
+//                   "Category",
+//                   fontSize: 14,
+//                   fontWeight: FontWeight.normal,
+//                   fontColor: Colors.white.withOpacity(0.6),
+//                 ),
+//                 const SizedBox(height: 16),
+//                 const CustomText(
+//                   "Brief Info on app",
+//                   fontSize: 16,
+//                   fontWeight: FontWeight.normal,
+//                   fontColor: Colors.white,
+//                 ),
+//                 const SizedBox(height: 30),
+//                 ContainerButton(
+//                   title: LocaleKeys.seeMore.toLocalizeString,
+//                   onTap: () {},
+//                 )
+//               ],
+//             ),
+//           ),
+//
+//           // Right child - Image with fade effect
+//           SizedBox(
+//             width: 500,
+//             child: ClipRRect(
+//               borderRadius: BorderRadius.circular(10.r),
+//               child: ShaderMask(
+//                 shaderCallback: (Rect bounds) {
+//                   return const LinearGradient(
+//                     begin: Alignment.centerRight,
+//                     end: Alignment.centerLeft,
+//                     colors: [
+//                       Colors.white,
+//                       Colors.transparent,
+//                     ],
+//                     stops: [0.0, 0.7],
+//                   ).createShader(bounds);
+//                 },
+//                 blendMode: BlendMode.dstIn, // Applies the fade effect
+//                 child: Image.asset(
+//                   AppImages.kMacOsBg,
+//                   fit: BoxFit.cover,
+//                   height: 250,
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
