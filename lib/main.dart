@@ -5,10 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/home_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+//
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  // registerPlugins();
   // await Hive.initFlutter();
 
   // await registerHiveAdapters();
