@@ -55,4 +55,6 @@ flutter:
     - assets/images/
     - assets/languages/
     - assets/projects_data/
+    - assets/project_images/thumbnails/
+    - assets/project_images/project_icons/
     - assets/resume/Flutter_Developer_Shinas_Koya.pdf

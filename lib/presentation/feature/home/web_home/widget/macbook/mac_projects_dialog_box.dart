@@ -10,6 +10,7 @@ import 'package:shinas_koya_portfolio/data/dao/project_metadata/project_metadata
 import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/project_title_widget.dart';
 
@@ -180,6 +181,7 @@ class ProjectsGridViewWidget extends StatelessWidget {
               title: project.kannadaTitle,
               category: project.category,
               imageUrl: project.thumbnailImage,
+              appIcon: project.icon,
             );
           },
         );
@@ -193,12 +195,14 @@ class ProjectItemWidget extends StatelessWidget {
   final String title;
   final String category;
   final String imageUrl;
+  final String appIcon;
 
   const ProjectItemWidget({
     required this.color,
     required this.title,
     required this.category,
     required this.imageUrl,
+    required this.appIcon,
     super.key,
   });
 
@@ -217,15 +221,11 @@ class ProjectItemWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
+              SizedBox(
                 height: 60,
                 width: 60,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: const DecorationImage(
-                      image: AssetImage(AppImages.kMacOsBg),
-                      fit: BoxFit.cover,
-                    )),
+
+                child: CustomSvgIcon(appIcon),
               ),
               const SizedBox(width: 10),
               Column(
