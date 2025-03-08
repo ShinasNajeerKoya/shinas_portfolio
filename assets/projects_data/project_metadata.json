@@ -26,7 +26,7 @@
       "kannadaTitle": "Savory Safari - kannadaTitle",
       "category": "Culinary",
       "icon": "assets/project_images/project_icons/savory_safari_app_logo.svg",
-      "thumbnailImage": "assets/project_images/thumbnails/savory_safari_thumbnail.jpg"
+      "thumbnailImage": "assets/project_images/thumbnails/savory_safari_mockup.jpg"
     },
     {
       "key": "pepper_train",
@@ -36,13 +36,14 @@
       "icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
       "thumbnailImage": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg"
     },
+
     {
-      "key": "paarsel_logistics",
-      "englishTitle": "Paarsel Logistics",
-      "kannadaTitle": "Paarsel Logistics - kannada",
-      "category": "Courier Application",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+      "key": "pixa_vista",
+      "englishTitle": "Pixa Vista",
+      "kannadaTitle": "Pixa Vista - new",
+      "category": "Wallpaper Application",
+      "icon": "assets/project_images/project_icons/pixa_vista_app_logo.svg",
+      "thumbnailImage": "assets/project_images/thumbnails/pixa_vista_mockup.jpg"
     },
     {
       "key": "flamingo",
@@ -53,34 +54,10 @@
       "thumbnailImage": "assets/images/mac_os_bg.jpg"
     },
     {
-      "key": "e_tender",
-      "englishTitle": "E Tender",
-      "kannadaTitle": "E Tender - new",
-      "category": "Contracts management",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
-    },
-    {
       "key": "cric_8",
       "englishTitle": "Cric8",
       "kannadaTitle": "Cric8 - new",
       "category": "Scorecard Application",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
-    },
-    {
-      "key": "pixa_vista",
-      "englishTitle": "Pixa Vista",
-      "kannadaTitle": "Pixa Vista - new",
-      "category": "Wallpaper Application",
-      "icon": "assets/project_images/project_icons/pixa_vista_app_logo.svg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
-    },
-    {
-      "key": "connct_app",
-      "englishTitle": "Connct App",
-      "kannadaTitle": "Connct App - new",
-      "category": "Digital Business Card Application",
       "icon": "assets/images/mac_os_bg.jpg",
       "thumbnailImage": "assets/images/mac_os_bg.jpg"
     },

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shinas_koya_portfolio/config/helper/desktop_layout_helper.dart';
@@ -405,7 +403,6 @@ class MacHomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-
           /// ** app bar section **
           MacAppBar(
             bloc: bloc,
@@ -451,7 +448,7 @@ class MacHomeScreen extends StatelessWidget {
                           builder: (context, platformSnapshot) {
                             bool isMacOS = platformSnapshot.data ?? true;
 
-                            log('isMacOS texting value : ${platformSnapshot.data}');
+                            // log('isMacOS texting value : ${platformSnapshot.data}');
                             return Text(
                               DesktopLayoutHelper.getMainLayoutTitle(layout, isMacOS),
                               style: const TextStyle(color: Colors.white),
@@ -520,8 +517,8 @@ class MacBottomBar extends StatelessWidget {
                     child: bottomOption == MacBottomBarEnum.meet
                         ? const MacMeetingCalendarWidget() // Custom widget for 'meet' option
                         : CustomSvgIcon(
-                      MacBottomBarHelper.getBottomOptionIcon(bottomOption),
-                    ),
+                            MacBottomBarHelper.getBottomOptionIcon(bottomOption),
+                          ),
                   ),
                 ),
               ),
