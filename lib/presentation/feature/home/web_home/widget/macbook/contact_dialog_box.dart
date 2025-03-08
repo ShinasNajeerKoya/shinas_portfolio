@@ -27,6 +27,8 @@ class ContactDialogBox extends StatelessWidget {
       onWillPop: () async {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
         // return false;
+        bloc!.appBarTitleValue.add('Finder');
+
         return true;
 
       },

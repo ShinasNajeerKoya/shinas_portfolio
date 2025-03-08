@@ -20,6 +20,8 @@ class CustomDialogBox extends StatelessWidget {
       onWillPop: () async {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
         // return true;
+        // bloc!.appBarTitleValue.add('Finder');
+
         return true;
       },
       child: Dialog(
