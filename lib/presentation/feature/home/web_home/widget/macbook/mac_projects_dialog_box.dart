@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
@@ -8,6 +9,7 @@ import 'package:shinas_koya_portfolio/data/model/project_metadata/project_metada
 import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_dialog_app_bar.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/project_title_widget.dart';
@@ -27,9 +29,7 @@ class MacProjectsDialogBox extends StatelessWidget {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
         // return false;
         bloc!.appBarTitleValue.add('Finder');
-
         return true;
-
       },
       child: Dialog(
         backgroundColor: Theme.of(context).colorScheme.tertiary,
@@ -67,26 +67,273 @@ class MacProjectsDialogBox extends StatelessWidget {
               ),
               verticalMargin6,
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: ListView(
-                    children: [
-                      ProjectTitleWidget(
-                        title: LocaleKeys.featured.toLocalizeString,
-                      ),
-                      const FeaturedProjectWidget(),
-                      ProjectTitleWidget(
-                        title: LocaleKeys.myProjects.toLocalizeString,
-                      ),
-                      ProjectsGridViewWidget(
-                        bloc: bloc,
-                      ),
-                    ],
-                  ),
-                ),
+                child: StreamBuilder<ProjectMetadataModel?>(
+                    stream: bloc!.selectedProject,
+                    builder: (context, snapshot) {
+                      final selectedProject = snapshot.data;
+
+                      /// for metadata details
+                      if (selectedProject == null) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: ListView(
+                            children: [
+                              ProjectTitleWidget(
+                                title: LocaleKeys.featured.toLocalizeString,
+                              ),
+                              const FeaturedProjectWidget(),
+                              ProjectTitleWidget(
+                                title: LocaleKeys.myProjects.toLocalizeString,
+                              ),
+                              ProjectsGridViewWidget(
+                                bloc: bloc,
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+
+                      /// triggers when any project is selected
+                      return Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        // color: Colors.blueGrey,
+                        child: ListView(
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    bloc!.selectedProject.add(null);
+                                  },
+                                  icon: const Icon(CupertinoIcons.left_chevron),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  height: 100,
+                                  width: 100,
+                                  child: CustomSvgIcon(selectedProject.icon),
+                                ),
+                                const SizedBox(width: 15),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                      selectedProject.englishTitle,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    CustomText(
+                                      selectedProject.category,
+                                      fontSize: 12,
+                                      fontColor: Colors.grey.shade500,
+                                      // fontWeight: FontWeight.bold,
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 50,
+                                          height: 20,
+                                          color: Colors.yellow,
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Container(
+                                          width: 50,
+                                          height: 20,
+                                          color: Colors.blue,
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            // SizedBox(height: 25),
+                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
+
+                            /// short data column widget
+                            Container(
+                              height: 100,
+                              color: Colors.purple,
+                            ),
+                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                            CustomText(
+                              LocaleKeys.aboutThisProject.toLocalizeString,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 4),
+
+                            CustomText(
+                              'duration from json file',
+                              fontSize: 10,
+                              fontColor: Colors.grey,
+                              // fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 25),
+                            CustomText(
+                              'short detail about project -- from json',
+                              fontSize: 12,
+                              // fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 10),
+
+                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                            CustomText(
+                              LocaleKeys.preview.toLocalizeString,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 30),
+
+                            Container(
+                              height: 300,
+                              color: Colors.brown,
+                            ),
+                            const SizedBox(height: 20),
+
+                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                            CustomText(
+                              'jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs ',
+                              fontSize: 13,
+                              maxLines: 4,
+                              // fontWeight: FontWeight.bold,
+                            ),
+                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                            const SizedBox(height: 10),
+
+                            CustomText(
+                              LocaleKeys.information.toLocalizeString,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                InformationColumnWidget(
+                                  title: LocaleKeys.role.toLocalizeString,
+                                  subTitle: 'Senior Flutter Engineer',
+                                ),
+                                InformationColumnWidget(
+                                  title: LocaleKeys.client.toLocalizeString,
+                                  subTitle: 'EMpty partner',
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                InformationColumnWidget(
+                                  title: LocaleKeys.teamSize.toLocalizeString,
+                                  subTitle: '3',
+                                ),
+                                InformationColumnWidget(
+                                  title: LocaleKeys.duration.toLocalizeString,
+                                  subTitle: '8 months',
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                InformationColumnWidget(
+                                  title: LocaleKeys.language.toLocalizeString,
+                                  subTitle: 'English',
+                                ),
+                                InformationColumnWidget(
+                                  title: LocaleKeys.country.toLocalizeString,
+                                  subTitle: 'India',
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+
+                            /*
+                            CustomIconButton(
+                                onTap: () {
+                                  bloc!.selectedProject.add(null);
+                                },
+                                icon: AppIcons.kCalendarWindowsIcon),
+                            CustomText(
+                              selectedProject.englishTitle,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 10),
+                            CustomText(
+                              "Key: ${selectedProject.key}",
+                              fontSize: 16,
+                              fontColor: Colors.white70,
+                            ),
+                         */
+                          ],
+                        ),
+                      );
+                      // return Padding(
+                      //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                      //   child: ListView(
+                      //     children: [
+                      //       ProjectTitleWidget(
+                      //         title: LocaleKeys.featured.toLocalizeString,
+                      //       ),
+                      //       const FeaturedProjectWidget(),
+                      //       ProjectTitleWidget(
+                      //         title: LocaleKeys.myProjects.toLocalizeString,
+                      //       ),
+                      //       ProjectsGridViewWidget(
+                      //         bloc: bloc,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // );
+                    }),
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class InformationColumnWidget extends StatelessWidget {
+  final String title;
+  final String subTitle;
+
+  const InformationColumnWidget({
+    super.key,
+    required this.title,
+    required this.subTitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        alignment: Alignment.centerLeft,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomText(
+              title,
+              fontSize: 13,
+              fontWeight: FontWeight.normal,
+              fontColor: Colors.white.withOpacity(0.6),
+            ),
+            CustomText(
+              subTitle,
+              fontSize: 13,
+              fontWeight: FontWeight.normal,
+              fontColor: Colors.white,
+            ),
+          ],
         ),
       ),
     );
@@ -203,11 +450,12 @@ class ProjectsGridViewWidget extends StatelessWidget {
                 final project = normalProjects[index];
 
                 return ProjectItemWidget(
-                  color: index.isEven ? Colors.blue : Colors.green,
                   title: project.englishTitle,
                   category: project.category,
                   imageUrl: project.thumbnailImage,
                   appIcon: project.icon,
+                  bloc: bloc,
+                  project: project,
                 );
               },
             );
@@ -219,78 +467,80 @@ class ProjectsGridViewWidget extends StatelessWidget {
 }
 
 class ProjectItemWidget extends StatelessWidget {
-  final Color color;
   final String title;
   final String category;
   final String imageUrl;
   final String appIcon;
+  final WebHomeBloc? bloc;
+  final ProjectMetadataModel project;
 
   const ProjectItemWidget({
-    required this.color,
     required this.title,
     required this.category,
     required this.imageUrl,
     required this.appIcon,
+    required this.bloc,
+    required this.project,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        // color: color,
-        // image: Dec,
-        // image: DecorationImage(image: AssetImage(AppImages.kWindowsOsBg)),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      // padding: const EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                height: 60,
-                width: 60,
-                child: CustomSvgIcon(appIcon),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    title,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  CustomText(
-                    category,
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    fontColor: Colors.white.withOpacity(0.7),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              ContainerButton(
-                title: LocaleKeys.see.toLocalizeString,
-                onTap: () {},
-                margin: const EdgeInsets.only(right: 5),
-              )
-            ],
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: AssetImage(imageUrl),
-                    fit: BoxFit.cover,
-                  )),
+    return InkWell(
+      onTap: () => bloc!.selectProject(project), // Select the project
+
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: CustomSvgIcon(appIcon),
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      title,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    CustomText(
+                      category,
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      fontColor: Colors.white.withOpacity(0.7),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                ContainerButton(
+                  title: LocaleKeys.see.toLocalizeString,
+                  onTap: () {},
+                  margin: const EdgeInsets.only(right: 5),
+                )
+              ],
             ),
-          )
-        ],
+            const SizedBox(height: 10),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage(imageUrl),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

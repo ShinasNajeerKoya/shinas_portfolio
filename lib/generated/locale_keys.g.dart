@@ -47,5 +47,20 @@ abstract class  LocaleKeys {
   static const myProjects = 'myProjects';
   static const see = 'see';
   static const seeMore = 'seeMore';
+  static const company = 'company';
+  static const country = 'country';
+  static const language = 'language';
+  static const category = 'category';
+  static const platforms = 'platforms';
+  static const aboutThisProject = 'aboutThisProject';
+  static const preview = 'preview';
+  static const developer = 'developer';
+  static const information = 'information';
+  static const role = 'role';
+  static const client = 'client';
+  static const teamSize = 'teamSize';
+  static const duration = 'duration';
+  static const android = 'android';
+  static const ios = 'ios';
 
 }

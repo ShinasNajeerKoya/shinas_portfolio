@@ -81,6 +81,10 @@ class WebHomeBloc {
   final featuredProjects = BehaviorSubject<List<ProjectMetadataModel>>();
   final normalProjects = BehaviorSubject<List<ProjectMetadataModel>>();
 
+  /// for controlling metadata and details page in project section
+  final BehaviorSubject<ProjectMetadataModel?> selectedProject = BehaviorSubject.seeded(null);
+
+
   WebHomeBloc({required this.projectMetadataRepository}) {
     // initDetails();
 
@@ -90,6 +94,10 @@ class WebHomeBloc {
 
   void togglePlatform() {
     isMacPlatform.add(!isMacPlatform.value);
+  }
+
+  void selectProject(ProjectMetadataModel project) {
+    selectedProject.add(project);
   }
 
   /// logic to fetch the projects listing data
