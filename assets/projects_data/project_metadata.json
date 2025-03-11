@@ -7,7 +7,30 @@
       "category": "Machine Learning",
       "sub_title": "An intelligent chatbot using NLP",
       "app_icon": "assets/images/mac_os_bg.jpg",
-      "thumbnail_image": "assets/images/mac_os_bg.jpg"
+      "thumbnail_image": "assets/images/mac_os_bg.jpg",
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     }
   ],
   "normal_projects": [
@@ -17,7 +40,30 @@
       "kannada_title": "Savory Safari - kannada_title",
       "category": "Culinary",
       "app_icon": "assets/project_images/project_icons/savory_safari_app_logo.svg",
-      "thumbnail_image": "assets/project_images/thumbnails/savory_safari_mockup.jpg"
+      "thumbnail_image": "assets/project_images/thumbnails/savory_safari_mockup.jpg",
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     },
     {
       "key": "pepper_train",
@@ -25,7 +71,31 @@
       "kannada_title": "Pepper Train - kannada ",
       "category": "E - commerce",
       "app_icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
-      "thumbnail_image": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg"
+      "thumbnail_image": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg",
+
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     },
     {
       "key": "pixa_vista",
@@ -33,7 +103,31 @@
       "kannada_title": "Pixa Vista - new",
       "category": "Wallpaper Application",
       "app_icon": "assets/project_images/project_icons/pixa_vista_app_logo.svg",
-      "thumbnail_image": "assets/project_images/thumbnails/pixa_vista_mockup.jpg"
+      "thumbnail_image": "assets/project_images/thumbnails/pixa_vista_mockup.jpg",
+
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     },
     {
       "key": "flamingo",
@@ -41,7 +135,31 @@
       "kannada_title": "Flamingo - new",
       "category": "Document reader Application",
       "app_icon": "assets/project_images/project_icons/flamingo_app_logo.svg",
-      "thumbnail_image": "assets/images/mac_os_bg.jpg"
+      "thumbnail_image": "assets/images/mac_os_bg.jpg",
+
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     },
     {
       "key": "cric_8",
@@ -49,7 +167,31 @@
       "kannada_title": "Cric8 - new",
       "category": "Scorecard Application",
       "app_icon": "assets/images/mac_os_bg.jpg",
-      "thumbnail_image": "assets/images/mac_os_bg.jpg"
+      "thumbnail_image": "assets/images/mac_os_bg.jpg",
+
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     },
     {
       "key": "note_trove",
@@ -57,7 +199,31 @@
       "kannada_title": "Note Trove - new",
       "category": "Digital Business Card Application",
       "app_icon": "assets/images/mac_os_bg.jpg",
-      "thumbnail_image": "assets/images/mac_os_bg.jpg"
+      "thumbnail_image": "assets/images/mac_os_bg.jpg",
+
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     },
     {
       "key": "clear_sky",
@@ -65,7 +231,31 @@
       "kannada_title": "Clear Sky - kannada_title",
       "category": "Weather forecasting",
       "app_icon": "assets/project_images/project_icons/clear_sky_app_logo.svg",
-      "thumbnail_image": "assets/project_images/thumbnails/clear_sky_mockup.jpg"
+      "thumbnail_image": "assets/project_images/thumbnails/clear_sky_mockup.jpg",
+
+      "category_icon": "https://example.com/icons/category_finance.png",
+      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "app_development_duration": "Jan 2022 - Feb 2023",
+      "app_description_small": "A revolutionary finance app that simplifies money management.",
+      "app_preview_images": [
+        "https://example.com/images/preview1.svg",
+        "https://example.com/images/preview2.svg",
+        "https://example.com/images/preview3.svg"
+      ],
+      "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+      "role": "Flutter Developer",
+      "client": "XYZ Financial Services",
+      "team_size": 5,
+      "duration": "4 months",
+      "language": "English",
+      "language_code": "en",
+      "country": "United States",
+      "country_code": "US",
+      "platform_icons": [
+        "https://example.com/icons/android.svg",
+        "https://example.com/icons/ios.svg"
+      ]
     }
   ]
 }
