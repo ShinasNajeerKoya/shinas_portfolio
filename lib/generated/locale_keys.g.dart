@@ -49,7 +49,9 @@ abstract class  LocaleKeys {
   static const seeMore = 'seeMore';
   static const company = 'company';
   static const country = 'country';
+  static const countrySmall = 'countrySmall';
   static const language = 'language';
+  static const languageSmall = 'languageSmall';
   static const category = 'category';
   static const platforms = 'platforms';
   static const aboutThisProject = 'aboutThisProject';

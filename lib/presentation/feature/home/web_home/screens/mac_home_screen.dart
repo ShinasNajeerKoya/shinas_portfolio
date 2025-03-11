@@ -547,25 +547,39 @@ class MacMeetingCalendarWidget extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-            top: 1,
-            left: 10,
-            // right: 0,
-            child: CustomText(
-              day.toUpperCase(),
-              fontSize: 9,
-              fontColor: Colors.red,
-              fontWeight: FontWeight.bold,
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 25),
+              child: CustomText(
+                day.toUpperCase(),
+                fontSize: 9,
+                fontColor: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          Positioned(
-            top: 5,
-            left: 4,
-            child: CustomText(
-              date,
-              fontSize: 28,
-              fontColor: Colors.black,
-              fontWeight: FontWeight.normal,
+          // Positioned(
+          //   top: 5,
+          //   left: 4,
+          //   child: CustomText(
+          //     '13',
+          //     fontSize: 28,
+          //     fontColor: Colors.black,
+          //     fontWeight: FontWeight.normal,
+          //   ),
+          // ),
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: CustomText(
+                date,
+                fontSize: 28,
+                fontColor: Colors.black,
+                fontWeight: FontWeight.normal,
+                textAlign: TextAlign.center, // Ensures text stays centered
+              ),
             ),
           ),
         ],

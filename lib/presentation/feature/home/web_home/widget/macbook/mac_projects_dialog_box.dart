@@ -12,6 +12,7 @@ import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/project_details_overview_row_widget.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/project_title_widget.dart';
 
 class MacProjectsDialogBox extends StatelessWidget {
@@ -159,47 +160,49 @@ class MacProjectsDialogBox extends StatelessWidget {
                             const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
 
                             /// short data column widget
-                            const ProjectDetailsOverviewRowWidget(),
-                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                            ProjectDetailsOverviewRowWidget(selectedProject: selectedProject),
+                            const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 10),
                             CustomText(
                               LocaleKeys.aboutThisProject.toLocalizeString,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              fontColor: Colors.white.withOpacity(0.8),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 8),
 
                             CustomText(
-                              'duration from json file',
+                              selectedProject.appDevelopmentDuration,
                               fontSize: 10,
                               fontColor: Colors.grey,
                               // fontWeight: FontWeight.bold,
                             ),
-                            const SizedBox(height: 25),
+                            const SizedBox(height: 30),
                             CustomText(
-                              'short detail about project -- from json',
+                              selectedProject.appDescriptionSmall,
                               fontSize: 12,
-                              // fontWeight: FontWeight.bold,
+                              fontColor: Colors.white.withOpacity(0.9),
                             ),
                             const SizedBox(height: 10),
-
                             const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
                             CustomText(
                               LocaleKeys.preview.toLocalizeString,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              fontColor: Colors.white.withOpacity(0.8),
                             ),
                             const SizedBox(height: 30),
 
+                            /// list of preview images
                             Container(
                               height: 300,
-                              color: Colors.brown,
+                              color: Colors.brown.withOpacity(0.2),
                             ),
                             const SizedBox(height: 20),
 
                             const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
                             CustomText(
-                              'jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs jahsdjas sjs ajskas kjaskjs ',
-                              fontSize: 13,
+                              selectedProject.appDescriptionLarge,
+                              fontSize: 12,
                               maxLines: 4,
                               // fontWeight: FontWeight.bold,
                             ),
@@ -210,47 +213,48 @@ class MacProjectsDialogBox extends StatelessWidget {
                               LocaleKeys.information.toLocalizeString,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              fontColor: Colors.white.withOpacity(0.8),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 15),
                             Row(
                               children: [
-                                InformationColumnWidget(
+                                InformationDetailsColumnWidget(
                                   title: LocaleKeys.role.toLocalizeString,
-                                  subTitle: 'Senior Flutter Engineer',
+                                  subTitle: selectedProject.role,
                                 ),
-                                InformationColumnWidget(
+                                InformationDetailsColumnWidget(
                                   title: LocaleKeys.client.toLocalizeString,
-                                  subTitle: 'EMpty partner',
+                                  subTitle: selectedProject.client,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 24),
                             Row(
                               children: [
-                                InformationColumnWidget(
+                                InformationDetailsColumnWidget(
                                   title: LocaleKeys.teamSize.toLocalizeString,
-                                  subTitle: '3',
+                                  subTitle: '${selectedProject.teamSize}',
                                 ),
-                                InformationColumnWidget(
+                                InformationDetailsColumnWidget(
                                   title: LocaleKeys.duration.toLocalizeString,
-                                  subTitle: '8 months',
+                                  subTitle: selectedProject.duration,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 24),
                             Row(
                               children: [
-                                InformationColumnWidget(
-                                  title: LocaleKeys.language.toLocalizeString,
-                                  subTitle: 'English',
+                                InformationDetailsColumnWidget(
+                                  title: LocaleKeys.languageSmall.toLocalizeString,
+                                  subTitle: selectedProject.language,
                                 ),
-                                InformationColumnWidget(
-                                  title: LocaleKeys.country.toLocalizeString,
-                                  subTitle: 'India',
+                                InformationDetailsColumnWidget(
+                                  title: LocaleKeys.countrySmall.toLocalizeString,
+                                  subTitle: selectedProject.country,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 30),
 
                             /*
                             CustomIconButton(
@@ -300,129 +304,11 @@ class MacProjectsDialogBox extends StatelessWidget {
   }
 }
 
-class ProjectDetailsOverviewRowWidget extends StatelessWidget {
-  const ProjectDetailsOverviewRowWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      // color: Colors.purple,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            children: [
-              CustomText(
-                LocaleKeys.company.toLocalizeString,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-              Icon(Icons.business_center, size: 24),
-              CustomText(
-                'data from json here',
-                fontSize: 13,
-                // fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-          const CustomVerticalDivider(),
-          // SizedBox(
-          //   width: 0.5,
-          // height: 70,
-          // )
-          Column(
-            children: [
-              CustomText(
-                LocaleKeys.company.toLocalizeString,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-              Icon(Icons.business_center),
-              CustomText(
-                'data from json here',
-                fontSize: 13,
-                // fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-          const CustomVerticalDivider(),
-          Column(
-            children: [
-              CustomText(
-                LocaleKeys.company.toLocalizeString,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-              Icon(Icons.business_center),
-              CustomText(
-                'data from json here',
-                fontSize: 13,
-                // fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-          const CustomVerticalDivider(),
-          Column(
-            children: [
-              CustomText(
-                LocaleKeys.company.toLocalizeString,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-              Icon(Icons.business_center),
-              CustomText(
-                'data from json here',
-                fontSize: 13,
-                // fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-          const CustomVerticalDivider(),
-          Column(
-            children: [
-              CustomText(
-                LocaleKeys.company.toLocalizeString,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-              Icon(Icons.business_center),
-              CustomText(
-                'data from json here',
-                fontSize: 13,
-                // fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CustomVerticalDivider extends StatelessWidget {
-  const CustomVerticalDivider({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return VerticalDivider(
-      width: 0.5,
-      color: Colors.grey.withOpacity(0.3),
-    );
-  }
-}
-
-class InformationColumnWidget extends StatelessWidget {
+class InformationDetailsColumnWidget extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  const InformationColumnWidget({
+  const InformationDetailsColumnWidget({
     super.key,
     required this.title,
     required this.subTitle,
@@ -442,6 +328,7 @@ class InformationColumnWidget extends StatelessWidget {
               fontWeight: FontWeight.normal,
               fontColor: Colors.white.withOpacity(0.6),
             ),
+            const SizedBox(height: 2),
             CustomText(
               subTitle,
               fontSize: 13,
