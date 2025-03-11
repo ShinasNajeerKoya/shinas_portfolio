@@ -46,14 +46,8 @@ enum WindowsMenuItemsEnum {
 }
 
 class WebHomeBloc {
-  // final LocationRepository locationRepository;
-  // final NotificationRepository notificationRepository;
 
   final ProjectMetadataRepository projectMetadataRepository;
-
-  //
-  // final splashSubject = BehaviorSubject<String>();
-  // final permissionDeniedSubject = BehaviorSubject<bool>.seeded(false);
 
   ///
   final isMacPlatform = BehaviorSubject<bool>.seeded(true);
@@ -86,11 +80,15 @@ class WebHomeBloc {
 
 
   WebHomeBloc({required this.projectMetadataRepository}) {
-    // initDetails();
+    initDetails();
 
-    // fetchProjectMetadata();
-    fetchProjectsMetadataFromJson();
+
   }
+
+  Future<void> initDetails() async {
+    await fetchProjectsMetadataFromJson();
+  }
+
 
   void togglePlatform() {
     isMacPlatform.add(!isMacPlatform.value);

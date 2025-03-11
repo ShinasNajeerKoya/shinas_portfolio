@@ -1,20 +1,59 @@
 {
+  "finance_app": {
+    "key": "finance_app",
+    "app_icon": "https://example.com/icons/app_icon.png",
+    "app_title": "My Amazing App",
+    "app_category": "Finance",
+    "category_icon": "https://example.com/icons/category_finance.png",
+    "present_ios_url": "https://apps.apple.com/app/example-app",
+    "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+    "app_development_duration": "Jan 2022 - Feb 2023",
+    "app_description_small": "A revolutionary finance app that simplifies money management.",
+    "app_preview_images": [
+      "https://example.com/images/preview1.svg",
+      "https://example.com/images/preview2.svg",
+      "https://example.com/images/preview3.svg"
+    ],
+    "app_description_large": "My Amazing App helps users track expenses, set budgets, and analyze financial data with intuitive charts. It provides real-time insights and seamless syncing across devices.",
+    "role": "Flutter Developer",
+    "client": "XYZ Financial Services",
+    "team_size": 5,
+    "duration": "4 months",
+    "language": "English",
+    "language_code": "en",
+    "country": "United States",
+    "country_code": "US",
+    "platform_icons": [
+      "https://example.com/icons/android.svg",
+      "https://example.com/icons/ios.svg"
+    ]
+  },
   "ai_chatbot": {
-    "createdDate": "2023-09-12",
-    "description": "This chatbot uses NLP to process human language and generate responses.",
-    "demoImages": [
+    "key": "ai_chatbot",
+    "app_icon": "https://example.com/icons/chatbot_icon.png",
+    "app_title": "AI Chatbot",
+    "app_category": "Artificial Intelligence",
+    "category_icon": "https://example.com/icons/category_ai.png",
+    "present_ios_url": "",
+    "present_android_url": "https://play.google.com/store/apps/details?id=com.example.chatbot",
+    "app_development_duration": "Sept 2023 - Dec 2023",
+    "app_description_small": "This chatbot uses NLP to process human language and generate responses.",
+    "app_preview_images": [
       "assets/images/chatbot_1.png",
       "assets/images/chatbot_2.png"
     ],
-    "developers": ["Shinas Koya", "John Doe"]
-  },
-  "ecommerce_app": {
-    "createdDate": "2023-08-20",
-    "description": "A fully functional e-commerce mobile application with payment integration.",
-    "demoImages": [
-      "assets/images/ecommerce_1.png",
-      "assets/images/ecommerce_2.png"
-    ],
-    "developers": ["Shinas Koya", "Jane Doe"]
+    "app_description_large": "The AI Chatbot is built with state-of-the-art NLP models, enabling human-like conversations and seamless integrations with various platforms.",
+    "role": "AI Engineer",
+    "client": "Tech Solutions Inc.",
+    "team_size": 3,
+    "duration": "3 months",
+    "language": "English",
+    "language_code": "en",
+    "country": "United Kingdom",
+    "country_code": "GB",
+    "platform_icons": [
+      "https://example.com/icons/android.svg"
+    ]
   }
 }
+

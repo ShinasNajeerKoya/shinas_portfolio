@@ -159,10 +159,7 @@ class MacProjectsDialogBox extends StatelessWidget {
                             const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
 
                             /// short data column widget
-                            Container(
-                              height: 100,
-                              color: Colors.purple,
-                            ),
+                            const ProjectDetailsOverviewRowWidget(),
                             const CustomDivider(verticalPaddingValue: 20, horizontalPaddingValue: 0),
                             CustomText(
                               LocaleKeys.aboutThisProject.toLocalizeString,
@@ -299,6 +296,124 @@ class MacProjectsDialogBox extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ProjectDetailsOverviewRowWidget extends StatelessWidget {
+  const ProjectDetailsOverviewRowWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      // color: Colors.purple,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              CustomText(
+                LocaleKeys.company.toLocalizeString,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              Icon(Icons.business_center, size: 24),
+              CustomText(
+                'data from json here',
+                fontSize: 13,
+                // fontWeight: FontWeight.bold,
+              ),
+            ],
+          ),
+          const CustomVerticalDivider(),
+          // SizedBox(
+          //   width: 0.5,
+          // height: 70,
+          // )
+          Column(
+            children: [
+              CustomText(
+                LocaleKeys.company.toLocalizeString,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              Icon(Icons.business_center),
+              CustomText(
+                'data from json here',
+                fontSize: 13,
+                // fontWeight: FontWeight.bold,
+              ),
+            ],
+          ),
+          const CustomVerticalDivider(),
+          Column(
+            children: [
+              CustomText(
+                LocaleKeys.company.toLocalizeString,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              Icon(Icons.business_center),
+              CustomText(
+                'data from json here',
+                fontSize: 13,
+                // fontWeight: FontWeight.bold,
+              ),
+            ],
+          ),
+          const CustomVerticalDivider(),
+          Column(
+            children: [
+              CustomText(
+                LocaleKeys.company.toLocalizeString,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              Icon(Icons.business_center),
+              CustomText(
+                'data from json here',
+                fontSize: 13,
+                // fontWeight: FontWeight.bold,
+              ),
+            ],
+          ),
+          const CustomVerticalDivider(),
+          Column(
+            children: [
+              CustomText(
+                LocaleKeys.company.toLocalizeString,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              Icon(Icons.business_center),
+              CustomText(
+                'data from json here',
+                fontSize: 13,
+                // fontWeight: FontWeight.bold,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomVerticalDivider extends StatelessWidget {
+  const CustomVerticalDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return VerticalDivider(
+      width: 0.5,
+      color: Colors.grey.withOpacity(0.3),
     );
   }
 }

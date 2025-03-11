@@ -1,80 +1,71 @@
 {
-  "featuredProjects": [
+  "featured_projects": [
     {
       "key": "ai_chatbot",
-      "englishTitle": "AI Chatbot",
-      "kannadaTitle": "AI Chatbot - kannada",
+      "english_title": "AI Chatbot",
+      "kannada_title": "AI Chatbot - kannada",
       "category": "Machine Learning",
-      "subTitle": "An intelligent chatbot using NLP",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
-    },
-    {
-      "key": "ecommerce_app",
-      "englishTitle": "E-commerce App",
-      "kannadaTitle": "E-commerce App - kannada",
-      "category": "Mobile Development",
-      "subTitle": "A complete shopping experience",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+      "sub_title": "An intelligent chatbot using NLP",
+      "app_icon": "assets/images/mac_os_bg.jpg",
+      "thumbnail_image": "assets/images/mac_os_bg.jpg"
     }
   ],
-  "normalProjects": [
+  "normal_projects": [
     {
       "key": "savory_safari",
-      "englishTitle": "Savory Safari",
-      "kannadaTitle": "Savory Safari - kannadaTitle",
+      "english_title": "Savory Safari",
+      "kannada_title": "Savory Safari - kannada_title",
       "category": "Culinary",
-      "icon": "assets/project_images/project_icons/savory_safari_app_logo.svg",
-      "thumbnailImage": "assets/project_images/thumbnails/savory_safari_mockup.jpg"
+      "app_icon": "assets/project_images/project_icons/savory_safari_app_logo.svg",
+      "thumbnail_image": "assets/project_images/thumbnails/savory_safari_mockup.jpg"
     },
     {
       "key": "pepper_train",
-      "englishTitle": "Pepper Train",
-      "kannadaTitle": "Pepper Train - kannada ",
+      "english_title": "Pepper Train",
+      "kannada_title": "Pepper Train - kannada ",
       "category": "E - commerce",
-      "icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
-      "thumbnailImage": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg"
+      "app_icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
+      "thumbnail_image": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg"
     },
     {
       "key": "pixa_vista",
-      "englishTitle": "Pixa Vista",
-      "kannadaTitle": "Pixa Vista - new",
+      "english_title": "Pixa Vista",
+      "kannada_title": "Pixa Vista - new",
       "category": "Wallpaper Application",
-      "icon": "assets/project_images/project_icons/pixa_vista_app_logo.svg",
-      "thumbnailImage": "assets/project_images/thumbnails/pixa_vista_mockup.jpg"
+      "app_icon": "assets/project_images/project_icons/pixa_vista_app_logo.svg",
+      "thumbnail_image": "assets/project_images/thumbnails/pixa_vista_mockup.jpg"
     },
     {
       "key": "flamingo",
-      "englishTitle": "Flamingo",
-      "kannadaTitle": "Flamingo - new",
+      "english_title": "Flamingo",
+      "kannada_title": "Flamingo - new",
       "category": "Document reader Application",
-      "icon": "assets/project_images/project_icons/flamingo_app_logo.svg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+      "app_icon": "assets/project_images/project_icons/flamingo_app_logo.svg",
+      "thumbnail_image": "assets/images/mac_os_bg.jpg"
     },
     {
       "key": "cric_8",
-      "englishTitle": "Cric8",
-      "kannadaTitle": "Cric8 - new",
+      "english_title": "Cric8",
+      "kannada_title": "Cric8 - new",
       "category": "Scorecard Application",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+      "app_icon": "assets/images/mac_os_bg.jpg",
+      "thumbnail_image": "assets/images/mac_os_bg.jpg"
     },
     {
       "key": "note_trove",
-      "englishTitle": "Note Trove",
-      "kannadaTitle": "Note Trove - new",
+      "english_title": "Note Trove",
+      "kannada_title": "Note Trove - new",
       "category": "Digital Business Card Application",
-      "icon": "assets/images/mac_os_bg.jpg",
-      "thumbnailImage": "assets/images/mac_os_bg.jpg"
+      "app_icon": "assets/images/mac_os_bg.jpg",
+      "thumbnail_image": "assets/images/mac_os_bg.jpg"
     },
     {
       "key": "clear_sky",
-      "englishTitle": "Clear Sky",
-      "kannadaTitle": "Clear Sky - kannadaTitle",
+      "english_title": "Clear Sky",
+      "kannada_title": "Clear Sky - kannada_title",
       "category": "Weather forecasting",
-      "icon": "assets/project_images/project_icons/clear_sky_app_logo.svg",
-      "thumbnailImage": "assets/project_images/thumbnails/clear_sky_mockup.jpg"
+      "app_icon": "assets/project_images/project_icons/clear_sky_app_logo.svg",
+      "thumbnail_image": "assets/project_images/thumbnails/clear_sky_mockup.jpg"
     }
   ]
 }

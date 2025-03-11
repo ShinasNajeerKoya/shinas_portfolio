@@ -1,3 +1,5 @@
+import 'package:shinas_koya_portfolio/domain/constants/project_constants/project_constant_keys.dart';
+
 class ProjectMetadataModel {
   final String key;
   final String englishTitle;
@@ -21,14 +23,16 @@ class ProjectMetadataModel {
 
   factory ProjectMetadataModel.fromJson(Map<String, dynamic> json, {bool isFeatured = false}) {
     return ProjectMetadataModel(
-      key: json['key'],
-      englishTitle: json['englishTitle'],
-      kannadaTitle: json['kannadaTitle'],
-      category: json['category'],
-      icon: json['icon'],
-      thumbnailImage: json['thumbnailImage'],
+      key: json[ProjectMetadataConstantKey.key],
+      englishTitle: json[ProjectMetadataConstantKey.englishTitle],
+      kannadaTitle: json[ProjectMetadataConstantKey.kannadaTitle],
+      category: json[ProjectMetadataConstantKey.category],
+      icon: json[ProjectMetadataConstantKey.icon],
+      thumbnailImage: json[ProjectMetadataConstantKey.thumbnailImage],
       isFeatured: isFeatured,
-      subTitle: json.containsKey('subTitle') ? json['subTitle'] : null,
+      subTitle: json.containsKey(ProjectMetadataConstantKey.subTitle)
+          ? json[ProjectMetadataConstantKey.subTitle]
+          : null,
     );
   }
 }
