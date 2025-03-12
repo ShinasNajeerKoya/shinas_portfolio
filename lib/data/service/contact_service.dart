@@ -109,6 +109,10 @@ class ContactService {
     }
   }
 
+
+
+
+
   /// ** Portfolio Share Section **
 
   /// Shares the portfolio link
@@ -150,4 +154,31 @@ class ContactService {
   static void _showSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
+
+
+
+  /// ** custom url launcher section **
+
+  /// Opens the url in an external browser
+  static Future<void> handleUrl({required String url}) async {
+
+    if (url.isEmpty) {
+      debugPrint("Invalid platform type or URL not available");
+      return;
+    }
+
+    if (kIsWeb) {
+      // Open in web
+      html.window.open(url, "newTab");
+    } else {
+      // Open in mobile browser
+      final Uri uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        debugPrint("Could not open URL: $url");
+      }
+    }
+  }
+
 }

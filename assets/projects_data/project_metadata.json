@@ -73,7 +73,7 @@
       "app_icon": "assets/project_images/project_icons/pepper_train_app_logo.svg",
       "thumbnail_image": "assets/project_images/thumbnails/pepper_train_thumbnail.jpg",
       "category_icon": "https://example.com/icons/category_finance.png",
-      "present_ios_url": "https://apps.apple.com/app/example-app",
+      "present_ios_url": "",
       "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
       "app_development_duration": "Jan 2022 - Feb 2023",
       "app_description_small": "All in one Indian Spices store which can be delivered to your doorstep.",
@@ -105,7 +105,7 @@
       "thumbnail_image": "assets/project_images/thumbnails/pixa_vista_mockup.jpg",
       "category_icon": "https://example.com/icons/category_finance.png",
       "present_ios_url": "https://apps.apple.com/app/example-app",
-      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "present_android_url": "",
       "app_development_duration": "Jan 2022 - Feb 2023",
       "app_description_small": "Your personalised Wallpaper application.",
       "app_preview_images": [
@@ -135,8 +135,8 @@
       "app_icon": "assets/project_images/project_icons/flamingo_app_logo.svg",
       "thumbnail_image": "assets/images/mac_os_bg.jpg",
       "category_icon": "https://example.com/icons/category_finance.png",
-      "present_ios_url": "https://apps.apple.com/app/example-app",
-      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "present_ios_url": "",
+      "present_android_url": "",
       "app_development_duration": "Jan 2022 - Feb 2023",
       "app_description_small": "A document reader like no one. Simple but elegant for the next generation.",
       "app_preview_images": [
