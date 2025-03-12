@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
 class WindowsMenuItemHelper {
   static String getWindowsMenuItemTitle(WindowsMenuItemsEnum menuItem) {
     switch (menuItem) {
       case WindowsMenuItemsEnum.projects:
-        return "Projects";
+        return LocaleKeys.projects.toLocalizeString;
       case WindowsMenuItemsEnum.figma:
-        return "Figma";
+        return LocaleKeys.figma.toLocalizeString;
       case WindowsMenuItemsEnum.github:
-        return "Github";
+        return LocaleKeys.gitHub.toLocalizeString;
       case WindowsMenuItemsEnum.linkedin:
-        return "LinkedIn";
+        return LocaleKeys.linkedIn.toLocalizeString;
       case WindowsMenuItemsEnum.meet:
-        return "Calendar";
+        return LocaleKeys.calendar.toLocalizeString;
     }
   }
 

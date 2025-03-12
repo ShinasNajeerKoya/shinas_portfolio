@@ -59,5 +59,7 @@
   "teamSize": "Team Size",
   "duration": "Duration",
   "android": "Android",
-  "ios": "iOS"
+  "ios": "iOS",
+  "shareMyPortfolio": "Share my portfolio"
+
 }

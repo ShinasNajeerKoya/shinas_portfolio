@@ -1,17 +1,17 @@
 {
   "featured_projects": [
     {
-      "key": "ai_chatbot",
-      "english_title": "AI Chatbot",
-      "kannada_title": "AI Chatbot - kannada",
-      "category": "Machine Learning",
-      "sub_title": "An intelligent chatbot using NLP",
-      "app_icon": "assets/images/mac_os_bg.jpg",
-      "thumbnail_image": "assets/images/mac_os_bg.jpg",
-      "category_icon": "https://example.com/icons/category_finance.png",
-      "present_ios_url": "https://apps.apple.com/app/example-app",
-      "present_android_url": "https://play.google.com/store/apps/details?id=com.example.app",
-      "app_development_duration": "Jan 2022 - Feb 2023",
+      "key": "test_product",
+      "english_title": "",
+      "kannada_title": "",
+      "category": "",
+      "app_icon": "",
+      "thumbnail_image": "",
+      "sub_title": "",
+      "category_icon": "",
+      "present_ios_url": "",
+      "present_android_url": "",
+      "app_development_duration": "J",
       "app_description_small": "A revolutionary finance app that simplifies money management.",
       "app_preview_images": [
         "https://example.com/images/preview1.svg",
@@ -30,7 +30,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "Android & iOS"
     }
   ],
   "normal_projects": [
@@ -63,7 +64,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "Android & iOS"
     },
     {
       "key": "pepper_train",
@@ -94,7 +96,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "Android & iOS"
     },
     {
       "key": "pixa_vista",
@@ -125,7 +128,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "iOS only"
     },
     {
       "key": "flamingo",
@@ -156,7 +160,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "nothing"
     },
     {
       "key": "cric_8",
@@ -187,7 +192,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "Android & iOS"
     },
     {
       "key": "note_trove",
@@ -218,7 +224,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "Android & iOS"
     },
     {
       "key": "clear_sky",
@@ -249,7 +256,8 @@
       "platform_icons": [
         "https://example.com/icons/android.svg",
         "https://example.com/icons/ios.svg"
-      ]
+      ],
+      "platform_title": "Android & iOS"
     }
   ]
 }

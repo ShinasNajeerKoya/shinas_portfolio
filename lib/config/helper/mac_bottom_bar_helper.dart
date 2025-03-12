@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
 class MacBottomBarHelper {
   static String getBottomBarTooltip(MacBottomBarEnum bottomOption) {
     switch (bottomOption) {
       case MacBottomBarEnum.phone:
-        return "Call me";
+        return LocaleKeys.callMe.toLocalizeString;
       case MacBottomBarEnum.website:
-        return "Visit my website";
+        return LocaleKeys.visitMyWebsite.toLocalizeString;
       case MacBottomBarEnum.email:
-        return "Send me an email";
+        return LocaleKeys.sendMeAnEmail.toLocalizeString;
       case MacBottomBarEnum.project:
-        return "Visit my projects";
+        return LocaleKeys.visitMyProjects.toLocalizeString;
       case MacBottomBarEnum.meet:
-        return "Let's schedule";
+        return LocaleKeys.letsSchedule.toLocalizeString;
       case MacBottomBarEnum.settings:
-        return "Open setting";
+        return LocaleKeys.openSettings.toLocalizeString;
       case MacBottomBarEnum.contact:
-        return "Contact me";
+        return LocaleKeys.contactMe.toLocalizeString;
     }
   }
 

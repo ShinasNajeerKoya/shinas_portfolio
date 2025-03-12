@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 
 enum ContactOptionEnum {
   call,
@@ -12,26 +14,26 @@ class ContactButtonHelper {
   static String getContactButtonTooltip(ContactOptionEnum contactOption) {
     switch (contactOption) {
       case ContactOptionEnum.call:
-        return 'Call me';
+        return LocaleKeys.callMe.toLocalizeString;
       case ContactOptionEnum.email:
-        return 'Send me an email';
+        return LocaleKeys.sendMeAnEmail.toLocalizeString;
       case ContactOptionEnum.web:
-        return 'Visit my website';
+        return LocaleKeys.visitMyWebsite.toLocalizeString;
       case ContactOptionEnum.share:
-        return 'Share my portfolio';
+        return LocaleKeys.shareMyPortfolio.toLocalizeString;
     }
   }
 
   static String getContactButtonTitle(ContactOptionEnum contactOption) {
     switch (contactOption) {
       case ContactOptionEnum.call:
-        return 'Call';
+        return LocaleKeys.call.toLocalizeString;
       case ContactOptionEnum.email:
-        return 'Email';
+        return LocaleKeys.email.toLocalizeString;
       case ContactOptionEnum.web:
-        return 'Web';
+        return LocaleKeys.web.toLocalizeString;
       case ContactOptionEnum.share:
-        return 'Share';
+        return LocaleKeys.share.toLocalizeString;
     }
   }
 

@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
 import 'package:shinas_koya_portfolio/data/service/pdf_service.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
 class DesktopLayoutHelper {
   static String getMainLayoutTitle(MainLayoutEnum layout, bool isMacOs) {
     switch (layout) {
       case MainLayoutEnum.projects:
-        return "Projects";
+        return LocaleKeys.projects.toLocalizeString;
       case MainLayoutEnum.packages:
-        return "Packages";
+        return LocaleKeys.packages.toLocalizeString;
       case MainLayoutEnum.resume:
-        return "Resume";
+        return LocaleKeys.resume.toLocalizeString;
       case MainLayoutEnum.github:
-        return "GitHub";
+        return LocaleKeys.gitHub.toLocalizeString;
       case MainLayoutEnum.linkedin:
-        return "LinkedIn";
+        return LocaleKeys.linkedIn.toLocalizeString;
       case MainLayoutEnum.fullscreen:
-        return "Fullscreen";
+        return LocaleKeys.fullScreen.toLocalizeString;
       case MainLayoutEnum.flappyBird:
-        return "Flappy Bird";
+        return LocaleKeys.flappyBird.toLocalizeString;
       // case MainLayoutEnum.settings:
       //   return "Settings";
       case MainLayoutEnum.figma:
-        return "Figma";
+        return LocaleKeys.figma.toLocalizeString;
       case MainLayoutEnum.windowsOrMac:
-        return isMacOs ? "Windows" : "MacOS Mode";
+        return isMacOs ? LocaleKeys.windows.toLocalizeString : LocaleKeys.macOS.toLocalizeString;
     }
   }
 

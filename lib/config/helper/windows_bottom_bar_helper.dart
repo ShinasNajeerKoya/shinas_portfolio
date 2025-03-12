@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/visuals.dart';
 import 'package:shinas_koya_portfolio/data/service/contact_service.dart';
 import 'package:shinas_koya_portfolio/domain/constants/web_constants/web_constant_keys.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
 
 class WindowsBottomBarHelper {
   static String getBottomBarTooltip(WindowsBottomBarEnum bottomOption) {
     switch (bottomOption) {
       case WindowsBottomBarEnum.menu:
-        return "Open menu";
+        return LocaleKeys.openMenu.toLocalizeString;
       case WindowsBottomBarEnum.website:
-        return "Visit my website";
+        return LocaleKeys.visitMyWebsite.toLocalizeString;
       case WindowsBottomBarEnum.project:
-        return "Visit my projects";
+        return LocaleKeys.visitMyProjects.toLocalizeString;
       case WindowsBottomBarEnum.mail:
-        return "Send me an email";
+        return LocaleKeys.sendMeAnEmail.toLocalizeString;
       case WindowsBottomBarEnum.meet:
-        return "Let's schedule";
+        return LocaleKeys.letsSchedule.toLocalizeString;
     }
   }
 
@@ -76,6 +78,3 @@ class WindowsBottomBarHelper {
     }
   }
 }
-
-
-

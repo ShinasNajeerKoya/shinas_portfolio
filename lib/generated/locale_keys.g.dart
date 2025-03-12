@@ -64,5 +64,6 @@ abstract class  LocaleKeys {
   static const duration = 'duration';
   static const android = 'android';
   static const ios = 'ios';
+  static const shareMyPortfolio = 'shareMyPortfolio';
 
 }
