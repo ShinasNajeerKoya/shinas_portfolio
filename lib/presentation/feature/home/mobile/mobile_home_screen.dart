@@ -7,22 +7,10 @@ class MobileHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Shinas Portfolio - Mobile")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text("mobile desktop site"),
-            ),
-          ),
-          // BottomNavigationBar(
-          //   items: const [
-          //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-          //   ],
-          // ),
-        ],
+      body: Container(
+        height: 100,
+        width: 100,
+        color: Colors.yellow,
       ),
     );
   }

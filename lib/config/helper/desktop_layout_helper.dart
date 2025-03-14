@@ -22,8 +22,8 @@ class DesktopLayoutHelper {
         return LocaleKeys.linkedIn.toLocalizeString;
       case MainLayoutEnum.fullscreen:
         return LocaleKeys.fullScreen.toLocalizeString;
-      case MainLayoutEnum.flappyBird:
-        return LocaleKeys.flappyBird.toLocalizeString;
+      // case MainLayoutEnum.flappyBird:
+      //   return LocaleKeys.flappyBird.toLocalizeString;
       // case MainLayoutEnum.settings:
       //   return "Settings";
       case MainLayoutEnum.figma:
@@ -49,8 +49,8 @@ class DesktopLayoutHelper {
         return AppIcons.kLinkedInMacIcon;
       case MainLayoutEnum.fullscreen:
         return AppIcons.kFullScreenMacIcon;
-      case MainLayoutEnum.flappyBird:
-        return AppIcons.kFlappyBirdMacIcon;
+      // case MainLayoutEnum.flappyBird:
+      //   return AppIcons.kFlappyBirdMacIcon;
       // case MainLayoutEnum.settings:
       //   return AppIcons.kSettingsMacIcon;
       case MainLayoutEnum.figma:
@@ -76,8 +76,8 @@ class DesktopLayoutHelper {
         return AppIcons.kLinkedInWindowsIcon;
       case MainLayoutEnum.fullscreen:
         return AppIcons.kFullscreenWindowsIcon;
-      case MainLayoutEnum.flappyBird:
-        return AppIcons.kFlappyBirdWindowsIcon;
+      // case MainLayoutEnum.flappyBird:
+      //   return AppIcons.kFlappyBirdWindowsIcon;
       // case MainLayoutEnum.settings:
       //   return AppIcons.kSettingsMacIcon;
       case MainLayoutEnum.figma:
@@ -122,12 +122,12 @@ class DesktopLayoutHelper {
           debugPrint("Full Screen Tapped");
           bloc!.toggleFullScreen();
         };
-      case MainLayoutEnum.flappyBird:
-        return () {
-          bloc!.showFeatureComingSoonSnackbar(
-            context: context,
-          );
-        }; // case MainLayoutEnum.settings:
+      // case MainLayoutEnum.flappyBird:
+      //   return () {
+      //     bloc!.showFeatureComingSoonSnackbar(
+      //       context: context,
+      //     );
+      //   }; // case MainLayoutEnum.settings:
       //   return () => debugPrint("Open Settings");
       case MainLayoutEnum.figma:
         return () {

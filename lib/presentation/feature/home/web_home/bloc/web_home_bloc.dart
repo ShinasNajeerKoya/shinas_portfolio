@@ -11,7 +11,7 @@ enum MainLayoutEnum {
   resume,
   packages,
   github,
-  flappyBird,
+  // flappyBird,
   fullscreen,
   linkedin,
   // settings,
