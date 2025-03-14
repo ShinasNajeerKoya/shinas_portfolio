@@ -70,6 +70,7 @@ class ProjectDetailsOverviewRowWidget extends StatelessWidget {
               // ),
               centerWidget: CustomSvgIcon(
                 selectedProject.categoryIcon,
+                color: Colors.white.withOpacity(0.8),
                 height: 30,
               ),
               subTitle: selectedProject.category,
