@@ -100,56 +100,56 @@ class MacAppBar extends StatelessWidget {
             ///
             const Spacer(),
 
-            /// ** language selection **
-            Container(
-              width: 28,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Center(
-                child: CustomTextButton(
-                  "EN",
-                  fontColor: Colors.black,
-                  onTap: () {
-                    log('language selection button tapped');
-                    showPopover(
-                      // contentDxOffset: 200,
-                      // contentDyOffset: 200,
-                      context: context,
-                      direction: PopoverDirection.bottom,
-                      bodyBuilder: (context) => CustomBackdropFilter(
-                        height: 78,
-                        width: 100,
-                        backgroundColor: Colors.white.withOpacity(0.08),
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            LanguageMenuItems(
-                              title: 'English',
-                              onEnter: (_) => bloc!.isContactPhoneHovered.add(true),
-                              onExit: (_) => bloc!.isContactPhoneHovered.add(false),
-                              bloc: bloc,
-                            ),
-                            LanguageMenuItems(
-                              title: 'Hindi',
-                              onEnter: (_) => bloc!.isContactEmailHovered.add(true),
-                              onExit: (_) => bloc!.isContactEmailHovered.add(false),
-                              bloc: bloc,
-                            ),
-                          ],
-                        ),
-                      ),
-                      backgroundColor: Colors.transparent,
-                    );
-                  },
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-            ),
+            /// ** language selection ** -- for later
+            // Container(
+            //   width: 28,
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(4),
+            //   ),
+            //   child: Center(
+            //     child: CustomTextButton(
+            //       "EN",
+            //       fontColor: Colors.black,
+            //       onTap: () {
+            //         log('language selection button tapped');
+            //         showPopover(
+            //           // contentDxOffset: 200,
+            //           // contentDyOffset: 200,
+            //           context: context,
+            //           direction: PopoverDirection.bottom,
+            //           bodyBuilder: (context) => CustomBackdropFilter(
+            //             height: 78,
+            //             width: 100,
+            //             backgroundColor: Colors.white.withOpacity(0.08),
+            //             padding: const EdgeInsets.symmetric(vertical: 8),
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //               children: [
+            //                 LanguageMenuItems(
+            //                   title: 'English',
+            //                   onEnter: (_) => bloc!.isContactPhoneHovered.add(true),
+            //                   onExit: (_) => bloc!.isContactPhoneHovered.add(false),
+            //                   bloc: bloc,
+            //                 ),
+            //                 LanguageMenuItems(
+            //                   title: 'Hindi',
+            //                   onEnter: (_) => bloc!.isContactEmailHovered.add(true),
+            //                   onExit: (_) => bloc!.isContactEmailHovered.add(false),
+            //                   bloc: bloc,
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //           backgroundColor: Colors.transparent,
+            //         );
+            //       },
+            //       fontSize: 12,
+            //       letterSpacing: 1,
+            //       fontWeight: FontWeight.w900,
+            //     ),
+            //   ),
+            // ),
 
             horizontalMargin8,
             CustomText(

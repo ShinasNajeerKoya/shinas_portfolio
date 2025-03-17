@@ -1,10 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shinas_koya_portfolio/config/extensions/string_extensions.dart';
 import 'package:shinas_koya_portfolio/config/themes/colors.dart';
 import 'package:shinas_koya_portfolio/config/themes/units.dart';
+import 'package:shinas_koya_portfolio/data/model/project_metadata/project_metadata.dart';
+import 'package:shinas_koya_portfolio/generated/locale_keys.g.dart';
 import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/bloc/web_home_bloc.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/featured_project_widget.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/macbook/mac_projects_dialog_box.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/platform_laucnher_button_widget.dart';
+import 'package:shinas_koya_portfolio/presentation/feature/home/web_home/widget/projects_gridview_widget.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_divider.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/custom_svg_icon.dart';
 import 'package:shinas_koya_portfolio/presentation/widgets/custom_text.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/project_details_overview_row_widget.dart';
+import 'package:shinas_koya_portfolio/presentation/widgets/project_title_widget.dart';
 
 class WindowsProjectsDialogBox extends StatelessWidget {
   final WebHomeBloc? bloc;
@@ -21,10 +32,12 @@ class WindowsProjectsDialogBox extends StatelessWidget {
         // await WifiOnlyPref.saveFirstTimeWifiOnlyState(isFirstTime: false);
         // return false;
         return true;
-
       },
       child: Dialog(
-        backgroundColor: Theme.of(context).colorScheme.tertiary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .tertiary,
         child: SingleChildScrollView(
           // padding: EdgeInsets.zero,
           child: Container(
@@ -132,146 +145,240 @@ class WindowsProjectsDialogBox extends StatelessWidget {
                       );
                     }),
                 verticalMargin16,
-                const Spacer(),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomText('Projects will be updated here soon. -- for windows'),
-                  ],
-                ),
-                const Spacer(),
+                Expanded(
+                  child: StreamBuilder<ProjectMetadataModel?>(
+                      stream: bloc!.selectedProject,
+                      builder: (context, snapshot) {
+                        final selectedProject = snapshot.data;
 
-                /// **Profile Image**
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     const CircleAvatar(
-                //       radius: 30,
-                //       backgroundColor: Colors.transparent,
-                //       backgroundImage: AssetImage(AppImages.kMacOsBg),
-                //     ),
-                //     horizontalMargin8,
-                //     const Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       children: [
-                //         CustomText(
-                //           'Shinas Najeer Koya',
-                //           fontSize: 20,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //         CustomText(
-                //           'Flutter Engineer',
-                //           fontSize: 14,
-                //           // fontWeight: FontWeight.bold,
-                //           fontColor: Colors.grey,
-                //         ),
-                //       ],
-                //     ),
-                //   ],
-                // ),
-                // verticalMargin12,
+                        /// for metadata details
+                        if (selectedProject == null) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: ListView(
+                              children: [
+                                ProjectTitleWidget(
+                                  title: LocaleKeys.featured.toLocalizeString,
+                                ),
 
-                /// **contact icons list**
+                                /// ** featured project **
+                                FeaturedProjectWidget(
+                                  bloc: bloc,
+                                ),
 
-                // SizedBox(
-                //   height: 60,
-                //   width: 250,
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: List.generate(contactOptions.length, (index) {
-                //       final option = contactOptions[index];
-                //       return ContactOptionColumn(
-                //         title: option['title'],
-                //         icon: option['icon'],
-                //         tooltip: option['tooltip'],
-                //       );
-                //     }),
-                //   ),
-                // ),
+                                ProjectTitleWidget(
+                                  title: LocaleKeys.myProjects.toLocalizeString,
+                                ),
 
-                /// **Experience**
+                                /// ** normal project **
+                                ProjectsGridViewWidget(
+                                  bloc: bloc,
+                                ),
+                              ],
+                            ),
+                          );
+                        }
 
-                // StreamBuilder<bool>(
-                //   stream: bloc!.isContactPhoneHovered,
-                //   builder: (context, mouseHoveredSnapshot) {
-                //     final isHovered = mouseHoveredSnapshot.data ?? false;
-                //     return DetailsRow(
-                //       onEnter: (_) => bloc!.isContactPhoneHovered.add(true),
-                //       onExit: (_) => bloc!.isContactPhoneHovered.add(false),
-                //       title: 'Phone',
-                //       value: '+91 8088 670 650',
-                //       isHovered: isHovered,
-                //     );
-                //   },
-                // ),
-                // const CustomContactDivider(),
-                // StreamBuilder<bool>(
-                //   stream: bloc!.isContactEmailHovered,
-                //   builder: (context, mouseHoveredSnapshot) {
-                //     final isHovered = mouseHoveredSnapshot.data ?? false;
-                //     return DetailsRow(
-                //       onEnter: (_) => bloc!.isContactEmailHovered.add(true),
-                //       onExit: (_) => bloc!.isContactEmailHovered.add(false),
-                //       title: 'Email',
-                //       // value: 'shinasnajeerkoya@gmail.com',
-                //       value: DetailsConstantValues.email,
-                //       isHovered: isHovered,
-                //     );
-                //   },
-                // ),
-                // const CustomContactDivider(),
-                // StreamBuilder<bool>(
-                //   stream: bloc!.isContactWebsiteHovered,
-                //   builder: (context, mouseHoveredSnapshot) {
-                //     final isHovered = mouseHoveredSnapshot.data ?? false;
-                //     return DetailsRow(
-                //       onEnter: (_) => bloc!.isContactWebsiteHovered.add(true),
-                //       onExit: (_) => bloc!.isContactWebsiteHovered.add(false),
-                //       title: 'Website',
-                //       // value: 'null null',
-                //       value: DetailsConstantValues.websiteUrl,
-                //       isHovered: isHovered,
-                //     );
-                //   },
-                // ),
-                //
-                // verticalMargin16,
+                        /// triggers when any project is selected
+                        return Container(
+                          alignment: Alignment.center,
+                          // color: Colors.blueGrey,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      padding: EdgeInsets.zero,
+                                      onPressed: () {
+                                        bloc!.selectedProject.add(null);
+                                      },
+                                      icon: Icon(
+                                        CupertinoIcons.left_chevron,
+                                        color: Colors.white.withOpacity(0.9),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                                  child: ListView(
+                                    // mainAxisAlignment: MainAxisAlignment.start,
+                                    // crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 30),
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            height: 100,
+                                            width: 100,
+                                            child: CustomSvgIcon(selectedProject.icon),
+                                          ),
+                                          const SizedBox(width: 15),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              CustomText(
+                                                selectedProject.englishTitle,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              CustomText(
+                                                selectedProject.category,
+                                                fontSize: 12,
+                                                fontColor: Colors.grey.shade500,
+                                              ),
+                                              const SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  if (selectedProject.presentIosUrl.isEmpty &&
+                                                      selectedProject.presentAndroidUrl.isEmpty)
+                                                    CustomText(
+                                                      'Designed for iOS & Android',
+                                                      fontSize: 10,
+                                                      fontColor: Colors.grey.shade500,
+                                                    ),
+                                                  if (selectedProject.presentIosUrl.isNotEmpty)
+                                                    PlatformLauncherButtonWidget(
+                                                      platformUrl: selectedProject.presentIosUrl,
+                                                      platformTitle: LocaleKeys.ios.toLocalizeString,
+                                                      platformIcon: Icons.apple,
+                                                    ),
+                                                  if (selectedProject.presentAndroidUrl.isNotEmpty)
+                                                    PlatformLauncherButtonWidget(
+                                                      platformUrl: selectedProject.presentAndroidUrl,
+                                                      platformTitle: LocaleKeys.android.toLocalizeString,
+                                                      platformIcon: Icons.android,
+                                                    ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      // SizedBox(height: 25),
+                                      const CustomDivider(
+                                          verticalPaddingValue: 20, horizontalPaddingValue: 0),
 
-                /// **Skills Section**
+                                      /// short data column widget
+                                      ProjectDetailsOverviewRowWidget(selectedProject: selectedProject),
 
-                // SizedBox(height: 20),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     // const Spacer(),
-                //     Container(
-                //       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
-                //       decoration: BoxDecoration(
-                //         color: AppColors.kDialogButtonColor,
-                //         borderRadius: BorderRadius.circular(4),
-                //       ),
-                //       child: Center(
-                //         child: CustomTextButton(
-                //           'About Me',
-                //           onTap: () {
-                //             Navigator.of(context).pop();
-                //             bloc!.appBarTitleValue.add(MenuItemsConstantKeys.aboutMe);
-                //
-                //             bloc!.showCustomDialog(
-                //               // context: navigatorKey.currentContext!,
-                //               context: context,
-                //               bloc: bloc,
-                //               title: MenuItemsConstantKeys.aboutMe,
-                //               // subTitle: 'sub title',
-                //             );
-                //           },
-                //           fontSize: 13,
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                // verticalMargin8,
+                                      const CustomDivider(
+                                          verticalPaddingValue: 20, horizontalPaddingValue: 10),
+
+                                      /// about this project section
+                                      CustomText(
+                                        LocaleKeys.aboutThisProject.toLocalizeString,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontColor: Colors.white.withOpacity(0.8),
+                                      ),
+                                      const SizedBox(height: 8),
+
+                                      CustomText(
+                                        selectedProject.appDevelopmentDuration,
+                                        fontSize: 10,
+                                        fontColor: Colors.grey,
+                                        // fontWeight: FontWeight.bold,
+                                      ),
+                                      const SizedBox(height: 30),
+
+                                      /// project description section
+                                      CustomText(
+                                        selectedProject.appDescriptionSmall,
+                                        fontSize: 12,
+                                        fontColor: Colors.white.withOpacity(0.9),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      const CustomDivider(
+                                          verticalPaddingValue: 20, horizontalPaddingValue: 0),
+
+                                      /// project preview section
+                                      CustomText(
+                                        LocaleKeys.preview.toLocalizeString,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontColor: Colors.white.withOpacity(0.8),
+                                      ),
+                                      const SizedBox(height: 30),
+
+                                      /// list of preview images
+                                      Container(
+                                        height: 300,
+                                        color: Colors.brown.withOpacity(0.2),
+                                      ),
+                                      const SizedBox(height: 20),
+
+                                      const CustomDivider(
+                                          verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                                      CustomText(
+                                        selectedProject.appDescriptionLarge,
+                                        fontSize: 12,
+                                        maxLines: 4,
+                                        // fontWeight: FontWeight.bold,
+                                      ),
+                                      const CustomDivider(
+                                          verticalPaddingValue: 20, horizontalPaddingValue: 0),
+                                      const SizedBox(height: 10),
+
+                                      CustomText(
+                                        LocaleKeys.information.toLocalizeString,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontColor: Colors.white.withOpacity(0.8),
+                                      ),
+                                      const SizedBox(height: 15),
+                                      Row(
+                                        children: [
+                                          InformationDetailsColumnWidget(
+                                            title: LocaleKeys.role.toLocalizeString,
+                                            subTitle: selectedProject.role,
+                                          ),
+                                          InformationDetailsColumnWidget(
+                                            title: LocaleKeys.client.toLocalizeString,
+                                            subTitle: selectedProject.client,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 24),
+                                      Row(
+                                        children: [
+                                          InformationDetailsColumnWidget(
+                                            title: LocaleKeys.teamSize.toLocalizeString,
+                                            subTitle: '${selectedProject.teamSize}',
+                                          ),
+                                          InformationDetailsColumnWidget(
+                                            title: LocaleKeys.duration.toLocalizeString,
+                                            subTitle: selectedProject.duration,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 24),
+                                      Row(
+                                        children: [
+                                          InformationDetailsColumnWidget(
+                                            title: LocaleKeys.languageSmall.toLocalizeString,
+                                            subTitle: selectedProject.language,
+                                          ),
+                                          InformationDetailsColumnWidget(
+                                            title: LocaleKeys.countrySmall.toLocalizeString,
+                                            subTitle: selectedProject.country,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 30),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                )
               ],
             ),
           ),
