@@ -47,7 +47,7 @@ class _WebSplashPageState extends State<WebSplashPage> {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
-
+ 
       Navigator.pushReplacement(
         context,
         _fadeTransitionRoute(
