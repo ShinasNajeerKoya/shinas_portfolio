@@ -51,7 +51,7 @@ class _WebSplashPageState extends State<WebSplashPage> {
       Navigator.pushReplacement(
         context,
         _fadeTransitionRoute(
-          Provider<WebHomeBloc>( 
+          Provider<WebHomeBloc>(
             create: (context) => provideWebHomeBloc(),
             dispose: (context, bloc) => bloc.dispose(),
             child: const WebHomePage(),
